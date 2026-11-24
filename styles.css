@@ -781,3 +781,197 @@ a {
     order: -1;
   }
 }
+
+
+/* ==========================================================================
+   HOW TO PLAY QUIZ STYLES
+   ========================================================================== */
+
+.quiz-section {
+  background: var(--bg-secondary, #0f172a);
+}
+
+.quiz-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Progress bar */
+.quiz-progress-bar-wrap {
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  height: 8px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+.quiz-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #a78bfa);
+  border-radius: 999px;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.quiz-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-muted, #94a3b8);
+  margin-bottom: 1.5rem;
+}
+
+/* Quiz Card */
+.quiz-card {
+  background: var(--card-bg, #1e293b);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.25rem;
+  padding: 2rem;
+}
+
+.quiz-category {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  background: rgba(167,139,250,0.12);
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.quiz-question {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary, #f1f5f9);
+  line-height: 1.5;
+  margin-bottom: 1.75rem;
+}
+
+/* Option Buttons */
+.quiz-options {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-option {
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 0.75rem;
+  color: var(--text-primary, #f1f5f9);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.9rem 1.25rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.quiz-option:hover:not(:disabled) {
+  background: rgba(99,102,241,0.15);
+  border-color: #6366f1;
+  transform: translateX(4px);
+}
+.quiz-option:disabled {
+  cursor: default;
+}
+.quiz-option.correct {
+  background: rgba(52,211,153,0.15);
+  border-color: #34d399;
+  color: #34d399;
+}
+.quiz-option.wrong {
+  background: rgba(248,113,113,0.15);
+  border-color: #f87171;
+  color: #f87171;
+}
+
+/* Feedback */
+.quiz-feedback {
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+.feedback-correct {
+  background: rgba(52,211,153,0.1);
+  border: 1px solid rgba(52,211,153,0.3);
+  color: #a7f3d0;
+}
+.feedback-wrong {
+  background: rgba(248,113,113,0.1);
+  border: 1px solid rgba(248,113,113,0.3);
+  color: #fca5a5;
+}
+
+.quiz-next-btn {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+/* Results screen */
+.quiz-results {
+  background: var(--card-bg, #1e293b);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.25rem;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.quiz-result-emoji {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+}
+.quiz-results h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary, #f1f5f9);
+  margin-bottom: 0.5rem;
+}
+.quiz-results p {
+  color: var(--text-muted, #94a3b8);
+  margin-bottom: 1.5rem;
+}
+.quiz-final-score {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #6366f1, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+}
+
+/* Breakdown */
+.quiz-result-breakdown {
+  text-align: left;
+  background: rgba(255,255,255,0.03);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-top: 0.5rem;
+}
+.breakdown-title {
+  font-weight: 700;
+  color: var(--text-primary, #f1f5f9);
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+.breakdown-item {
+  font-size: 0.85rem;
+  color: #fca5a5;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  line-height: 1.6;
+}
+.breakdown-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.breakdown-correct {
+  color: #6ee7b7;
+  font-weight: 600;
+}

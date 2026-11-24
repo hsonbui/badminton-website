@@ -28,8 +28,9 @@
         <a href="#shots">Key Shots</a>
         <a href="#gear">Equipment</a>
         <a href="#tracker">Score Tracker</a>
+        <a href="#quiz">Quiz</a>
       </nav>
-      <a href="#tracker" class="btn btn-sm btn-primary">Try Scorer</a>
+      <a href="#quiz" class="btn btn-sm btn-primary">🎮 Play Quiz</a>
     </div>
   </header>
 
@@ -329,6 +330,47 @@
     </div>
   </section>
 
+
+  <!-- How To Play Quiz -->
+  <section id="quiz" class="section quiz-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interactive Game</span>
+        <h2>How Well Do You Know Badminton?</h2>
+        <p>Test your knowledge of rules, shots, and scoring with 10 questions. Can you get a perfect score?</p>
+      </div>
+
+      <div class="quiz-wrapper">
+        <!-- Progress Bar -->
+        <div class="quiz-progress-bar-wrap">
+          <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+        </div>
+        <div class="quiz-meta">
+          <span id="quiz-counter">Question 1 of 10</span>
+          <span id="quiz-score-label">Score: 0</span>
+        </div>
+
+        <!-- Question Card -->
+        <div class="quiz-card" id="quiz-card">
+          <div class="quiz-category" id="quiz-category">Rules</div>
+          <h3 class="quiz-question" id="quiz-question">Loading...</h3>
+          <div class="quiz-options" id="quiz-options"></div>
+          <div class="quiz-feedback" id="quiz-feedback" style="display:none"></div>
+          <button class="btn btn-primary quiz-next-btn" id="quiz-next-btn" style="display:none" onclick="quizNext()">Next Question →</button>
+        </div>
+
+        <!-- Results Screen (hidden initially) -->
+        <div class="quiz-results" id="quiz-results" style="display:none">
+          <div class="quiz-result-emoji" id="quiz-result-emoji">🏆</div>
+          <h3 id="quiz-result-title">Amazing!</h3>
+          <p id="quiz-result-desc">You really know your badminton!</p>
+          <div class="quiz-final-score" id="quiz-final-score">10 / 10</div>
+          <div class="quiz-result-breakdown" id="quiz-result-breakdown"></div>
+          <button class="btn btn-primary" onclick="quizRestart()" style="margin-top:1.5rem">🔄 Play Again</button>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-content">
