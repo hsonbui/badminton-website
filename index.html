@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmashPoint | Everything Badminton</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 3v18M3 12h18"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <span>Smash<strong>Point</strong></span>
+      </a>
+      <nav class="nav-menu">
+        <a href="#about">About</a>
+        <a href="#court">Court & Rules</a>
+        <a href="#shots">Key Shots</a>
+        <a href="#gear">Equipment</a>
+        <a href="#tracker">Score Tracker</a>
+      </nav>
+      <a href="#tracker" class="btn btn-sm btn-primary">Try Scorer</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="badge">🏸 The World's Fastest Racket Sport</div>
+      <h1 class="hero-title">Precision, Agility, and explosive <span>Power</span>.</h1>
+      <p class="hero-subtitle">
+        Explore rules, master essential shots, understand court boundaries, and track your match scores in real time.
+      </p>
+      <div class="hero-actions">
+        <a href="#court" class="btn btn-primary">Interactive Court Guide</a>
+        <a href="#shots" class="btn btn-secondary">Learn Key Shots</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">493+ km/h</span>
+          <span class="stat-label">Fastest recorded smash</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">21 Pts</span>
+          <span class="stat-label">Rally point system</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">1992</span>
+          <span class="stat-label">Olympic sport debut</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About & Quick Facts -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Overview</span>
+        <h2>Why Badminton Captivates Millions</h2>
+        <p>A fast-paced Olympic sport requiring tactical finesse, high aerobic endurance, and lightning reflexes.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Lightning Reflexes</h3>
+          <p>Players must react in fractions of a second to defensive drops and smash velocities exceeding 300 km/h.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏃</div>
+          <h3>Extreme Cardio</h3>
+          <p>A single competitive match can cover up to 6 kilometers of explosive lunges, jumps, and direction changes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Tactical Strategy</h3>
+          <p>Success depends on deception, court geometry, exploiting opponent footwork, and subtle wrist flicks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Court Section -->
+  <section id="court" class="section court-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interactive Diagram</span>
+        <h2>Badminton Court Boundaries & Service Rules</h2>
+        <p>Toggle between Singles and Doubles to see the in-bounds court areas and service zones highlighted.</p>
+      </div>
+
+      <div class="court-controls">
+        <button id="btn-singles" class="btn-toggle active" onclick="setCourtMode('singles')">Singles Mode (Long & Narrow)</button>
+        <button id="btn-doubles" class="btn-toggle" onclick="setCourtMode('doubles')">Doubles Mode (Short & Wide)</button>
+      </div>
+
+      <div class="court-container">
+        <!-- SVG Court Diagram -->
+        <svg id="badminton-court" viewBox="0 0 600 320" class="court-svg">
+          <!-- Outer border -->
+          <rect x="20" y="20" width="560" height="280" class="court-base"/>
+
+          <!-- Side tramlines (Doubles sidelines) -->
+          <rect id="left-tramline" x="20" y="20" width="560" height="25" class="tramline-side"/>
+          <rect id="right-tramline" x="20" y="275" width="560" height="25" class="tramline-side"/>
+
+          <!-- Long service line for doubles (rear tramlines) -->
+          <rect id="top-backline" x="20" y="20" width="35" height="280" class="tramline-back"/>
+          <rect id="bottom-backline" x="545" y="20" width="35" height="280" class="tramline-back"/>
+
+          <!-- Center line -->
+          <line x1="20" y1="160" x2="235" y2="160" class="court-line"/>
+          <line x1="365" y1="160" x2="580" y2="160" class="court-line"/>
+
+          <!-- Short service lines -->
+          <line x1="235" y1="20" x2="235" y2="300" class="court-line"/>
+          <line x1="365" y1="20" x2="365" y2="300" class="court-line"/>
+
+          <!-- Center Net -->
+          <line x1="300" y1="10" x2="300" y2="310" class="net-line"/>
+          <circle cx="300" cy="10" r="4" class="net-post"/>
+          <circle cx="300" cy="310" r="4" class="net-post"/>
+
+          <!-- Labels -->
+          <text x="300" y="8" class="court-label net-label" text-anchor="middle">NET</text>
+          <text x="130" y="90" class="court-label" text-anchor="middle">Left Service Court</text>
+          <text x="130" y="240" class="court-label" text-anchor="middle">Right Service Court</text>
+          <text x="470" y="90" class="court-label" text-anchor="middle">Right Service Court</text>
+          <text x="470" y="240" class="court-label" text-anchor="middle">Left Service Court</text>
+        </svg>
+
+        <div class="court-explanation">
+          <h4 id="mode-title">Singles Play Rules</h4>
+          <p id="mode-desc">
+            In singles, the court is <strong>long and narrow</strong>. The side alleys are "OUT" for both rally play and serving.
+            The back boundary line is the furthest line for both serving and general play.
+          </p>
+          <ul class="rule-bullets" id="mode-bullets">
+            <li><strong>Serve:</strong> Must land past the short service line and inside the center & inner sideline.</li>
+            <li><strong>Score Even:</strong> Server stands on the right service court.</li>
+            <li><strong>Score Odd:</strong> Server stands on the left service court.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Shots Section -->
+  <section id="shots" class="section shots-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Techniques</span>
+        <h2>The 5 Fundamental Badminton Shots</h2>
+        <p>Master these core strokes to build an unpredictable attacking and defensive repertoire.</p>
+      </div>
+
+      <div class="shots-grid">
+        <div class="shot-card" onclick="selectShot(0)">
+          <div class="shot-header">
+            <span class="shot-badge offensive">Offensive</span>
+            <h3>The Forehand Smash</h3>
+          </div>
+          <p class="shot-desc">The primary attacking weapon hit with steep downward trajectory and maximum power.</p>
+          <div class="shot-meta">
+            <span><strong>Target:</strong> Midcourt open floor / Body</span>
+          </div>
+        </div>
+
+        <div class="shot-card" onclick="selectShot(1)">
+          <div class="shot-header">
+            <span class="shot-badge strategic">Tactical</span>
+            <h3>The Drop Shot</h3>
+          </div>
+          <p class="shot-desc">A delicate deception stroke disguised as a clear/smash that dips just over the net.</p>
+          <div class="shot-meta">
+            <span><strong>Target:</strong> Opponent front court corners</span>
+          </div>
+        </div>
+
+        <div class="shot-card" onclick="selectShot(2)">
+          <div class="shot-header">
+            <span class="shot-badge defensive">Defensive / Baseline</span>
+            <h3>The Clear (Lob)</h3>
+          </div>
+          <p class="shot-desc">A deep high shot pushing the opponent back to their rear boundary to reset tempo.</p>
+          <div class="shot-meta">
+            <span><strong>Target:</strong> Rear boundary baseline</span>
+          </div>
+        </div>
+
+        <div class="shot-card" onclick="selectShot(3)">
+          <div class="shot-header">
+            <span class="shot-badge aggressive">Aggressive</span>
+            <h3>The Net Kill</h3>
+          </div>
+          <p class="shot-desc">A quick wrist flick at the tape against a weak tumbling return from the opponent.</p>
+          <div class="shot-meta">
+            <span><strong>Target:</strong> Steep downward into forecourt</span>
+          </div>
+        </div>
+
+        <div class="shot-card" onclick="selectShot(4)">
+          <div class="shot-header">
+            <span class="shot-badge fast">Speed Rally</span>
+            <h3>The Drive</h3>
+          </div>
+          <p class="shot-desc">A flat, aggressive horizontal shot skimming the net, vital for fast doubles exchanges.</p>
+          <div class="shot-meta">
+            <span><strong>Target:</strong> Opponent body or sidelines</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shot Detail Viewer -->
+      <div id="shot-detail-box" class="shot-detail-box">
+        <div class="detail-content">
+          <div class="detail-tag" id="detail-tag">Offensive Stroke</div>
+          <h3 id="detail-title">Forehand Smash Execution</h3>
+          <p id="detail-body">
+            Position yourself behind the shuttlecock, transfer weight from back to front foot, extend your racket arm at the highest point, and snap your forearm and wrist downward with full pronation.
+          </p>
+          <div class="detail-tips">
+            <strong>Pro Tip:</strong> <em>Aim for steep angle rather than pure brute strength; a steep smash is much harder to retrieve than a flat fast one.</em>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Guide -->
+  <section id="gear" class="section gear-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Gear Guide</span>
+        <h2>Choosing the Right Equipment</h2>
+        <p>A quick breakdown of rackets, shuttlecocks, and court essentials.</p>
+      </div>
+
+      <div class="gear-grid">
+        <div class="gear-card">
+          <div class="gear-icon">🏸</div>
+          <h3>Rackets</h3>
+          <ul>
+            <li><strong>Head-Heavy:</strong> Powerful smashes, slower defense.</li>
+            <li><strong>Head-Light:</strong> Fast reflex defense, doubles play.</li>
+            <li><strong>Even-Balance:</strong> Versatile all-around play.</li>
+            <li><strong>Weights:</strong> 3U (85-89g), 4U (80-84g - most popular).</li>
+          </ul>
+        </div>
+
+        <div class="gear-card">
+          <div class="gear-icon">🪶</div>
+          <h3>Shuttlecocks</h3>
+          <ul>
+            <li><strong>Feather (Goose/Duck):</strong> Authentic flight trajectory, required for tournament competition.</li>
+            <li><strong>Nylon / Plastic:</strong> Highly durable, cost-effective for casual games and training.</li>
+            <li><strong>Speed Ratings:</strong> Rated 76-78 depending on temperature and altitude.</li>
+          </ul>
+        </div>
+
+        <div class="gear-card">
+          <div class="gear-icon">👟</div>
+          <h3>Shoes & Grip</h3>
+          <ul>
+            <li><strong>Non-Marking Sole:</strong> Gum-rubber sole required on indoor synthetic and wooden courts.</li>
+            <li><strong>Lateral Support:</strong> Protects ankles from sudden lunge stops and direction switches.</li>
+            <li><strong>Grip:</strong> Overgrip (tacky or towel grip) absorbs sweat and prevents racket slipping.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Score Tracker -->
+  <section id="tracker" class="section tracker-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interactive Tool</span>
+        <h2>Live Match Score Tracker</h2>
+        <p>Keep track of rally points, service turns, and game points during your practice matches.</p>
+      </div>
+
+      <div class="scoreboard-container">
+        <div class="score-card team-a">
+          <h3 class="team-name" id="name-a" contenteditable="true">Player 1</h3>
+          <div class="score-display" id="score-a">0</div>
+          <div class="score-controls">
+            <button class="btn btn-score" onclick="addPoint('a', 1)">+1 Point</button>
+            <button class="btn btn-score btn-sub" onclick="addPoint('a', -1)">-1</button>
+          </div>
+          <span class="serving-indicator" id="serve-a">🏸 Serving</span>
+        </div>
+
+        <div class="scoreboard-center">
+          <div class="game-badge">Game 1 of 3</div>
+          <div class="vs-text">VS</div>
+          <div class="service-hint" id="service-hint">Server: Player 1 (Right court)</div>
+          <button class="btn btn-reset" onclick="resetScores()">Reset Match</button>
+        </div>
+
+        <div class="score-card team-b">
+          <h3 class="team-name" id="name-b" contenteditable="true">Player 2</h3>
+          <div class="score-display" id="score-b">0</div>
+          <div class="score-controls">
+            <button class="btn btn-score" onclick="addPoint('b', 1)">+1 Point</button>
+            <button class="btn btn-score btn-sub" onclick="addPoint('b', -1)">-1</button>
+          </div>
+          <span class="serving-indicator" id="serve-b"></span>
+        </div>
+      </div>
+
+      <div class="match-history" id="match-status">
+        Match in progress: First to 21 points (must lead by 2, capped at 30).
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3>SmashPoint</h3>
+        <p>A comprehensive introduction to the world's most exciting racket sport.</p>
+      </div>
+      <div class="footer-links">
+        <p>&copy; 2026 SmashPoint Badminton Guide. Created for badminton enthusiasts worldwide.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
