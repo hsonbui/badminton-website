@@ -97,6 +97,28 @@ const COURT_RULES = {
         <li><strong>Penerima Servis:</strong> Hanya pemain di kotak diagonal yang berhak mengembalikan pukulan servis.</li>
       `
     }
+  },
+  pl: {
+    singles: {
+      title: "Gra pojedyncza: Długi i wąski kort",
+      desc: "W grze pojedynczej obowiązują <strong>wewnętrzne linie boczne</strong> oraz <strong>tylna linia końcowa</strong>. Korytarze deblowe (zaznaczone na czerwono) są autowe zarówno podczas serwisu, jak i w trakcie wymiany.",
+      bullets: `
+        <li><strong>Boczne korytarze deblowe:</strong> Zawsze AUT podczas serwisu i gry.</li>
+        <li><strong>Tylna linia kortu:</strong> POLE w grze i podczas serwisu.</li>
+        <li><strong>Pole serwisowe:</strong> Lotka musi przekroczyć przednią linię serwisu i wpaść w przeciwległe pole po przekątnej.</li>
+        <li><strong>Pozycja serwującego:</strong> Serwuj z prawego pola, gdy Twój wynik jest parzysty (0, 2, 4...), oraz z lewego pola, gdy wynik jest nieparzysty (1, 3, 5...).</li>
+      `
+    },
+    doubles: {
+      title: "Gra podwójna: Krótki i szeroki serwis, cały kort w grze",
+      desc: "W deblu podczas wymiany obowiązują <strong>zewnętrzne linie boczne</strong>. Jednak przy serwisie <strong>tylny korytarz deblowy to AUT</strong> (pole serwisowe jest szerokie, ale krótsze).",
+      bullets: `
+        <li><strong>Granice serwisu:</strong> Szerokie (zewnętrzna linia to pole), lecz krótkie (tylna linia deblowa to aut).</li>
+        <li><strong>Granice wymiany:</strong> Po odebraniu serwisu cały kort wraz ze wszystkimi korytarzami jest w grze.</li>
+        <li><strong>Rotacja serwisu:</strong> Drużyna serwująca zmienia pola tylko wtedy, gdy sama zdobędzie punkt przy własnym podaniu.</li>
+        <li><strong>Odbiór serwisu:</strong> Wyłącznie wyznaczony zawodnik stojący po przekątnej może odebrać serwis.</li>
+      `
+    }
   }
 };
 
@@ -260,6 +282,38 @@ const SHOT_DETAILS = {
       body: "Pukulan mendatar yang meluncur cepat tepat menyisir pita net. Sangat krusial dalam ganda untuk merebut inisiatif serangan tanpa melambungkan kok.",
       tip: "Tetap rendah dengan kuda-kuda lebar, pertahankan kepala raket di depan dada, dan andalkan dorongan lengan bawah yang sigap."
     }
+  ],
+  pl: [
+    {
+      tag: "Główny cios ofensywny",
+      title: "Smecz z forhendu (Forehand Smash)",
+      body: "Podstawowa broń kończąca w badmintonie. Uderzany z głębi kortu pod ostrym kątem w dół z maksymalną siłą, mający na celu natychmiastowe zdobycie punktu lub wymuszenie łatwej piłki. Kluczowa technika obejmuje wysokie uniesienie łokcia, dynamiczną pronację przedramienia i uderzenie lotki w najwyższym punkcie przed sobą.",
+      tip: "Kąt uderzenia jest ważniejszy niż czysta siła. Ostry smecz skierowany w linię lub w biodro rakietowe przeciwnika jest znacznie trudniejszy do obrony niż płaski, szybki strzał."
+    },
+    {
+      tag: "Uderzenie taktyczne i zmyłka",
+      title: "Skrót / Drop Shot",
+      body: "Doskonale zamaskowany zamachem identycznym jak przy smeczu lub lobie, lecz w ostatniej chwili rakieta zwalnia lub lekko ścina lotkę, sprawiając, że spada ona tuż za siatkę po stronie rywala.",
+      tip: "Utrzymuj zamach nie do odróżnienia od smeczu aż do ułamka sekundy przed uderzeniem. Element zaskoczenia wytrąca rywala z równowagi i otwiera głębię kortu."
+    },
+    {
+      tag: "Uderzenie defensywne i reset",
+      title: "Lob / Clear znad głowy (Overhead Clear)",
+      body: "Wysokie i głębokie zagranie posyłające lotkę aż pod samą tylną linię przeciwnika. Stosowane w obronie, aby zyskać czas na powrót do centrum kortu, lub w ataku, by minąć przeciwnika stojącego zbyt blisko siatki.",
+      tip: "Upewnij się, że Twój lob dolatuje do tylnej linii. Zbyt krótki lob na środek kortu to dla rywala idealna okazja do łatwego smeczu."
+    },
+    {
+      tag: "Błyskawiczne dobicie przy siatce",
+      title: "Dobicie przy siatce / Net Kill",
+      body: "Wykonywane, gdy przeciwnik zagra lotkę zbyt wysoko ponad taśmę siatki. Zamiast pełnego zamachu, używa się krótkiego, szybkiego strzału z nadgarstka, by wbić lotkę prosto w podłogę rywala.",
+      tip: "Nigdy nie dotknij siatki rakietą ani ciałem (jest to błąd). Ruch powinien być krótki i precyzyjny niczym muśnięcie pędzlem."
+    },
+    {
+      tag: "Szybka wymiana pozioma",
+      title: "Drajw / Płaskie uderzenie (Drive)",
+      body: "Płaskie, szybkie uderzenie przelatujące tuż nad taśmą siatki z półkortu na półkort. Niezwykle istotne w deblu do przejęcia kontroli nad atakiem bez konieczności unoszenia lotki w górę.",
+      tip: "Utrzymuj nisko środek ciężkości na ugiętych nogach, trzymaj rakietę uniesioną przed klatką piersiową i wykorzystuj szybkie pchnięcia przedramieniem."
+    }
   ]
 };
 
@@ -333,6 +387,16 @@ const SCORE_MESSAGES = {
     gamePoint: "🔥 <strong>Game Point!</strong> Poin berikutnya dapat menentukan pemenang.",
     deuce: (sA, sB) => `⚔️ <strong>Deuce (${sA}-${sB})!</strong> Harus unggul 2 poin untuk menang (maksimal 30).`,
     inProgress: "Pertama mencapai 21 poin (selisih 2, batas 30). Setiap reli menghasilkan poin."
+  },
+  pl: {
+    servingBadge: "🏸 Serwuje",
+    rightSide: "Prawe",
+    leftSide: "Lewe",
+    serverHint: (name, side) => `Serwis: ${name} (${side} pole)`,
+    gameOver: (winner, sA, sB) => `🏆 <strong>Koniec meczu!</strong> ${winner} wygrywa ${sA} - ${sB}! Kliknij Resetuj, aby zagrać ponownie.`,
+    gamePoint: "🔥 <strong>Punkt setowy (Game Point)!</strong> Następny punkt może rozstrzygnąć seta.",
+    deuce: (sA, sB) => `⚔️ <strong>Równowaga (${sA}-${sB})!</strong> Wymagana przewaga 2 punktów (maksymalnie do 30).`,
+    inProgress: "Gramy do 21 punktów (przewaga 2 pkt, limit do 30). Każda wymiana daje punkt."
   }
 };
 
@@ -847,7 +911,23 @@ const QUIZ_I18N = {
     res_40: { title: "Kompetitor Klub!", desc: "Upaya yang bagus! Pelajari kembali panduan lapangan dan pukulan untuk skor lebih tinggi." },
     res_0: { title: "Terus Berlatih!", desc: "Baca panduan di atas dan coba lagi — Anda pasti akan berkembang di setiap putaran!" },
     perfectRun: "🎯 Sempurna! Anda tidak melewatkan satu pertanyaan pun!",
+    perfectRun: "🎯 Sempurna! Anda tidak melewatkan satu pertanyaan pun!",
     missedTitle: (n) => `Tinjau kembali ${n} pertanyaan yang salah:`
+  },
+  pl: {
+    counter: (c, t) => `Pytanie ${c} z ${t}`,
+    score: (s) => `Wynik: ${s}`,
+    correct: "✅ <strong>Prawidłowa odpowiedź!</strong> ",
+    wrong: "❌ <strong>Błędna odpowiedź!</strong> ",
+    next: "Następne pytanie →",
+    finish: "🏁 Zobacz wynik końcowy",
+    res_100: { title: "Absolutny Mistrz!", desc: "Zdobyłeś 100%! Posiadasz wiedzę o badmintonie na poziomie olimpijskim!" },
+    res_80: { title: "Wybitny Czempion!", desc: "Znakomity wynik! Znasz badminton od podszewki i rozumiesz każdy detal gry!" },
+    res_60: { title: "Solidny Zawodnik!", desc: "Świetna robota! Dobrze znasz kluczowe zasady, technikę i taktykę." },
+    res_40: { title: "Gracz Klubowy!", desc: "Niezła próba! Przejrzyj poradniki techniki i wymiarów kortu, aby zdobyć jeszcze więcej punktów." },
+    res_0: { title: "Trenuj dalej!", desc: "Przeczytaj powyższy przewodnik i spróbuj ponownie — każdy quiz czyni Cię lepszym graczem!" },
+    perfectRun: "🎯 Perfekcyjny bieg! Odpowiedziałeś poprawnie na każde pytanie!",
+    missedTitle: (n) => `Przeanalizuj ${n} błędnych odpowiedzi:`
   }
 };
 
@@ -909,7 +989,8 @@ function quizRender() {
       en: { 'Shots': '🏸 Shots & Techniques', 'Rules': '📜 Rules & Faults', 'Scoring': '🔢 Scoring & Service', 'Court': '🏟️ Court & Equipment', 'History': '⭐ History & Strategy' },
       vi: { 'Shots': '🏸 Kỹ thuật đánh cầu', 'Rules': '📜 Luật chơi & Lỗi cầu', 'Scoring': '🔢 Tính điểm & Giao cầu', 'Court': '🏟️ Sân bãi & Dụng cụ', 'History': '⭐ Lịch sử & Kỷ lục' },
       zh: { 'Shots': '🏸 核心击球手法', 'Rules': '📜 比赛规则与犯规', 'Scoring': '🔢 计分与发球法', 'Court': '🏟️ 场地尺寸与装备', 'History': '⭐ 历史典故与战术' },
-      id: { 'Shots': '🏸 Teknik Pukulan', 'Rules': '📜 Aturan & Pelanggaran', 'Scoring': '🔢 Skor & Servis', 'Court': '🏟️ Lapangan & Alat', 'History': '⭐ Sejarah & Strategi' }
+      id: { 'Shots': '🏸 Teknik Pukulan', 'Rules': '📜 Aturan & Pelanggaran', 'Scoring': '🔢 Skor & Servis', 'Court': '🏟️ Lapangan & Alat', 'History': '⭐ Sejarah & Strategi' },
+      pl: { 'Shots': '🏸 Technika uderzeń', 'Rules': '📜 Zasady i błędy', 'Scoring': '🔢 Punktacja i serwis', 'Court': '🏟️ Kort i sprzęt', 'History': '⭐ Historia i taktyka' }
     };
     const currentDict = catLabels[currentLanguage] || catLabels.en;
     catEl.textContent = currentDict[q.category] || q.category;
@@ -1045,7 +1126,8 @@ const BWF_MUSIC_I18N = {
   en: { playing: "Playing • Official Theme", paused: "Paused • Click to Play" },
   vi: { playing: "Đang phát • Nhạc nền BWF", paused: "Tạm dừng • Bấm để nghe" },
   zh: { playing: "播放中 • BWF官方主题曲", paused: "已暂停 • 点击播放" },
-  id: { playing: "Memutar • Lagu Resmi BWF", paused: "Dijeda • Klik untuk putar" }
+  id: { playing: "Memutar • Lagu Resmi BWF", paused: "Dijeda • Klik untuk putar" },
+  pl: { playing: "Odtwarzanie • Oficjalny hymn BWF", paused: "Wstrzymano • Kliknij, aby odtworzyć" }
 };
 
 function updateBwfMusicUI(isPlaying) {
@@ -1791,6 +1873,151 @@ const TRANSLATIONS = {
     quiz_btn_restart: "🔄 Main Lagi",
     footer_desc: "Pengantar komprehensif tentang olahraga raket paling seru di dunia.",
     footer_copy: "© 2026 SmashPoint Badminton Guide. Diciptakan untuk pecinta bulutangkis seluruh dunia."
+  },
+  pl: {
+    site_title: "SmashPoint | Kompletny Przewodnik po Badmintonie",
+    nav_about: "O dyscyplinie",
+    nav_facts: "Rekordy świata",
+    nav_court: "Kort i zasady",
+    nav_shots: "Uderzenia",
+    nav_gear: "Sprzęt",
+    nav_tracker: "Tablica wyników",
+    nav_quiz: "Quiz",
+    nav_play_btn: "🎮 Zagraj w Quiz",
+    hero_badge: "🏸 Najszybszy Sport Rakietowy na Świecie",
+    hero_title: "Precyzja, Zwinność i Eksplozywna <span>Moc</span>.",
+    hero_subtitle: "Poznaj oficjalne zasady BWF, opanuj kluczowe uderzenia, zrozum linie kortu i śledź wyniki meczów w czasie rzeczywistym.",
+    hero_btn_court: "Interaktywny Przewodnik po Korcie",
+    hero_btn_facts: "Odkryj Rekordy Świata 🚀",
+    stat_1_label: "Rekord Guinnessa w prędkości smeczu (2023)",
+    stat_2_label: "Najdłuższa wymiana w historii BWF (3,5 min)",
+    stat_3_label: "#2 Najpopularniejszy sport na świecie",
+    about_tag: "Przegląd",
+    about_title: "Dlaczego Badminton Przyciąga 220 Milionów Graczy",
+    about_subtitle: "Niezrównane połączenie naddźwiękowej prędkości lotki, ekstremalnej wydolności i błyskawicznego zwodzenia rywala.",
+    about_card1_title: "565 km/h Naddźwiękowa Prędkość",
+    about_card1_desc: "Lotka do badmintona jest najszybszym pociskiem w świecie sportu — wyprzedza bolidy Formuły 1 (372 km/h) oraz japońskie pociągi Shinkansen (320 km/h).",
+    about_card2_title: "2x Dłuższy Dystans niż w Tenisie",
+    about_card2_desc: "W 75-minutowym meczu zawodnik przebiega ponad 6,4 km, wykonując 1900+ dynamicznych wypadów. Czas gry z lotką w powietrzu wynosi aż 48% wobec zaledwie 18% w tenisie!",
+    about_card3_title: "Refleks 0.005 Sekundy",
+    about_card3_desc: "Gracz przy siatce reaguje w mniej niż 5 milisekund na potężny smecz z bliska — szybciej niż mrugnięcie ludzkiego oka!",
+    facts_tag: "Rekordy Świata i Ciekawostki",
+    facts_title: "Niewiarygodne Fakty i Rekordy Badmintona",
+    facts_subtitle: "Od smeczu 565 km/h po tajemnicę 16 piór z lewego skrzydła gęsi — odkryj fascynujące fakty o tej dyscyplinie.",
+    fact1_badge: "Rekord Guinnessa",
+    fact1_title: "Najszybszy Smecz w Historii Ludzkości",
+    fact1_desc: "W kwietniu 2023 r. reprezentant Indii <strong>Satwiksairaj Rankireddy</strong> posłał smecz z zawrotną prędkością <strong>565 km/h (351,07 mph)</strong>, potwierdzoną przez Rekordy Guinnessa. Malezyjka <strong>Pearly Tan</strong> ustanowiła rekord kobiet wynikiem <strong>438 km/h</strong> — oba rezultaty deklasują bolidy F1 (372 km/h)!",
+    fact1_foot: "Test w laboratorium Yonex • Certyfikowany pomiar",
+    fact2_badge: "Tajemnica Aerodynamiki",
+    fact2_stat: "16 Piór Gęsich",
+    fact2_title: "Tylko Pióra z Lewego Skrzydła",
+    fact2_desc: "Turniejowe lotki najwyższej klasy wykonuje się wyłącznie z 16 piór pobranych z <strong>lewego skrzydła</strong> czterech gęsi. Pióra z prawego skrzydła obracają się w drugą stronę; ich wymieszanie powoduje niestabilny, nieregularny lot.",
+    fact2_foot: "Standard turniejowy BWF • Naturalne pióra gęsie",
+    fact3_badge: "Wyczyn Wytrzymałości",
+    fact3_stat: "211 Uderzeń",
+    fact3_title: "Najdłuższa Wymiana w Dziejach",
+    fact3_desc: "Podczas Malaysia Masters 2023 debel Pearly Tan / M. Thinaah oraz Rena Miyaura / Ayako Sakuramoto walczył nieprzerwanie przez <strong>3 minuty i 30 sekund w 211 kolejnych uderzeniach</strong> przed rozstrzygnięciem punktu — wszystkie cztery zawodniczki padły z wycieńczenia.",
+    fact3_foot: "Malaysia Masters 2023 • Oficjalny rekord BWF",
+    fact4_badge: "Wysiłek Kardio",
+    fact4_stat: "2x Dystans Tenisa",
+    fact4_title: "Więcej Biegania niż w Tenisie Ziemnym",
+    fact4_desc: "W 75-minutowym meczu badmintona zawodnik pokonuje około <strong>6,4 km</strong> z 1900+ eksplozywnymi wypadami. W 3-godzinnym meczu tenisa zawodnicy przebiegają tylko ~3,2 km, gdyż lotka jest w grze przez <strong>48% czasu meczu</strong> (w tenisie to tylko 18%)!",
+    fact4_foot: "Badania fizjologii sportu • Tracking meczów elity",
+    fact5_badge: "Początki i Historia",
+    fact5_stat: "Lata 60. XIX w. \"Poona\"",
+    fact5_title: "Narodził się w Pune, Nazwany w Anglii",
+    fact5_desc: "Brytyjscy oficerowie stacjonujący w Pune (Poona) w Indiach w latach 60. XIX wieku dodali siatkę do dawnej gry battledore. Książę Beaufort spopularyzował tę dyscyplinę w swojej posiadłości <strong>Badminton House</strong>, nadając jej trwałą nazwę w 1873 roku.",
+    fact5_foot: "Badminton House, Anglia • Dziedzictwo historyczne",
+    fact6_badge: "Globalna Popularność",
+    fact6_stat: "220M+ Graczy",
+    fact6_title: "#2 Najchętniej Uprawiany Sport na Ziemi",
+    fact6_desc: "Z ponad <strong>220 milionami aktywnych graczy</strong> badminton zajmuje drugie miejsce na świecie, ustępując jedynie piłce nożnej. Ponad 1,1 miliarda widzów oglądało transmisje z olimpijskich turniejów badmintona w Tokio i Paryżu.",
+    fact6_foot: "Globalny spis BWF • Dane transmisyjne MKOl",
+    fact7_badge: "Legenda Wszech Czasów",
+    fact7_stat: "Super Wielki Szlem",
+    fact7_title: "Niezrównany Wyczyn Lin Dana",
+    fact7_desc: "Chiński mistrz <strong>Lin Dan (\"Super Dan\")</strong> dokonał czegoś, czego nie powtórzył nikt inny: zdobył pełnego <em>Super Wielkiego Szlema</em>, wygrywając wszystkie 9 głównych turniejów globu przed 28. rokiem życia, w tym 2 Złote Medale Olimpijskie i 5 Mistrzostw Świata.",
+    fact7_foot: "2x Złoto Olimpijskie • 5x Mistrz Świata",
+    fact8_badge: "Fizyka Lotu",
+    fact8_stat: "90% Wytracenia Prędkości",
+    fact8_title: "Najostrzejsze Hamowanie w Sporcie",
+    fact8_desc: "Lotka traci do <strong>90% swojej prędkości początkowej</strong> na dystansie zaledwie 13,4 metra na skutek potężnego oporu stożka z piór. To gwałtowne hamowanie tworzy charakterystyczny spadek spadochronowy umożliwiający obronę potężnych smeczów.",
+    fact8_foot: "Aerodynamika pocisków sportowych",
+    court_tag: "Interaktywny Schemat",
+    court_title: "Wymiary Kortu i Zasady Serwisu BWF",
+    court_subtitle: "Przełączaj między grą pojedynczą a podwójną, aby zobaczyć pole gry i strefy serwisowe.",
+    btn_singles: "Gra pojedyncza (Długi i wąski)",
+    btn_doubles: "Gra podwójna (Krótki i szeroki)",
+    court_net: "SIATKA",
+    court_svc_left: "Lewe Pole Serwisu",
+    court_svc_right: "Prawe Pole Serwisu",
+    shots_tag: "Technika",
+    shots_title: "5 Podstawowych Uderzeń w Badmintonie",
+    shots_subtitle: "Opanuj kluczowe zagrania, aby zbudować wszechstronny repertuar ataku i obrony.",
+    shot0_badge: "Atak",
+    shot0_title: "Smecz z forhendu",
+    shot0_desc: "Podstawowa broń ofensywna uderzana z góry pod ostrym kątem z maksymalną siłą.",
+    shot0_target: "<strong>Cel:</strong> Otwarta przestrzeń środka kortu / Ciało rywala",
+    shot1_badge: "Taktyka",
+    shot1_title: "Skrót (Drop Shot)",
+    shot1_desc: "Subtelne uderzenie zmyłkowe spadające tuż za siatkę po stronie przeciwnika.",
+    shot1_target: "<strong>Cel:</strong> Narożniki przedniej części kortu rywala",
+    shot2_badge: "Obrona / Głębia",
+    shot2_title: "Lob / Clear znad głowy",
+    shot2_desc: "Wysokie uderzenie spychające rywala pod samą tylną linię, resetujące tempo wymiany.",
+    shot2_target: "<strong>Cel:</strong> Tylna linia końcowa kortu",
+    shot3_badge: "Dobicie",
+    shot3_title: "Dobicie przy siatce (Net Kill)",
+    shot3_desc: "Błyskawiczny strzał z nadgarstka przy taśmie siatki przeciwko zbyt wysokiej lotce rywala.",
+    shot3_target: "<strong>Cel:</strong> Ostro w dół w przednie pole przeciwnika",
+    shot4_badge: "Szybka wymiana",
+    shot4_title: "Drajw (Płaskie uderzenie)",
+    shot4_desc: "Płaskie, agresywne uderzenie poziome tuż nad taśmą siatki, kluczowe w deblu.",
+    shot4_target: "<strong>Cel:</strong> Ciało przeciwnika lub boczne linie",
+    pro_tip_label: "Wskazówka Pro:",
+    shots_cta_title: "Gotowy przetestować swoją wiedzę o technice uderzeń?",
+    shots_cta_desc: "Sprawdź się w wielkim 50-pytaniowym teście mistrzowskim!",
+    shots_cta_btn: "Rozwiąż Quiz Techniki Uderzeń (10) 🎯",
+    gear_tag: "Przewodnik Sprzętowy",
+    gear_title: "Wybór Odpowiedniego Sprzętu",
+    gear_subtitle: "Krótki przewodnik po rakietach, lotkach i obuwiu na kort.",
+    gear1_title: "Rakiety",
+    gear1_li1: "<strong>Head-Heavy (Ciężka główka):</strong> Potężne smecze, wolniejsza reakcja w obronie.",
+    gear1_li2: "<strong>Head-Light (Lekka główka):</strong> Błyskawiczna obrona refleksowa, idealna do debla.",
+    gear1_li3: "<strong>Even-Balance (Wyważona):</strong> Uniwersalna do wszechstronnej gry na całym korcie.",
+    gear1_li4: "<strong>Waga:</strong> 3U (85-89g), 4U (80-84g - najpopularniejsza waga).",
+    gear2_title: "Lotki",
+    gear2_li1: "<strong>Piórowe (Gęsie/Kacze):</strong> Autentyczna trajektoria lotu, obowiązkowe w turniejach.",
+    gear2_li2: "<strong>Nylonowe / Plastikowe:</strong> Niezwykle trwałe, ekonomiczne do treningu i rekreacji.",
+    gear2_li3: "<strong>Klasy prędkości:</strong> Oznaczenia 76-78 zależnie od temperatury i wysokości hali.",
+    gear3_title: "Buty i Owijki",
+    gear3_li1: "<strong>Podeszwa Non-Marking:</strong> Podeszwa z kauczuku naturalnego obowiązkowa na parkiecie i wykładzinie.",
+    gear3_li2: "<strong>Stabilizacja boczna:</strong> Chroni kostki przed skręceniem przy ostrych wypadach i zwrotach.",
+    gear3_li3: "<strong>Owijki:</strong> Lepka owijka wierzchnia lub frotte wchłaniająca pot chroni przed wyślizgnięciem rakiety.",
+    tracker_tag: "Interaktywne Narzędzie",
+    tracker_title: "Tablica Wyników Meczu na Żywo",
+    tracker_subtitle: "Śledź punkty wymian, kolejność serwisu i punkty setowe według oficjalnych reguł BWF.",
+    player_1: "Gracz 1",
+    player_2: "Gracz 2",
+    score_add: "+1 Punkt",
+    game_badge: "Set 1 z 3",
+    btn_reset: "Resetuj Mecz",
+    quiz_tag: "Interaktywna Gra",
+    quiz_title: "Wielki Mistrzowski Quiz Badmintona (50 Pytań)",
+    quiz_subtitle: "Sprawdź wszechstronną wiedzę w 5 kategoriach: uderzenia, oficjalne zasady, punktacja, kort i historia świata.",
+    quiz_btn_all: "🏆 Wszystkie 50 Pytań",
+    quiz_btn_shots: "🏸 Uderzenia (10)",
+    quiz_btn_rules: "📜 Zasady i Błędy (10)",
+    quiz_btn_scoring: "🔢 Punktacja i Serwis (10)",
+    quiz_btn_court: "🏟️ Kort i Sprzęt (10)",
+    quiz_btn_history: "⭐ Historia i Taktyka (10)",
+    quiz_btn_random: "🎲 Szybkie Losowe 10",
+    quiz_btn_next: "Następne pytanie →",
+    quiz_res_title: "Znakomicie!",
+    quiz_res_desc: "Naprawdę znasz się na badmintonie!",
+    quiz_btn_restart: "🔄 Zagraj Ponownie",
+    footer_desc: "Kompletny przewodnik po najbardziej emocjonującym sporcie rakietowym świata.",
+    footer_copy: "© 2026 SmashPoint Badminton Guide. Stworzone dla pasjonatów badmintona na całym świecie."
   }
 };
 
@@ -1802,7 +2029,8 @@ const LANG_META = {
   en: { flag: "🇬🇧", label: "English" },
   vi: { flag: "🇻🇳", label: "Tiếng Việt" },
   zh: { flag: "🇨🇳", label: "中文" },
-  id: { flag: "🇮🇩", label: "Bahasa Indonesia" }
+  id: { flag: "🇮🇩", label: "Bahasa Indonesia" },
+  pl: { flag: "🇵🇱", label: "Polski" }
 };
 
 function toggleLangDropdown(event) {
@@ -1943,3 +2171,4 @@ if (document.readyState !== 'loading') {
     changeLanguage('en');
   }
 }
+
