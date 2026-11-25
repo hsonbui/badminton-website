@@ -1180,3 +1180,272 @@ a {
     font-size: 0.65rem;
   }
 }
+
+
+/* ==========================================================================
+   Language Switcher & Header Controls
+   ========================================================================== */
+
+.lang-selector-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lang-selector {
+  display: flex;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 9px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.lang-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-btn.active {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+}
+
+/* ==========================================================================
+   Mind-Blowing Facts & World Records Section
+   ========================================================================== */
+
+.facts-section {
+  background: var(--bg-primary, #0b1120);
+  position: relative;
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.fact-card {
+  background: var(--card-bg, #1e293b);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fact-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.fact-card.highlight-card {
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(99, 102, 241, 0.15));
+  border-color: rgba(99, 102, 241, 0.45);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+}
+
+.fact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.fact-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+
+.record-badge { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+.secret-badge { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+.marathon-badge { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+.stats-badge { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+.history-badge { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+.global-badge { background: rgba(14, 165, 233, 0.15); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.3); }
+.legend-badge { background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+.physics-badge { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); }
+
+.fact-icon { font-size: 1.75rem; }
+
+.fact-stat {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.fact-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary, #f1f5f9);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.fact-card p {
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.fact-footer {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.75rem;
+}
+
+/* ==========================================================================
+   Global Language Guide Section
+   ========================================================================== */
+
+.language-section {
+  background: var(--bg-secondary, #0f172a);
+}
+
+.glossary-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.glossary-tab {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  color: var(--text-muted, #94a3b8);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1.15rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.glossary-tab:hover {
+  background: rgba(99, 102, 241, 0.15);
+  color: #fff;
+}
+
+.glossary-tab.active {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+}
+
+.glossary-table-container {
+  overflow-x: auto;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card-bg, #1e293b);
+  margin-bottom: 2.5rem;
+}
+
+.glossary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.glossary-table th {
+  background: rgba(15, 23, 42, 0.8);
+  color: #f1f5f9;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.glossary-table td {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #cbd5e1;
+}
+
+.glossary-table tr:last-child td {
+  border-bottom: none;
+}
+
+.glossary-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.term-badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.term-badge.vi { background: rgba(239, 68, 68, 0.12); color: #fca5a5; }
+.term-badge.zh { background: rgba(245, 158, 11, 0.12); color: #fde68a; }
+.term-badge.id { background: rgba(16, 185, 129, 0.12); color: #a7f3d0; }
+
+.lang-culture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.culture-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.culture-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.culture-flag {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.culture-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 0.6rem;
+}
+
+.culture-card p {
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0;
+}

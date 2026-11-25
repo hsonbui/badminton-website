@@ -23,14 +23,26 @@
         <span>Smash<strong>Point</strong></span>
       </a>
       <nav class="nav-menu">
-        <a href="#about">About</a>
-        <a href="#court">Court & Rules</a>
-        <a href="#shots">Key Shots</a>
-        <a href="#gear">Equipment</a>
-        <a href="#tracker">Score Tracker</a>
-        <a href="#quiz">Quiz</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#facts" data-i18n="nav_facts">World Records</a>
+        <a href="#court" data-i18n="nav_court">Court & Rules</a>
+        <a href="#shots" data-i18n="nav_shots">Key Shots</a>
+        <a href="#language" data-i18n="nav_language">Language Guide</a>
+        <a href="#gear" data-i18n="nav_gear">Equipment</a>
+        <a href="#tracker" data-i18n="nav_tracker">Scorer</a>
+        <a href="#quiz" data-i18n="nav_quiz">Quiz</a>
       </nav>
-      <a href="#quiz" class="btn btn-sm btn-primary">🎮 Play Quiz</a>
+
+      <!-- Language Switcher & Quiz Button -->
+      <div class="lang-selector-group">
+        <div class="lang-selector" id="lang-selector" aria-label="Select Language">
+          <button class="lang-btn active" onclick="changeLanguage('en')" title="English">🇬🇧 EN</button>
+          <button class="lang-btn" onclick="changeLanguage('vi')" title="Tiếng Việt">🇻🇳 VI</button>
+          <button class="lang-btn" onclick="changeLanguage('zh')" title="中文">🇨🇳 中文</button>
+          <button class="lang-btn" onclick="changeLanguage('id')" title="Bahasa Indonesia">🇮🇩 ID</button>
+        </div>
+        <a href="#quiz" class="btn btn-sm btn-primary nav-quiz-btn" data-i18n="nav_play_btn">🎮 Play Quiz</a>
+      </div>
     </div>
   </header>
 
@@ -38,77 +50,168 @@
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="badge">🏸 The World's Fastest Racket Sport</div>
-      <h1 class="hero-title">Precision, Agility, and explosive <span>Power</span>.</h1>
-      <p class="hero-subtitle">
+      <div class="badge" data-i18n="hero_badge">🏸 The World's Fastest Racket Sport</div>
+      <h1 class="hero-title" data-i18n="hero_title">Precision, Agility, and explosive <span>Power</span>.</h1>
+      <p class="hero-subtitle" data-i18n="hero_subtitle">
         Explore rules, master essential shots, understand court boundaries, and track your match scores in real time.
       </p>
       <div class="hero-actions">
-        <a href="#court" class="btn btn-primary">Interactive Court Guide</a>
-        <a href="#shots" class="btn btn-secondary">Learn Key Shots</a>
+        <a href="#court" class="btn btn-primary" data-i18n="hero_btn_court">Interactive Court Guide</a>
+        <a href="#facts" class="btn btn-secondary" data-i18n="hero_btn_facts">Explore World Records 🚀</a>
       </div>
       <div class="hero-stats">
         <div class="stat-item">
-          <span class="stat-number">493+ km/h</span>
-          <span class="stat-label">Fastest recorded smash</span>
+          <span class="stat-number">565 km/h</span>
+          <span class="stat-label" data-i18n="stat_1_label">Guinness World Record Smash (2023)</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="stat-number">21 Pts</span>
-          <span class="stat-label">Rally point system</span>
+          <span class="stat-number">211 Shots</span>
+          <span class="stat-label" data-i18n="stat_2_label">Longest Rally in BWF History (3.5 mins)</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="stat-number">1992</span>
-          <span class="stat-label">Olympic sport debut</span>
+          <span class="stat-number">220M+</span>
+          <span class="stat-label" data-i18n="stat_3_label">#2 Most Played Sport Worldwide</span>
         </div>
-      </div>
-
-      <!-- Shots Quiz CTA -->
-      <div class="shots-quiz-cta">
-        <div class="shots-quiz-cta-text">
-          <strong>Ready to put your shot knowledge to the test?</strong>
-          <p>Challenge yourself with the 50-Question Badminton Master Quiz!</p>
-        </div>
-        <a href="#quiz" class="btn btn-primary" onclick="setQuizCategory('Shots')">Take Shots Quiz (10) 🎯</a>
       </div>
     </div>
   </section>
 
-  <!-- About & Quick Facts -->
+  <!-- About & Verified Facts -->
   <section id="about" class="section about-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Overview</span>
-        <h2>Why Badminton Captivates Millions</h2>
-        <p>A fast-paced Olympic sport requiring tactical finesse, high aerobic endurance, and lightning reflexes.</p>
+        <span class="section-tag" data-i18n="about_tag">Overview</span>
+        <h2 data-i18n="about_title">Why Badminton Captivates 220 Million Players</h2>
+        <p data-i18n="about_subtitle">The ultimate blend of supersonic projectile speed, extreme cardiovascular output, and split-second tactical deception.</p>
       </div>
 
       <div class="cards-grid">
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
-          <h3>Lightning Reflexes</h3>
-          <p>Players must react in fractions of a second to defensive drops and smash velocities exceeding 300 km/h.</p>
+          <h3 data-i18n="about_card1_title">565 km/h Supersonic Speed</h3>
+          <p data-i18n="about_card1_desc">The shuttlecock is the fastest moving projectile in all of sport — outspeeding Formula 1 race cars (372 km/h) and Japanese bullet trains (320 km/h).</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🏃</div>
-          <h3>Extreme Cardio</h3>
-          <p>A single competitive match can cover up to 6 kilometers of explosive lunges, jumps, and direction changes.</p>
+          <h3 data-i18n="about_card2_title">2x The Distance of Tennis</h3>
+          <p data-i18n="about_card2_desc">In a 75-minute match, players run over 6.4 km with 1,900+ explosive lunges. Ball-in-play time is 48% in badminton compared to only 18% in tennis!</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎯</div>
-          <h3>Tactical Strategy</h3>
-          <p>Success depends on deception, court geometry, exploiting opponent footwork, and subtle wrist flicks.</p>
+          <h3 data-i18n="about_card3_title">0.005s Reaction Reflexes</h3>
+          <p data-i18n="about_card3_desc">Net defenders react in less than 5 milliseconds against point-blank smashes — relying on subconscious muscle anticipation faster than a human blink.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Shots Quiz CTA -->
-      <div class="shots-quiz-cta">
-        <div class="shots-quiz-cta-text">
-          <strong>Ready to put your shot knowledge to the test?</strong>
-          <p>Challenge yourself with the 50-Question Badminton Master Quiz!</p>
+  <!-- Mind-Blowing Facts & World Records Section -->
+  <section id="facts" class="section facts-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="facts_tag">World Records & Curiosities</span>
+        <h2 data-i18n="facts_title">Mind-Blowing Badminton Facts & Records</h2>
+        <p data-i18n="facts_subtitle">From 565 km/h supersonic smashes to 16 left-wing goose feathers, explore the astonishing feats that make badminton legendary.</p>
+      </div>
+
+      <div class="facts-grid">
+        <!-- Fact 1 -->
+        <div class="fact-card highlight-card">
+          <div class="fact-header">
+            <span class="fact-badge record-badge">Guinness World Record</span>
+            <span class="fact-icon">🚀</span>
+          </div>
+          <div class="fact-stat">565 km/h</div>
+          <h3>The Fastest Smash in Human History</h3>
+          <p>In April 2023, India's <strong>Satwiksairaj Rankireddy</strong> smashed at an astronomical <strong>565 km/h (351.07 mph)</strong>, certified by Guinness World Records. Malaysia's <strong>Pearly Tan</strong> set the female record at <strong>438 km/h</strong> — both faster than Formula 1 cars (372 km/h)!</p>
+          <div class="fact-footer">Yonex Laboratory Test • Speed-certified</div>
         </div>
-        <a href="#quiz" class="btn btn-primary" onclick="setQuizCategory('Shots')">Take Shots Quiz (10) 🎯</a>
+
+        <!-- Fact 2 -->
+        <div class="fact-card">
+          <div class="fact-header">
+            <span class="fact-badge secret-badge">Aerodynamic Secret</span>
+            <span class="fact-icon">🪶</span>
+          </div>
+          <div class="fact-stat">16 Feathers</div>
+          <h3>Left-Wing Feathers Only</h3>
+          <p>Tournament-grade shuttlecocks exclusively use 16 feathers taken from the <strong>left wing</strong> of four geese. Feathers from the right wing spin in the opposite direction; mixing left and right feathers causes erratic tumbling and aerodynamic instability.</p>
+          <div class="fact-footer">BWF Tournament Standard • Goose Feathers</div>
+        </div>
+
+        <!-- Fact 3 -->
+        <div class="fact-card">
+          <div class="fact-header">
+            <span class="fact-badge marathon-badge">Endurance Feat</span>
+            <span class="fact-icon">⚔️</span>
+          </div>
+          <div class="fact-stat">211 Shots</div>
+          <h3>The Longest Rally in History</h3>
+          <p>At the 2023 Malaysia Masters, Pearly Tan / M. Thinaah and Rena Miyaura / Ayako Sakuramoto fought for <strong>3 minutes and 30 seconds across 211 consecutive shots</strong> before a winner was decided — leaving all four players collapsed in exhaustion.</p>
+          <div class="fact-footer">Malaysia Masters 2023 • BWF World Record</div>
+        </div>
+
+        <!-- Fact 4 -->
+        <div class="fact-card">
+          <div class="fact-header">
+            <span class="fact-badge stats-badge">Cardio Comparison</span>
+            <span class="fact-icon">🏃</span>
+          </div>
+          <div class="fact-stat">2x Tennis Distance</div>
+          <h3>More Running Than Tennis</h3>
+          <p>In a 75-minute badminton match, a player runs roughly <strong>6.4 km (4 miles)</strong> with 1,900+ explosive lunges. In a 3-hour tennis match, players cover only ~3.2 km, because the shuttlecock is active <strong>48% of match time</strong> vs tennis's 18%!</p>
+          <div class="fact-footer">Physiology Research • Elite Match Tracking</div>
+        </div>
+
+        <!-- Fact 5 -->
+        <div class="fact-card">
+          <div class="fact-header">
+            <span class="fact-badge history-badge">Origins</span>
+            <span class="fact-icon">🏛️</span>
+          </div>
+          <div class="fact-stat">1860s "Poona"</div>
+          <h3>Born in Pune, Named in England</h3>
+          <p>British army officers stationed in Pune (Poona), India in the 1860s added a net to the traditional game of battledore. The Duke of Beaufort introduced it to British society at his ancestral estate, <strong>Badminton House</strong>, giving the sport its permanent name in 1873.</p>
+          <div class="fact-footer">Badminton House, England • Historic Heritage</div>
+        </div>
+
+        <!-- Fact 6 -->
+        <div class="fact-card">
+          <div class="fact-header">
+            <span class="fact-badge global-badge">Global Popularity</span>
+            <span class="fact-icon">🌍</span>
+          </div>
+          <div class="fact-stat">220M+ Players</div>
+          <h3>#2 Most Played Sport on Earth</h3>
+          <p>With more than <strong>220 million active participants</strong>, badminton ranks as the second most played sport worldwide, behind only association football (soccer). Over 1.1 billion viewers watched Olympic badminton broadcasts in Tokyo and Paris.</p>
+          <div class="fact-footer">BWF Global Census • IOC Olympic Broadcaster Data</div>
+        </div>
+
+        <!-- Fact 7 -->
+        <div class="fact-card">
+          <div class="fact-header">
+            <span class="fact-badge legend-badge">All-Time Legend</span>
+            <span class="fact-icon">👑</span>
+          </div>
+          <div class="fact-stat">Super Grand Slam</div>
+          <h3>Lin Dan's Unbeatable Feat</h3>
+          <p>China's <strong>Lin Dan ("Super Dan")</strong> achieved what no other badminton player has ever accomplished: completing the full <em>Super Grand Slam</em> by winning all 9 major global tournaments by age 28, including 2 Olympic Golds and 5 World Championships.</p>
+          <div class="fact-footer">2x Olympic Gold • 5x World Champion</div>
+        </div>
+
+        <!-- Fact 8 -->
+        <div class="fact-card">
+          <div class="fact-header">
+            <span class="fact-badge physics-badge">Aerodynamics</span>
+            <span class="fact-icon">🛑</span>
+          </div>
+          <div class="fact-stat">90% Deceleration</div>
+          <h3>Extreme Speed Braking in Sport</h3>
+          <p>A shuttlecock loses up to <strong>90% of its initial velocity</strong> within its 13.4m journey due to the extreme conical drag of its feathers. This sharp deceleration creates the dramatic vertical parachute drop that makes defensive returns possible.</p>
+          <div class="fact-footer">Aerodynamics of Sports Projectiles</div>
+        </div>
       </div>
     </div>
   </section>
@@ -117,14 +220,14 @@
   <section id="court" class="section court-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Interactive Diagram</span>
-        <h2>Badminton Court Boundaries & Service Rules</h2>
-        <p>Toggle between Singles and Doubles to see the in-bounds court areas and service zones highlighted.</p>
+        <span class="section-tag" data-i18n="court_tag">Interactive Diagram</span>
+        <h2 data-i18n="court_title">Badminton Court Boundaries & Service Rules</h2>
+        <p data-i18n="court_subtitle">Toggle between Singles and Doubles to see the in-bounds court areas and service zones highlighted.</p>
       </div>
 
       <div class="court-controls">
-        <button id="btn-singles" class="btn-toggle active" onclick="setCourtMode('singles')">Singles Mode (Long & Narrow)</button>
-        <button id="btn-doubles" class="btn-toggle" onclick="setCourtMode('doubles')">Doubles Mode (Short & Wide)</button>
+        <button id="btn-singles" class="btn-toggle active" onclick="setCourtMode('singles')" data-i18n="btn_singles">Singles Mode (Long & Narrow)</button>
+        <button id="btn-doubles" class="btn-toggle" onclick="setCourtMode('doubles')" data-i18n="btn_doubles">Doubles Mode (Short & Wide)</button>
       </div>
 
       <div class="court-container">
@@ -175,15 +278,6 @@
           </ul>
         </div>
       </div>
-
-      <!-- Shots Quiz CTA -->
-      <div class="shots-quiz-cta">
-        <div class="shots-quiz-cta-text">
-          <strong>Ready to put your shot knowledge to the test?</strong>
-          <p>Challenge yourself with the 50-Question Badminton Master Quiz!</p>
-        </div>
-        <a href="#quiz" class="btn btn-primary" onclick="setQuizCategory('Shots')">Take Shots Quiz (10) 🎯</a>
-      </div>
     </div>
   </section>
 
@@ -191,9 +285,9 @@
   <section id="shots" class="section shots-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Techniques</span>
-        <h2>The 5 Fundamental Badminton Shots</h2>
-        <p>Master these core strokes to build an unpredictable attacking and defensive repertoire.</p>
+        <span class="section-tag" data-i18n="shots_tag">Techniques</span>
+        <h2 data-i18n="shots_title">The 5 Fundamental Badminton Shots</h2>
+        <p data-i18n="shots_subtitle">Master these core strokes to build an unpredictable attacking and defensive repertoire.</p>
       </div>
 
       <div class="shots-grid">
@@ -278,13 +372,153 @@
     </div>
   </section>
 
+  <!-- Global Language Guide Section -->
+  <section id="language" class="section language-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="lang_tag">Multilingual Terminology</span>
+        <h2 data-i18n="lang_title">Badminton in Every Language</h2>
+        <p data-i18n="lang_subtitle">Badminton unites continents. Compare essential badminton terminology across English, Tiếng Việt, 中文 (Chinese), and Bahasa Indonesia.</p>
+      </div>
+
+      <!-- Language Selector Tabs in Section -->
+      <div class="glossary-tabs">
+        <button class="glossary-tab active" onclick="switchGlossaryTab('all')">🌐 All 4 Languages</button>
+        <button class="glossary-tab" onclick="switchGlossaryTab('en')">🇬🇧 English Standard</button>
+        <button class="glossary-tab" onclick="switchGlossaryTab('vi')">🇻🇳 Tiếng Việt</button>
+        <button class="glossary-tab" onclick="switchGlossaryTab('zh')">🇨🇳 中文 (Mandarin)</button>
+        <button class="glossary-tab" onclick="switchGlossaryTab('id')">🇮🇩 Bahasa Indonesia</button>
+      </div>
+
+      <!-- Comparative Glossary Table -->
+      <div class="glossary-table-container">
+        <table class="glossary-table" id="glossary-table">
+          <thead>
+            <tr>
+              <th>Stroke / Term</th>
+              <th>🇬🇧 English</th>
+              <th>🇻🇳 Tiếng Việt</th>
+              <th>🇨🇳 中文 (Mandarin)</th>
+              <th>🇮🇩 Bahasa Indonesia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Smash</strong></td>
+              <td>Forehand Smash</td>
+              <td><span class="term-badge vi">Đập cầu</span></td>
+              <td><span class="term-badge zh">扣杀 (Kòushā)</span></td>
+              <td><span class="term-badge id">Smash Keras</span></td>
+            </tr>
+            <tr>
+              <td><strong>Drop Shot</strong></td>
+              <td>Deceptive Drop</td>
+              <td><span class="term-badge vi">Bỏ nhỏ / Chém cầu</span></td>
+              <td><span class="term-badge zh">吊球 / 劈吊 (Diàoqiú)</span></td>
+              <td><span class="term-badge id">Dropshot Halus</span></td>
+            </tr>
+            <tr>
+              <td><strong>Clear / Lob</strong></td>
+              <td>Overhead Clear</td>
+              <td><span class="term-badge vi">Phông cầu / Lốp cầu</span></td>
+              <td><span class="term-badge zh">高远球 (Gāoyuǎnqiú)</span></td>
+              <td><span class="term-badge id">Pukulan Lob</span></td>
+            </tr>
+            <tr>
+              <td><strong>Drive</strong></td>
+              <td>Flat Drive</td>
+              <td><span class="term-badge vi">Tạt cầu / Bạt cầu</span></td>
+              <td><span class="term-badge zh">平抽球 (Píngchōuqiú)</span></td>
+              <td><span class="term-badge id">Drive Cepat</span></td>
+            </tr>
+            <tr>
+              <td><strong>Net Kill</strong></td>
+              <td>Net Brush / Kill</td>
+              <td><span class="term-badge vi">Vồ cầu / Đập lưới</span></td>
+              <td><span class="term-badge zh">扑球 / 封网 (Pūqiú)</span></td>
+              <td><span class="term-badge id">Sambaran Net</span></td>
+            </tr>
+            <tr>
+              <td><strong>Tumbling Net</strong></td>
+              <td>Spinning Net Shot</td>
+              <td><span class="term-badge vi">Vê cầu / Lăn lưới</span></td>
+              <td><span class="term-badge zh">搓球 / 滚网球 (Cuōqiú)</span></td>
+              <td><span class="term-badge id">Netting Tipis</span></td>
+            </tr>
+            <tr>
+              <td><strong>Underhand Lift</strong></td>
+              <td>Defensive Lift</td>
+              <td><span class="term-badge vi">Hất cầu / Búng cầu</span></td>
+              <td><span class="term-badge zh">挑球 (Tiǎoqiú)</span></td>
+              <td><span class="term-badge id">Angkat Bola (Lift)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Service</strong></td>
+              <td>Low / High Serve</td>
+              <td><span class="term-badge vi">Giao cầu / Phát cầu</span></td>
+              <td><span class="term-badge zh">发球 (Fāqiú)</span></td>
+              <td><span class="term-badge id">Servis Pendek / Panjang</span></td>
+            </tr>
+            <tr>
+              <td><strong>Fault</strong></td>
+              <td>Illegal Action</td>
+              <td><span class="term-badge vi">Phạm quy / Lỗi cầu</span></td>
+              <td><span class="term-badge zh">违例 (Wéilì)</span></td>
+              <td><span class="term-badge id">Pelanggaran (Fault)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Deuce</strong></td>
+              <td>20-20 Sudden Lead</td>
+              <td><span class="term-badge vi">Hòa điểm (20-20)</span></td>
+              <td><span class="term-badge zh">追平加分 (Zhuīpíng)</span></td>
+              <td><span class="term-badge id">Jus (Deuce)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Rally</strong></td>
+              <td>Continuous Play</td>
+              <td><span class="term-badge vi">Pha cầu / Hiệp đấu</span></td>
+              <td><span class="term-badge zh">回合 (Huíhé)</span></td>
+              <td><span class="term-badge id">Rally Panjang</span></td>
+            </tr>
+            <tr>
+              <td><strong>Shuttlecock</strong></td>
+              <td>Birdie / Shuttle</td>
+              <td><span class="term-badge vi">Quả cầu lông</span></td>
+              <td><span class="term-badge zh">羽毛球 (Yǔmáoqiú)</span></td>
+              <td><span class="term-badge id">Kok / Shuttlecock</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Cultural Language Spotlight Cards -->
+      <div class="lang-culture-grid">
+        <div class="culture-card">
+          <div class="culture-flag">🇻🇳</div>
+          <h3>Việt Nam — Đam Mê Cầu Lông</h3>
+          <p>In Vietnam, badminton is a vibrant everyday sport found in parks, alleys, and stadiums at sunrise. Famous legends like <strong>Nguyễn Tiến Minh</strong> (former World #5) and rising star <strong>Nguyễn Thùy Linh</strong> have inspired millions to pick up rackets.</p>
+        </div>
+        <div class="culture-card">
+          <div class="culture-flag">🇨🇳</div>
+          <h3>中国 — 国羽荣耀 (China Badminton)</h3>
+          <p>China holds the record for the most Olympic badminton gold medals (20+), boasting all-time icons like <strong>Lin Dan</strong>, <strong>Chen Long</strong>, and <strong>Zhang Ning</strong>. Badminton is deeply integrated into school and university physical education.</p>
+        </div>
+        <div class="culture-card">
+          <div class="culture-flag">🇮🇩</div>
+          <h3>Indonesia — "Bulutangkis" Fever</h3>
+          <p>Badminton is Indonesia's undisputed national pride. The deafening roar of the Istora Senayan stadium and the legendary legacy of <strong>Rudy Hartono</strong>, <strong>Susi Susanti</strong>, and <strong>Taufik Hidayat</strong> define the country's sporting soul.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Equipment Guide -->
   <section id="gear" class="section gear-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Gear Guide</span>
-        <h2>Choosing the Right Equipment</h2>
-        <p>A quick breakdown of rackets, shuttlecocks, and court essentials.</p>
+        <span class="section-tag" data-i18n="gear_tag">Gear Guide</span>
+        <h2 data-i18n="gear_title">Choosing the Right Equipment</h2>
+        <p data-i18n="gear_subtitle">A quick breakdown of rackets, shuttlecocks, and court essentials.</p>
       </div>
 
       <div class="gear-grid">
@@ -319,15 +553,6 @@
           </ul>
         </div>
       </div>
-
-      <!-- Shots Quiz CTA -->
-      <div class="shots-quiz-cta">
-        <div class="shots-quiz-cta-text">
-          <strong>Ready to put your shot knowledge to the test?</strong>
-          <p>Challenge yourself with the 50-Question Badminton Master Quiz!</p>
-        </div>
-        <a href="#quiz" class="btn btn-primary" onclick="setQuizCategory('Shots')">Take Shots Quiz (10) 🎯</a>
-      </div>
     </div>
   </section>
 
@@ -335,9 +560,9 @@
   <section id="tracker" class="section tracker-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Interactive Tool</span>
-        <h2>Live Match Score Tracker</h2>
-        <p>Keep track of rally points, service turns, and game points during your practice matches.</p>
+        <span class="section-tag" data-i18n="tracker_tag">Interactive Tool</span>
+        <h2 data-i18n="tracker_title">Live Match Score Tracker</h2>
+        <p data-i18n="tracker_subtitle">Keep track of rally points, service turns, and game points during your practice matches.</p>
       </div>
 
       <div class="scoreboard-container">
@@ -375,14 +600,13 @@
     </div>
   </section>
 
-
   <!-- How To Play Quiz -->
   <section id="quiz" class="section quiz-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Interactive Game</span>
-        <h2>The 50-Question Badminton Master Quiz</h2>
-        <p>Test your comprehensive knowledge across all 5 key categories: shots, official rules, scoring systems, court boundaries, and world history.</p>
+        <span class="section-tag" data-i18n="quiz_tag">Interactive Game</span>
+        <h2 data-i18n="quiz_title">The 50-Question Badminton Master Quiz</h2>
+        <p data-i18n="quiz_subtitle">Test your comprehensive knowledge across all 5 key categories: shots, official rules, scoring systems, court boundaries, and world history.</p>
       </div>
 
       <!-- Category Filter Modes -->

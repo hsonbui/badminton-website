@@ -940,3 +940,303 @@ if (document.readyState === 'loading') {
 } else {
   initBwfAudio();
 }
+
+
+// ==========================================================================
+// 6. MULTI-LANGUAGE SYSTEM (I18N) & GLOSSARY TABS
+// ==========================================================================
+
+const TRANSLATIONS = {
+  en: {
+    nav_about: "About",
+    nav_facts: "World Records",
+    nav_court: "Court & Rules",
+    nav_shots: "Key Shots",
+    nav_language: "Language Guide",
+    nav_gear: "Equipment",
+    nav_tracker: "Scorer",
+    nav_quiz: "Quiz",
+    nav_play_btn: "🎮 Play Quiz",
+    hero_badge: "🏸 The World's Fastest Racket Sport",
+    hero_title: "Precision, Agility, and explosive <span>Power</span>.",
+    hero_subtitle: "Explore rules, master essential shots, understand court boundaries, and track your match scores in real time.",
+    hero_btn_court: "Interactive Court Guide",
+    hero_btn_facts: "Explore World Records 🚀",
+    stat_1_label: "Guinness World Record Smash (2023)",
+    stat_2_label: "Longest Rally in BWF History (3.5 mins)",
+    stat_3_label: "#2 Most Played Sport Worldwide",
+    about_tag: "Overview",
+    about_title: "Why Badminton Captivates 220 Million Players",
+    about_subtitle: "The ultimate blend of supersonic projectile speed, extreme cardiovascular output, and split-second tactical deception.",
+    about_card1_title: "565 km/h Supersonic Speed",
+    about_card1_desc: "The shuttlecock is the fastest moving projectile in all of sport — outspeeding Formula 1 race cars (372 km/h) and Japanese bullet trains (320 km/h).",
+    about_card2_title: "2x The Distance of Tennis",
+    about_card2_desc: "In a 75-minute match, players run over 6.4 km with 1,900+ explosive lunges. Ball-in-play time is 48% in badminton compared to only 18% in tennis!",
+    about_card3_title: "0.005s Reaction Reflexes",
+    about_card3_desc: "Net defenders react in less than 5 milliseconds against point-blank smashes — relying on subconscious muscle anticipation faster than a human blink.",
+    facts_tag: "World Records & Curiosities",
+    facts_title: "Mind-Blowing Badminton Facts & Records",
+    facts_subtitle: "From 565 km/h supersonic smashes to 16 left-wing goose feathers, explore the astonishing feats that make badminton legendary.",
+    court_tag: "Interactive Diagram",
+    court_title: "Badminton Court Boundaries & Service Rules",
+    court_subtitle: "Toggle between Singles and Doubles to see the in-bounds court areas and service zones highlighted.",
+    btn_singles: "Singles Mode (Long & Narrow)",
+    btn_doubles: "Doubles Mode (Short & Wide)",
+    shots_tag: "Techniques",
+    shots_title: "The 5 Fundamental Badminton Shots",
+    shots_subtitle: "Master these core strokes to build an unpredictable attacking and defensive repertoire.",
+    lang_tag: "Multilingual Terminology",
+    lang_title: "Badminton in Every Language",
+    lang_subtitle: "Badminton unites continents. Compare essential badminton terminology across English, Tiếng Việt, 中文 (Chinese), and Bahasa Indonesia.",
+    gear_tag: "Gear Guide",
+    gear_title: "Choosing the Right Equipment",
+    gear_subtitle: "A quick breakdown of rackets, shuttlecocks, and court essentials.",
+    tracker_tag: "Interactive Tool",
+    tracker_title: "Live Match Score Tracker",
+    tracker_subtitle: "Keep track of rally points, service turns, and game points during your practice matches.",
+    quiz_tag: "Interactive Game",
+    quiz_title: "The 50-Question Badminton Master Quiz",
+    quiz_subtitle: "Test your comprehensive knowledge across all 5 key categories: shots, official rules, scoring systems, court boundaries, and world history."
+  },
+  vi: {
+    nav_about: "Giới thiệu",
+    nav_facts: "Kỷ lục thế giới",
+    nav_court: "Sân & Luật thi đấu",
+    nav_shots: "Kỹ thuật đánh",
+    nav_language: "Thuật ngữ Quốc tế",
+    nav_gear: "Dụng cụ thi đấu",
+    nav_tracker: "Tính điểm trận đấu",
+    nav_quiz: "Trắc nghiệm 50 câu",
+    nav_play_btn: "🎮 Chơi trắc nghiệm",
+    hero_badge: "🏸 Môn Thể Thao Dùng Vợt Nhanh Nhất Hành Tinh",
+    hero_title: "Chính xác, Khéo léo và <span>Sức Mạnh</span> bùng nổ.",
+    hero_subtitle: "Khám phá luật chơi BWF, thuần thục các cú đánh cốt lõi, nắm vững vạch sân và theo dõi tỉ số trận đấu trực tiếp.",
+    hero_btn_court: "Xem sơ đồ sân tương tác",
+    hero_btn_facts: "Xem các kỷ lục thế giới 🚀",
+    stat_1_label: "Kỷ lục Guinness cú đập cầu (2023)",
+    stat_2_label: "Pha cầu dài nhất lịch sử (211 chạm)",
+    stat_3_label: "Môn thể thao phổ biến thứ 2 toàn cầu",
+    about_tag: "Tổng quan",
+    about_title: "Vì Sao Cầu Lông Thu Hút 220 Triệu Người Chơi",
+    about_subtitle: "Sự kết hợp hoàn hảo giữa vận tốc siêu thanh, sức bền tim mạch tột đỉnh và những cú đánh đánh lừa thị giác.",
+    about_card1_title: "Tốc Độ Siêu Thanh 565 km/h",
+    about_card1_desc: "Quả cầu lông là vật thể bay nhanh nhất trong mọi môn thể thao — vượt xa xe đua F1 (372 km/h) và tàu cao tốc Shinkansen (320 km/h).",
+    about_card2_title: "Chạy Nhiều Gấp Đôi Quần Vợt",
+    about_card2_desc: "Trong trận 75 phút, VĐV cầu lông chạy hơn 6.4 km với 1.900+ cú bật nhảy. Thời gian cầu bay chiếm 48% trận đấu so với 18% của tennis!",
+    about_card3_title: "Phản Xạ 0.005 Giây",
+    about_card3_desc: "Tay vợt đứng lưới phản ứng trong chưa đầy 5 phần nghìn giây trước cú đập cầu cự ly gần — nhanh hơn cả một cái chớp mắt!",
+    facts_tag: "Kỷ Lục & Những Điều Kỳ Thú",
+    facts_title: "Kỷ Lục & Sự Thật Kinh Ngạc Về Cầu Lông",
+    facts_subtitle: "Từ cú đập 565 km/h đến bí mật 16 chiếc lông cánh trái của ngỗng, khám phá những điều thú vị làm nên sự vĩ đại của môn cầu lông.",
+    court_tag: "Sơ Đồ Tương Tác",
+    court_title: "Kích Thước Sân & Quy Định Giao Cầu BWF",
+    court_subtitle: "Chuyển đổi giữa Đánh Đơn và Đánh Đôi để thấy rõ các vạch giới hạn và ô giao cầu hợp lệ.",
+    btn_singles: "Đánh Đơn (Dài & Hẹp)",
+    btn_doubles: "Đánh Đôi (Rộng & Ngắn)",
+    shots_tag: "Kỹ Thuật",
+    shots_title: "5 Cú Đánh Nền Tảng Trong Cầu Lông",
+    shots_subtitle: "Làm chủ 5 đòn đánh thiết yếu để xây dựng lối chơi tấn công uy lực và phòng ngự biến hóa.",
+    lang_tag: "Thuật Ngữ Đa Ngôn Ngữ",
+    lang_title: "Cầu Lông Trong Mọi Ngôn Ngữ",
+    lang_subtitle: "So sánh các thuật ngữ cốt lõi giữa Tiếng Anh, Tiếng Việt (Đập cầu, Bỏ nhỏ, Phông cầu...), Tiếng Trung và Tiếng Indonesia.",
+    gear_tag: "Hướng Dẫn Dụng Cụ",
+    gear_title: "Lựa Chọn Dụng Cụ Thi Đấu Chuẩn",
+    gear_subtitle: "Phân biệt vợt nặng đầu, nhẹ đầu, quả cầu lông vũ và giày đế cao su chuyên dụng sân trong nhà.",
+    tracker_tag: "Bảng Điểm Trực Tiếp",
+    tracker_title: "Bộ Đếm Điểm & Xác Định Vị Trí Giao Cầu",
+    tracker_subtitle: "Theo dõi điểm số từng hiệp đấu theo chuẩn BWF (21 điểm, dẫn 2, chạm 30 điểm kịch tính).",
+    quiz_tag: "Trò Chơi Tương Tác",
+    quiz_title: "Bộ Đề Trắc Nghiệm Cầu Lông 50 Câu",
+    quiz_subtitle: "Thử thách kiến thức toàn diện về kỹ thuật, luật thi đấu, tính điểm, kích thước sân và lịch sử thế giới."
+  },
+  zh: {
+    nav_about: "关于羽球",
+    nav_facts: "世界纪录",
+    nav_court: "场地与规则",
+    nav_shots: "核心技术",
+    nav_language: "多语言术语",
+    nav_gear: "装备指南",
+    nav_tracker: "实时计分器",
+    nav_quiz: "50题挑战",
+    nav_play_btn: "🎮 开始答题",
+    hero_badge: "🏸 全球球速最快的球拍运动",
+    hero_title: "精准、敏捷与爆发性<span>力量</span>的交响。",
+    hero_subtitle: "探索BWF官方规则，精通核心击球手法，理解球场边界与实时计分系统。",
+    hero_btn_court: "查看交互式球场",
+    hero_btn_facts: "探索世界纪录 🚀",
+    stat_1_label: "吉尼斯世界纪录杀球速度 (2023)",
+    stat_2_label: "BWF史上最长多拍回合 (211拍)",
+    stat_3_label: "全球参与人数第二多的体育项目",
+    about_tag: "总览",
+    about_title: "为何羽毛球吸引全球2.2亿运动人群",
+    about_subtitle: "超音速球速、极致有氧耐力与瞬息万变战术假动作的完美融合。",
+    about_card1_title: "565 km/h 超音速极速",
+    about_card1_desc: "羽毛球是所有体育运动中速度最快的飞行物 — 超越F1赛车（372 km/h）与新干线高铁（320 km/h）。",
+    about_card2_title: "两倍于网球的奔跑距离",
+    about_card2_desc: "在75分钟的高强度比赛中，选手奔跑超6.4公里，完成1900+次弓步起跳。有效击球时间高达48%，远超网球的18%！",
+    about_card3_title: "0.005秒极限神经反射",
+    about_card3_desc: "面对近身抽杀，网前选手必须在5毫秒内做出预判拦截 — 比人类眨眼还要迅捷。",
+    facts_tag: "世界纪录与冷知识",
+    facts_title: "令人惊叹的羽毛球世界纪录",
+    facts_subtitle: "从565 km/h吉尼斯杀球到仅采用左翼鹅毛的秘密，探索羽毛球运动的非凡魅力。",
+    court_tag: "交互图解",
+    court_title: "羽毛球场边界线与发球规则",
+    court_subtitle: "在单打与双打模式之间自由切换，清晰掌握接发球界线与边线范围。",
+    btn_singles: "单打模式 (长而窄)",
+    btn_doubles: "双打模式 (短而宽)",
+    shots_tag: "技术手法",
+    shots_title: "五大羽毛球基础核心击球技术",
+    shots_subtitle: "精通扣杀、吊球、高远球、封网与平抽，构建攻守兼备的技术体系。",
+    lang_tag: "多语言术语指南",
+    lang_title: "世界羽毛球常用多语言术语",
+    lang_subtitle: "对比英语、越南语、中文与印尼语的核心羽毛球术语词汇表。",
+    gear_tag: "装备指南",
+    gear_title: "挑选最适合你的专业装备",
+    gear_subtitle: "拍头平衡点、4U/3U重量分类、鹅毛球飞行特性与生胶防滑鞋底解析。",
+    tracker_tag: "计分工具",
+    tracker_title: "BWF标准实时计分与发球区提示",
+    tracker_subtitle: "21分落地得分制、连得2分胜出、最高封顶30分的专业赛制计分器。",
+    quiz_tag: "互动问答",
+    quiz_title: "50道羽毛球全能大师挑战赛",
+    quiz_subtitle: "全面覆盖击球技巧、犯规判定、发球规则、场地尺寸与羽球历史名录。"
+  },
+  id: {
+    nav_about: "Tentang",
+    nav_facts: "Rekor Dunia",
+    nav_court: "Lapangan & Aturan",
+    nav_shots: "Pukulan Kunci",
+    nav_language: "Panduan Bahasa",
+    nav_gear: "Peralatan",
+    nav_tracker: "Pencatat Skor",
+    nav_quiz: "Kuis 50 Soal",
+    nav_play_btn: "🎮 Mainkan Kuis",
+    hero_badge: "🏸 Olahraga Raket Tercepat di Dunia",
+    hero_title: "Presisi, Kelincahan, dan <span>Kekuatan</span> Eksplosif.",
+    hero_subtitle: "Pelajari peraturan BWF resmi, kuasai teknik pukulan penting, dan catat skor pertandingan secara langsung.",
+    hero_btn_court: "Panduan Lapangan Interaktif",
+    hero_btn_facts: "Lihat Rekor Dunia 🚀",
+    stat_1_label: "Rekor Dunia Smash Guinness (2023)",
+    stat_2_label: "Rally Terpanjang Sejarah BWF (211 Pukulan)",
+    stat_3_label: "Olahraga Terpopuler #2 di Dunia",
+    about_tag: "Ikhtisar",
+    about_title: "Mengapa Bulutangkis Memikat 220 Juta Pemain",
+    about_subtitle: "Kombinasi kecepatan supersonik, daya tahan kardio ekstrem, dan tipuan taktik sepersekian detik.",
+    about_card1_title: "Kecepatan Supersonik 565 km/jam",
+    about_card1_desc: "Shuttlecock adalah proyektil tercepat di dunia olahraga — melampaui mobil balap Formula 1 (372 km/jam) dan kereta peluru Shinkansen (320 km/jam).",
+    about_card2_title: "2x Jarak Lari Dibanding Tenis",
+    about_card2_desc: "Dalam pertandingan 75 menit, pemain berlari lebih dari 6,4 km dengan 1.900+ lunge. Waktu bola aktif mencapai 48% dibanding 18% di tenis!",
+    about_card3_title: "Refleks 0.005 Detik",
+    about_card3_desc: "Pemain depan bereaksi dalam waktu kurang dari 5 milidetik saat mengantisipasi smash jarak dekat — lebih cepat dari kedipan mata manusia.",
+    facts_tag: "Rekor Dunia & Keunikan",
+    facts_title: "Fakta Mengagumkan & Rekor Dunia Bulutangkis",
+    facts_subtitle: "Dari smash 565 km/jam hingga rahasia 16 helai bulu sayap kiri angsa, jelajahi keajaiban bulutangkis dunia.",
+    court_tag: "Diagram Interaktif",
+    court_title: "Batas Lapangan & Aturan Servis Bulutangkis",
+    court_subtitle: "Beralih antara mode Tunggal dan Ganda untuk melihat area lapangan dan kotak servis secara jelas.",
+    btn_singles: "Mode Tunggal (Panjang & Sempit)",
+    btn_doubles: "Mode Ganda (Pendek & Lebar)",
+    shots_tag: "Teknik",
+    shots_title: "5 Pukulan Fundamental Bulutangkis",
+    shots_subtitle: "Kuasai smash, dropshot, lob, net kill, dan drive untuk membangun permainan menyerang yang tangguh.",
+    lang_tag: "Terminologi Multibahasa",
+    lang_title: "Bulutangkis dalam Berbagai Bahasa",
+    lang_subtitle: "Bandingkan terminologi bulutangkis dalam Bahasa Inggris, Vietnam, Mandarin, dan Bahasa Indonesia.",
+    gear_tag: "Panduan Alat",
+    gear_title: "Memilih Perlengkapan yang Tepat",
+    gear_subtitle: "Panduan memilih raket head-heavy vs head-light, shuttlecock bulu angsa, dan sepatu sol karet non-marking.",
+    tracker_tag: "Pencatat Skor",
+    tracker_title: "Penghitung Skor Pertandingan BWF Langsung",
+    tracker_subtitle: "Sistem reli poin 21 angka, deuce selisih 2, dan batas maksimal 30 poin.",
+    quiz_tag: "Permainan Interaktif",
+    quiz_title: "Kuis Master Bulutangkis 50 Pertanyaan",
+    quiz_subtitle: "Uji wawasan lengkapmu tentang teknik pukulan, aturan servis, garis lapangan, dan sejarah bulutangkis dunia."
+  }
+};
+
+let currentLanguage = 'en';
+
+function changeLanguage(lang) {
+  if (!TRANSLATIONS[lang]) return;
+  currentLanguage = lang;
+
+  // Update nav buttons
+  const buttons = document.querySelectorAll('.lang-btn');
+  buttons.forEach(btn => {
+    const fn = btn.getAttribute('onclick') || '';
+    if (fn.includes(`'${lang}'`)) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  // Update elements with data-i18n
+  const dict = TRANSLATIONS[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) {
+      if (dict[key].includes('<')) {
+        el.innerHTML = dict[key];
+      } else {
+        el.textContent = dict[key];
+      }
+    }
+  });
+
+  try {
+    localStorage.setItem('smashpoint_lang', lang);
+  } catch (e) {}
+}
+
+function switchGlossaryTab(mode) {
+  const tabs = document.querySelectorAll('.glossary-tab');
+  tabs.forEach(tab => {
+    const fn = tab.getAttribute('onclick') || '';
+    if (fn.includes(`'${mode}'`)) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+
+  const table = document.getElementById('glossary-table');
+  if (!table) return;
+
+  const ths = table.querySelectorAll('th');
+  const rows = table.querySelectorAll('tbody tr');
+
+  // Indexes: 0: Term, 1: EN, 2: VI, 3: ZH, 4: ID
+  if (mode === 'all') {
+    ths.forEach(th => th.style.display = '');
+    rows.forEach(tr => {
+      tr.querySelectorAll('td').forEach(td => td.style.display = '');
+    });
+  } else {
+    const targetIdx = mode === 'en' ? 1 : mode === 'vi' ? 2 : mode === 'zh' ? 3 : 4;
+    ths.forEach((th, i) => {
+      if (i === 0 || i === targetIdx) {
+        th.style.display = '';
+      } else {
+        th.style.display = 'none';
+      }
+    });
+    rows.forEach(tr => {
+      const tds = tr.querySelectorAll('td');
+      tds.forEach((td, i) => {
+        if (i === 0 || i === targetIdx) {
+          td.style.display = '';
+        } else {
+          td.style.display = 'none';
+        }
+      });
+    });
+  }
+}
+
+// Load saved language on startup
+try {
+  const savedLang = localStorage.getItem('smashpoint_lang');
+  if (savedLang && TRANSLATIONS[savedLang]) {
+    changeLanguage(savedLang);
+  }
+} catch (e) {}
