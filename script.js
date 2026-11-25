@@ -183,81 +183,374 @@ updateScoreboard();
 
 
 // ==========================================================================
-// 4. HOW TO PLAY QUIZ
+// 4. THE 50-QUESTION BADMINTON MASTER QUIZ
 // ==========================================================================
 
-const QUIZ_QUESTIONS = [
-  {
-    category: "Scoring",
-    question: "How many points does a player need to win a standard game in badminton?",
-    options: ["15", "21", "25", "30"],
-    answer: 1,
-    explanation: "A game is won by the first side to reach 21 points, with a lead of at least 2 points (capped at 30-29)."
-  },
-  {
-    category: "Scoring",
-    question: "In a match tied at 20-20 (deuce), what is the maximum score a game can reach?",
-    options: ["25", "27", "30", "No limit"],
-    answer: 2,
-    explanation: "At deuce (20-20), play continues until one side leads by 2. The game is capped at 30-29 — no further extension."
-  },
-  {
-    category: "Rules",
-    question: "In singles, when is the serve taken from the LEFT service court?",
-    options: ["When your score is even (0, 2, 4...)", "When your score is odd (1, 3, 5...)", "Always after winning a rally", "Only in the third game"],
-    answer: 1,
-    explanation: "In singles, serve from the Right court when your score is even, and from the Left court when your score is odd."
-  },
-  {
-    category: "Rules",
-    question: "Which of these is NOT a fault (illegal action) in badminton?",
-    options: ["Touching the net with your racket during a rally", "The shuttle landing on the boundary line", "Hitting the shuttle twice in one stroke", "The shuttle hitting the ceiling"],
-    answer: 1,
-    explanation: "In badminton, landing on the boundary line is IN bounds — the shuttle must land completely outside the line to be out."
-  },
-  {
-    category: "Court",
-    question: "In doubles play, are the side tramlines (alleys) in or out during a rally?",
-    options: ["Out — same as singles", "In — full width is used", "In for serve, out for rally", "Only in if the shuttle bounced first"],
-    answer: 1,
-    explanation: "In doubles, the full court width (including side tramlines) is in bounds during a rally. Only the rear tramline is out during the serve."
-  },
-  {
-    category: "Court",
-    question: "What is the correct net height at the centre of a standard badminton court?",
-    options: ["1.45 m", "1.52 m", "1.60 m", "1.80 m"],
-    answer: 1,
-    explanation: "The net is 1.524 m (5 ft) high at the centre, and 1.55 m at the posts on either side."
-  },
+const ALL_QUIZ_QUESTIONS = [
+  // ── 1. KEY SHOTS & TECHNIQUES (10 Questions) ──────────────────────────────
   {
     category: "Shots",
-    question: "What is the defining characteristic of a 'drop shot' in badminton?",
-    options: ["A powerful downward smash from the backcourt", "A high defensive shot to the opponent's baseline", "A deceptive shot that falls steeply just over the net", "A flat fast exchange at mid-court height"],
-    answer: 2,
-    explanation: "A drop shot is disguised with a full smash wind-up but the shuttle is struck softly to drop just past the net on the opponent's side."
-  },
-  {
-    category: "Shots",
-    question: "Which shot is considered the primary attacking weapon in badminton?",
-    options: ["The Clear (Lob)", "The Drive", "The Net Kill", "The Smash"],
+    question: "Which shot is considered the primary attacking weapon in badminton, hit with steep downward trajectory and maximum power?",
+    options: ["The Clear", "The Drive", "The Net Kill", "The Forehand Smash"],
     answer: 3,
-    explanation: "The forehand smash is the main attacking shot — hit from deep with steep downward trajectory to win the point outright."
+    explanation: "The forehand smash is badminton's ultimate kill shot, struck steeply downward at speeds exceeding 400 km/h."
   },
   {
-    category: "Equipment",
-    question: "What does 'head-heavy' mean when describing a badminton racket?",
-    options: ["The racket is heavier overall, good for defensive play", "More weight is at the top of the frame, adding smash power", "The handle is wider and heavier for better grip", "The strings are tighter for more control"],
+    category: "Shots",
+    question: "What is the defining characteristic of a drop shot in badminton?",
+    options: ["A powerful downward smash from the backcourt", "A high defensive lob to the baseline", "A deceptive shot that drops steeply just over the net", "A flat horizontal exchange at mid-court height"],
+    answer: 2,
+    explanation: "A drop shot is disguised with a full smash wind-up but decelerated at contact so it dips sharply right past the net."
+  },
+  {
+    category: "Shots",
+    question: "What is a 'net kill' (or net brush) in badminton?",
+    options: ["Smashing the shuttle straight at the opponent's chest", "A sharp, compact wrist flick to drive a loose high net return steeply down", "A deceptive shot disguised as a lob", "Blocking a smash into the side alley"],
     answer: 1,
-    explanation: "A head-heavy racket has more mass in the head/frame area. This generates more power on smashes but can slow reaction time in defense."
+    explanation: "A net kill is played when the opponent lifts or leaves a return high above the net tape — a quick brush down finishes the rally immediately."
+  },
+  {
+    category: "Shots",
+    question: "What is the primary tactical purpose of a high defensive overhead clear?",
+    options: ["To score an immediate clean winner", "To push the opponent deep to their baseline and buy recovery time to reset position", "To spin the shuttle so it tumbles over the tape", "To force the opponent to play a backhand drive"],
+    answer: 1,
+    explanation: "The defensive clear sends the shuttle high and deep to the opponent's backcourt, giving you time to return to the centre base."
+  },
+  {
+    category: "Shots",
+    question: "What is a 'drive' shot in badminton?",
+    options: ["A high looping shot to the baseline", "A flat, rapid shot skimming horizontally just over the net tape", "A steep downward smash from midcourt", "A delicate slice drop into the corner"],
+    answer: 1,
+    explanation: "A drive is a fast, flat exchange hit at chest/waist level, critical in doubles to keep pressure without lifting."
+  },
+  {
+    category: "Shots",
+    question: "What is a 'flick serve'?",
+    options: ["A low, gentle serve aimed at the front line", "A deceptive serve that looks like a low serve but suddenly whips high and deep to the rear court", "A side-sliced serve into the doubles alley", "A serve where the racket contacts the feathers first"],
+    answer: 1,
+    explanation: "A flick serve disguises a low serve stance but uses a fast wrist snap to propel the shuttle over the receiver's head."
+  },
+  {
+    category: "Shots",
+    question: "What biomechanical motion generates the majority of power in an overhead badminton smash?",
+    options: ["Bending the knees backward", "Forearm pronation and rapid wrist snap at high contact point", "Locking the elbow completely straight throughout the swing", "Swinging the arm with a stiff wrist like a tennis serve"],
+    answer: 1,
+    explanation: "Forearm pronation (internal rotation) combined with wrist extension/flexion creates the whipping racket speed needed for a 400+ km/h smash."
+  },
+  {
+    category: "Shots",
+    question: "What is a 'cross-court sliced drop' shot?",
+    options: ["Hitting the shuttle flat across the diagonal at head height", "Slicing across the shuttlecock at an angle to create deceptive spin, altered trajectory, and deceleration", "Hitting the cork with the racket frame deliberately", "A backhand clear hit with an open racket face"],
+    answer: 1,
+    explanation: "Slicing the racket face across the cork creates friction and angle deception, making the shuttle dive diagonally across court."
+  },
+  {
+    category: "Shots",
+    question: "When executing a tight tumbling net shot, how should the racket face make contact with the shuttle?",
+    options: ["With a heavy downward hammer smash", "Gently slicing or brushing under the cork to induce a tumbling spin over the tape", "With a full follow-through pointing to the floor", "By pushing the shuttle with two hands on the grip"],
+    answer: 1,
+    explanation: "Brushing under the shuttle cork creates a tumbling motion that forces the opponent to lift from below net height."
+  },
+  {
+    category: "Shots",
+    question: "What is the purpose of an attacking 'punch clear' (or flat attacking clear)?",
+    options: ["To lift the shuttle as high as the arena ceiling", "To quickly push the shuttle over the opponent's reach into deep court before they can retreat", "To gently drop the shuttle on the short service line", "To hit the shuttle deliberately out of bounds"],
+    answer: 1,
+    explanation: "An attacking clear has a lower, flatter trajectory than a defensive clear, catching the opponent flat-footed and off balance."
+  },
+
+  // ── 2. RULES & FAULTS (10 Questions) ─────────────────────────────────────
+  {
+    category: "Rules",
+    question: "Which of these is NOT considered a fault in competitive badminton?",
+    options: ["Touching the net with your racket or body during a rally", "The shuttle landing on any part of the boundary line", "Hitting the shuttle twice consecutively in one stroke", "The shuttle striking the arena ceiling or wall"],
+    answer: 1,
+    explanation: "In badminton, the line is IN bounds. The shuttle must land completely outside the boundary lines to be called 'out'."
+  },
+  {
+    category: "Rules",
+    question: "What happens if a player touches the net with their racket, body, or clothing during an active rally?",
+    options: ["A let is called and the point is replayed", "Play continues until the shuttle hits the floor", "It is an immediate fault and the opponent wins the point", "A warning is issued on the first offence"],
+    answer: 2,
+    explanation: "Touching the net with racket, body, or apparel while the shuttle is in play is an immediate fault."
+  },
+  {
+    category: "Rules",
+    question: "Can a player reach across the net to hit the shuttle before it has passed over to their side?",
+    options: ["Yes, whenever they can reach it", "No, it is a fault to strike the shuttle before it crosses the net plane", "Yes, but only in doubles play", "Yes, as long as their racket does not hit the net"],
+    answer: 1,
+    explanation: "You cannot strike the shuttle until it has crossed into your court plane. Doing so is an obstruction / over-the-net fault."
+  },
+  {
+    category: "Rules",
+    question: "Is it legal for a player's racket to follow through across the net plane after hitting the shuttle on their own side?",
+    options: ["No, any part of the racket crossing the net is always a fault", "Yes, provided contact occurred on their own side and the net was not touched", "Only during a smash, not during net play", "Only if the umpire grants permission"],
+    answer: 1,
+    explanation: "A follow-through may cross the net plane as long as the initial point of contact was on your side and you did not touch or obstruct the net."
+  },
+  {
+    category: "Rules",
+    question: "What is a 'let' under official BWF rules?",
+    options: ["A penalty point awarded to the receiver", "A ruling that halts play and replays the rally without awarding a point", "A fault committed during the service delivery", "An automatic win of the game for unsportsmanlike conduct"],
+    answer: 1,
+    explanation: "A 'let' halts play without penalty or point — such as when an unforeseen disturbance occurs or the shuttle breaks mid-rally."
+  },
+  {
+    category: "Rules",
+    question: "Under current BWF service rules, at what height must the shuttlecock be struck during a serve?",
+    options: ["Any height as long as the racket head points downward", "The entire shuttle must be below 1.15 metres from the court surface at contact", "Above the server's shoulder", "Level with the top of the net"],
+    answer: 1,
+    explanation: "Under BWF fixed-height service law (Law 9.1.5), the entire shuttle must be below 1.15 metres from the court surface at the moment of contact."
+  },
+  {
+    category: "Rules",
+    question: "What must both the server and receiver do with their feet until the serve is struck?",
+    options: ["Keep parts of both feet in stationary contact with the court surface inside their service boxes", "They may run forward as soon as the server's arm starts moving", "One foot must be lifted completely off the ground", "Both feet must be touching the boundary lines"],
+    answer: 0,
+    explanation: "Both feet of the server and receiver must remain stationary and on the floor inside their respective service courts until the serve is hit."
+  },
+  {
+    category: "Rules",
+    question: "What happens if the server swings and completely misses the shuttlecock on the serve?",
+    options: ["The server gets a second try (like in tennis)", "It is a service fault and the opponent wins the rally and point", "A let is automatically called", "The umpire flips a coin"],
+    answer: 1,
+    explanation: "Unlike tennis, there is no second serve in badminton. Missing the shuttle entirely is an immediate fault and costs a point."
+  },
+  {
+    category: "Rules",
+    question: "Can a player deliberately distract, shout, or gesture to obstruct an opponent before they hit the shuttle?",
+    options: ["Yes, psychological distraction is part of the game", "No, it is an illegal obstruction / fault", "Only the receiver is allowed to shout", "Yes, but only in doubles communication"],
+    answer: 1,
+    explanation: "Deliberately shouting, waving, or making actions to distract the opponent while they are striking the shuttle is a fault (Law 13.4.4)."
+  },
+  {
+    category: "Rules",
+    question: "If the shuttlecock disintegrates or the cork separates from the feathers mid-rally, what is the call?",
+    options: ["The rally continues with whatever piece lands first", "A fault against whoever hit it last", "A let is called and the rally is replayed with a fresh shuttle", "The point goes to the receiver"],
+    answer: 2,
+    explanation: "Under BWF Law 14.2.4, if the shuttle completely disintegrates mid-rally, a let must be called immediately."
+  },
+
+  // ── 3. SCORING & SERVICE (10 Questions) ──────────────────────────────────
+  {
+    category: "Scoring",
+    question: "How many points are required to win a standard game in BWF badminton?",
+    options: ["11 points", "15 points", "21 points (leading by at least 2 points)", "25 points"],
+    answer: 2,
+    explanation: "A standard game is won by the first side to score 21 points with a margin of at least 2 points."
+  },
+  {
+    category: "Scoring",
+    question: "In a match tied at 20-20 (deuce), what is the maximum score cap a game can reach?",
+    options: ["25-24", "28-26", "30-29 (first to 30 points wins)", "No cap, play continues indefinitely until a 2-point lead"],
+    answer: 2,
+    explanation: "If the score reaches 29-29, the side scoring the 30th point wins the game (30-29). The score is never extended past 30."
+  },
+  {
+    category: "Scoring",
+    question: "Under the BWF rally-point scoring system, how are points awarded?",
+    options: ["Only the serving side can score points", "Every single rally winner scores a point regardless of who served", "Points are awarded only after two consecutive rally wins", "The receiver gets 2 points if they win the rally"],
+    answer: 1,
+    explanation: "Under the rally point system (introduced in 2006), whoever wins the rally wins the point and the right to serve."
+  },
+  {
+    category: "Scoring",
+    question: "How many games are played in a standard official badminton match?",
+    options: ["Best of 1 single game to 30", "Best of 3 games to 21", "Best of 5 games to 15", "Best of 3 games to 15"],
+    answer: 1,
+    explanation: "All standard BWF matches are best-of-three games. The first to win two games wins the match."
+  },
+  {
+    category: "Scoring",
+    question: "In singles, which service court does the server serve from when their score is EVEN (0, 2, 4, 6...)?",
+    options: ["Left service court", "Right service court", "Either court of their choice", "The back tramline"],
+    answer: 1,
+    explanation: "Even score = Right service court. At 0-0, the match always begins from the right service court."
+  },
+  {
+    category: "Scoring",
+    question: "In singles, which service court does the server serve from when their score is ODD (1, 3, 5, 7...)?",
+    options: ["Right service court", "Left service court", "From the centre 'T' line", "Opposite to where the receiver stands"],
+    answer: 1,
+    explanation: "Odd score = Left service court. When the server has an odd score, they deliver from the left box."
+  },
+  {
+    category: "Scoring",
+    question: "In the third deciding game of a match, at what score do players switch ends of the court?",
+    options: ["When either side first reaches 11 points", "When the score is tied at 10-10", "At 15 points", "Ends are never switched during the third game"],
+    answer: 0,
+    explanation: "In the third game, players switch ends when the leading side first reaches 11 points."
+  },
+  {
+    category: "Scoring",
+    question: "In doubles, when do partners on the serving team swap their service courts (left/right)?",
+    options: ["After every completed rally", "Only when their side wins a point on their OWN serve", "Whenever the opponents make an unforced error", "At the end of every 5-point cycle"],
+    answer: 1,
+    explanation: "The serving team swaps courts only after scoring a point on their own serve. They do NOT swap if they won the serve from the opponents."
+  },
+  {
+    category: "Scoring",
+    question: "At 29-29 in an intense deuce situation, how many more points are required to win?",
+    options: ["Must win by 2 points (e.g. 32-30)", "Just 1 point — whoever scores the 30th point wins immediately", "A 5-point tiebreak is played", "A coin toss decides the winner"],
+    answer: 1,
+    explanation: "At 29-29, the normal 2-point lead rule is waived. The first side to reach 30 points wins 30-29."
+  },
+  {
+    category: "Scoring",
+    question: "Who serves first at the beginning of the second game in a match?",
+    options: ["The side that won the first game", "The side that lost the first game", "Whoever served first in game 1", "Decided by a new coin toss"],
+    answer: 0,
+    explanation: "Under BWF rules, the winner of the previous game always serves first in the following game."
+  },
+
+  // ── 4. COURT & EQUIPMENT (10 Questions) ──────────────────────────────────
+  {
+    category: "Court",
+    question: "What are the full standard dimensions (length × width) of a doubles badminton court?",
+    options: ["12.0 m × 5.5 m", "13.4 m × 6.1 m", "14.5 m × 7.0 m", "13.4 m × 5.18 m"],
+    answer: 1,
+    explanation: "A full badminton court is 13.40 metres long and 6.10 metres wide for doubles."
+  },
+  {
+    category: "Court",
+    question: "What is the width of a badminton court for singles play?",
+    options: ["4.80 m", "5.18 m", "6.10 m", "5.80 m"],
+    answer: 1,
+    explanation: "Singles uses the inner sidelines, reducing the court width from 6.10 m to 5.18 m."
+  },
+  {
+    category: "Court",
+    question: "What is the official net height at the centre of the court?",
+    options: ["1.40 m", "1.524 m (5 feet)", "1.55 m", "1.60 m"],
+    answer: 1,
+    explanation: "The net height is 1.524 metres (5 feet) at the centre and 1.55 metres at the post edges."
+  },
+  {
+    category: "Court",
+    question: "What is the distance between the net and the short service line?",
+    options: ["1.50 m", "1.98 m (6 feet 6 inches)", "2.25 m", "2.50 m"],
+    answer: 1,
+    explanation: "The short service line is 1.98 metres from the net. Any serve landing short of this line is a fault."
+  },
+  {
+    category: "Court",
+    question: "In doubles, during the serve, which tramlines are considered OUT of bounds?",
+    options: ["The side tramlines are out; back tramline is in", "The rear tramline (long service line) is out; side tramlines are in", "Both side and back tramlines are out", "All tramlines are in on serve"],
+    answer: 1,
+    explanation: "On the doubles serve: wide and short! The side alleys are IN, but the rear 0.76 m tramline is OUT."
+  },
+  {
+    category: "Court",
+    question: "How many feathers are in a standard BWF-approved tournament shuttlecock?",
+    options: ["12 feathers", "14 feathers", "16 feathers", "18 feathers"],
+    answer: 2,
+    explanation: "Every official tournament shuttlecock has exactly 16 goose or duck feathers fixed into a rounded cork base."
+  },
+  {
+    category: "Court",
+    question: "What weight class does a standard '4U' badminton racket represent?",
+    options: ["70–74 grams", "75–79 grams", "80–84 grams", "85–89 grams"],
+    answer: 2,
+    explanation: "4U designates 80–84 grams, the most versatile and popular weight for both singles and doubles."
+  },
+  {
+    category: "Court",
+    question: "What does a 'head-heavy' balance indicate about a badminton racket?",
+    options: ["More mass is distributed in the frame head, generating greater smash momentum", "The grip handle is extra thick and heavy", "The overall racket weighs more than 100 grams", "The strings are strung at maximum tension"],
+    answer: 0,
+    explanation: "Head-heavy rackets shift weight toward the racket head, giving extra inertia for explosive smashes."
+  },
+  {
+    category: "Court",
+    question: "Why are non-marking gum-rubber soles mandatory on indoor badminton courts?",
+    options: ["To make footsteps completely silent", "To provide optimal traction without scuffing or damaging specialized court mats", "To increase jump height by 20%", "Because standard rubber melts under friction"],
+    answer: 1,
+    explanation: "Non-marking gum rubber provides critical traction for sudden lunges without leaving streaks on court surfaces."
+  },
+  {
+    category: "Court",
+    question: "What does a shuttlecock speed rating of 77 or 78 indicate compared to 75?",
+    options: ["77/78 flies faster and is calibrated for cooler temperatures or denser sea-level air", "77/78 is lighter and flies slower", "77/78 is designed exclusively for outdoor wind resistance", "77/78 has plastic nylon skirts instead of feathers"],
+    answer: 0,
+    explanation: "Cold or dense air slows shuttles down, so faster-rated shuttles (77/78) are used to maintain correct flight distance."
+  },
+
+  // ── 5. HISTORY & STRATEGY (10 Questions) ─────────────────────────────────
+  {
+    category: "History",
+    question: "In what year and host city did badminton make its debut as an official Olympic medal sport?",
+    options: ["1988 Seoul", "1992 Barcelona", "1996 Atlanta", "2000 Sydney"],
+    answer: 1,
+    explanation: "Badminton became a full Olympic medal sport at the 1992 Barcelona Games (following a demonstration in Seoul 1988)."
   },
   {
     category: "History",
-    question: "In which year did badminton make its debut as an Olympic sport?",
-    options: ["1988 (Seoul)", "1992 (Barcelona)", "1996 (Atlanta)", "2000 (Sydney)"],
+    question: "From which English estate did the sport of modern badminton derive its name around 1873?",
+    options: ["Wimbledon Manor in London", "Badminton House in Gloucestershire", "Buckingham Palace in Westminster", "Windsor Castle in Berkshire"],
     answer: 1,
-    explanation: "Badminton made its Olympic debut at the 1992 Barcelona Games. It has been a permanent Olympic sport ever since."
+    explanation: "The sport was formalised at Badminton House in Gloucestershire, country home of the Duke of Beaufort."
+  },
+  {
+    category: "History",
+    question: "What is the name of the prestigious Men's World Team Championship trophy in badminton?",
+    options: ["The Uber Cup", "The Thomas Cup", "The Sudirman Cup", "The Davis Cup"],
+    answer: 1,
+    explanation: "The Thomas Cup, inaugurated in 1948–49, is the premier trophy for men's national teams."
+  },
+  {
+    category: "History",
+    question: "What is the name of the Women's World Team Championship trophy in badminton?",
+    options: ["The Thomas Cup", "The Uber Cup", "The Sudirman Cup", "The Billie Jean King Cup"],
+    answer: 1,
+    explanation: "The Uber Cup, founded in 1956–57, is the women's equivalent of the Thomas Cup."
+  },
+  {
+    category: "History",
+    question: "Which prestigious international championship represents the World Mixed Team Championship?",
+    options: ["The Sudirman Cup", "The All England Championship", "The Thomas Cup", "The BWF World Tour Finals"],
+    answer: 0,
+    explanation: "Named after Indonesian badminton pioneer Dick Sudirman, the Sudirman Cup is held biennially for mixed national teams."
+  },
+  {
+    category: "History",
+    question: "Which legendary player won back-to-back Men's Singles Olympic gold medals (2008 & 2012) and 5 World Championship titles?",
+    options: ["Lee Chong Wei", "Taufik Hidayat", "Lin Dan", "Peter Gade"],
+    answer: 2,
+    explanation: "Lin Dan ('Super Dan') of China achieved the historic 'Super Grand Slam' by winning all nine major titles in badminton."
+  },
+  {
+    category: "History",
+    question: "What is the fastest recorded smash speed in competitive badminton, proving it the fastest racket sport?",
+    options: ["332 km/h", "390 km/h", "493+ km/h", "600 km/h"],
+    answer: 2,
+    explanation: "Speeds over 493 km/h have been recorded in match play (and over 565 km/h in lab tests), far faster than tennis or squash."
+  },
+  {
+    category: "History",
+    question: "In doubles tactical play, what is the standard 'front-and-back' court formation used for?",
+    options: ["Defending against opponent smashes", "Attacking — rear player smashes while front player intercepts weak lifts at the net", "Executing a high defensive lift", "Serving in mixed doubles only"],
+    answer: 1,
+    explanation: "Front-and-back is the attacking formation: the backcourt player smashes while the net player intercepts replies."
+  },
+  {
+    category: "History",
+    question: "What is the 'split-step' in badminton footwork and why is it essential?",
+    options: ["A full stretching split performed when lunging", "A small reactive hop landing with feet apart just as the opponent hits the shuttle to initiate rapid movement", "Stepping backward onto one foot during the serve", "A victory celebration after winning a rally"],
+    answer: 1,
+    explanation: "The split-step loads the calf and leg muscles elastically, letting players sprint explosively in whichever direction the shuttle is struck."
+  },
+  {
+    category: "History",
+    question: "Approximately how much running distance can a top singles player cover during an intense 3-game match?",
+    options: ["Under 1 kilometre", "Around 2 kilometres", "Between 5 and 6 kilometres of explosive sprints, lunges, and jumps", "Over 15 kilometres"],
+    answer: 2,
+    explanation: "Studies tracking elite players show up to 6 km of high-intensity movement per match — far more intense distance than tennis."
   }
 ];
+
+// Active subset of questions based on mode/category
+let activeQuizQuestions = [...ALL_QUIZ_QUESTIONS];
+let currentQuizCategory = 'all';
 
 let quizState = {
   current: 0,
@@ -266,48 +559,103 @@ let quizState = {
   wrongAnswers: []
 };
 
+function setQuizCategory(category) {
+  currentQuizCategory = category;
+
+  // Update button active state
+  const buttons = document.querySelectorAll('.quiz-mode-btn');
+  buttons.forEach(btn => {
+    const onclickAttr = btn.getAttribute('onclick') || '';
+    if (onclickAttr.includes(`'${category}'`)) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  if (category === 'all') {
+    activeQuizQuestions = [...ALL_QUIZ_QUESTIONS];
+  } else if (category === 'random10') {
+    activeQuizQuestions = [...ALL_QUIZ_QUESTIONS]
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 10);
+  } else {
+    activeQuizQuestions = ALL_QUIZ_QUESTIONS.filter(q => q.category === category);
+  }
+
+  quizInit();
+}
+
 function quizInit() {
   quizState = { current: 0, score: 0, answered: false, wrongAnswers: [] };
-  document.getElementById('quiz-results').style.display = 'none';
-  document.getElementById('quiz-card').style.display = 'block';
+  const resultsEl = document.getElementById('quiz-results');
+  const cardEl = document.getElementById('quiz-card');
+  if (resultsEl) resultsEl.style.display = 'none';
+  if (cardEl) cardEl.style.display = 'block';
   quizRender();
 }
 
 function quizRender() {
-  const q = QUIZ_QUESTIONS[quizState.current];
-  const total = QUIZ_QUESTIONS.length;
+  if (!activeQuizQuestions || activeQuizQuestions.length === 0) return;
+
+  const q = activeQuizQuestions[quizState.current];
+  const total = activeQuizQuestions.length;
 
   // Progress bar
-  document.getElementById('quiz-progress-bar').style.width =
-    ((quizState.current / total) * 100) + '%';
-  document.getElementById('quiz-counter').textContent =
-    `Question ${quizState.current + 1} of ${total}`;
-  document.getElementById('quiz-score-label').textContent =
-    `Score: ${quizState.score}`;
+  const progressBar = document.getElementById('quiz-progress-bar');
+  const counter = document.getElementById('quiz-counter');
+  const scoreLabel = document.getElementById('quiz-score-label');
 
-  document.getElementById('quiz-category').textContent = q.category;
-  document.getElementById('quiz-question').textContent = q.question;
-  document.getElementById('quiz-feedback').style.display = 'none';
-  document.getElementById('quiz-next-btn').style.display = 'none';
+  if (progressBar) {
+    progressBar.style.width = ((quizState.current / total) * 100) + '%';
+  }
+  if (counter) {
+    counter.textContent = `Question ${quizState.current + 1} of ${total}`;
+  }
+  if (scoreLabel) {
+    scoreLabel.textContent = `Score: ${quizState.score}`;
+  }
+
+  const catEl = document.getElementById('quiz-category');
+  const questionEl = document.getElementById('quiz-question');
+  const feedbackEl = document.getElementById('quiz-feedback');
+  const nextBtn = document.getElementById('quiz-next-btn');
+
+  if (catEl) {
+    const categoryLabels = {
+      'Shots': '🏸 Shots & Techniques',
+      'Rules': '📜 Rules & Faults',
+      'Scoring': '🔢 Scoring & Service',
+      'Court': '🏟️ Court & Equipment',
+      'History': '🏆 History & Strategy'
+    };
+    catEl.textContent = categoryLabels[q.category] || q.category;
+  }
+  if (questionEl) questionEl.textContent = q.question;
+  if (feedbackEl) feedbackEl.style.display = 'none';
+  if (nextBtn) nextBtn.style.display = 'none';
+
   quizState.answered = false;
 
   // Build option buttons
   const optionsEl = document.getElementById('quiz-options');
-  optionsEl.innerHTML = '';
-  q.options.forEach((opt, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'quiz-option';
-    btn.textContent = opt;
-    btn.onclick = () => quizAnswer(i);
-    optionsEl.appendChild(btn);
-  });
+  if (optionsEl) {
+    optionsEl.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-option';
+      btn.textContent = opt;
+      btn.onclick = () => quizAnswer(i);
+      optionsEl.appendChild(btn);
+    });
+  }
 }
 
 function quizAnswer(selectedIndex) {
   if (quizState.answered) return;
   quizState.answered = true;
 
-  const q = QUIZ_QUESTIONS[quizState.current];
+  const q = activeQuizQuestions[quizState.current];
   const correct = selectedIndex === q.answer;
   const options = document.querySelectorAll('.quiz-option');
 
@@ -324,21 +672,28 @@ function quizAnswer(selectedIndex) {
   }
 
   const feedback = document.getElementById('quiz-feedback');
-  feedback.style.display = 'block';
-  feedback.className = 'quiz-feedback ' + (correct ? 'feedback-correct' : 'feedback-wrong');
-  feedback.innerHTML = (correct ? '✅ <strong>Correct!</strong> ' : '❌ <strong>Wrong!</strong> ') + q.explanation;
+  if (feedback) {
+    feedback.style.display = 'block';
+    feedback.className = 'quiz-feedback ' + (correct ? 'feedback-correct' : 'feedback-wrong');
+    feedback.innerHTML = (correct ? '✅ <strong>Correct!</strong> ' : '❌ <strong>Wrong!</strong> ') + q.explanation;
+  }
 
   // Update score label immediately
-  document.getElementById('quiz-score-label').textContent = `Score: ${quizState.score}`;
+  const scoreLabel = document.getElementById('quiz-score-label');
+  if (scoreLabel) {
+    scoreLabel.textContent = `Score: ${quizState.score}`;
+  }
 
   const nextBtn = document.getElementById('quiz-next-btn');
-  nextBtn.style.display = 'inline-block';
-  const isLast = quizState.current === QUIZ_QUESTIONS.length - 1;
-  nextBtn.textContent = isLast ? '🏁 See Results' : 'Next Question →';
+  if (nextBtn) {
+    nextBtn.style.display = 'inline-block';
+    const isLast = quizState.current === activeQuizQuestions.length - 1;
+    nextBtn.textContent = isLast ? '🏁 View Final Results' : 'Next Question →';
+  }
 }
 
 function quizNext() {
-  if (quizState.current < QUIZ_QUESTIONS.length - 1) {
+  if (quizState.current < activeQuizQuestions.length - 1) {
     quizState.current++;
     quizRender();
   } else {
@@ -347,40 +702,54 @@ function quizNext() {
 }
 
 function quizShowResults() {
-  document.getElementById('quiz-card').style.display = 'none';
-  document.getElementById('quiz-results').style.display = 'block';
-  document.getElementById('quiz-progress-bar').style.width = '100%';
+  const cardEl = document.getElementById('quiz-card');
+  const resultsEl = document.getElementById('quiz-results');
+  const progressBar = document.getElementById('quiz-progress-bar');
+
+  if (cardEl) cardEl.style.display = 'none';
+  if (resultsEl) resultsEl.style.display = 'block';
+  if (progressBar) progressBar.style.width = '100%';
 
   const score = quizState.score;
-  const total = QUIZ_QUESTIONS.length;
+  const total = activeQuizQuestions.length;
+  const percentage = Math.round((score / total) * 100);
 
-  document.getElementById('quiz-final-score').textContent = `${score} / ${total}`;
-
-  let emoji, title, desc;
-  if (score === total) {
-    emoji = '🏆'; title = 'Perfect Score!'; desc = 'You\'re a true badminton expert. Incredible knowledge!';
-  } else if (score >= total * 0.8) {
-    emoji = '🥇'; title = 'Excellent!'; desc = 'You really know your badminton. Almost there!';
-  } else if (score >= total * 0.6) {
-    emoji = '🥈'; title = 'Good Job!'; desc = 'Solid knowledge — keep practicing and you\'ll ace it!';
-  } else if (score >= total * 0.4) {
-    emoji = '🥉'; title = 'Not Bad!'; desc = 'You know the basics. Read the Court & Shots sections to improve!';
-  } else {
-    emoji = '🏸'; title = 'Keep Learning!'; desc = 'Explore the guide above and try again — you\'ve got this!';
+  const finalScoreEl = document.getElementById('quiz-final-score');
+  if (finalScoreEl) {
+    finalScoreEl.textContent = `${score} / ${total} (${percentage}%)`;
   }
 
-  document.getElementById('quiz-result-emoji').textContent = emoji;
-  document.getElementById('quiz-result-title').textContent = title;
-  document.getElementById('quiz-result-desc').textContent = desc;
+  let emoji, title, desc;
+  if (percentage === 100) {
+    emoji = '🏆'; title = 'Flawless Master!'; desc = 'You scored 100%! You have Olympic-level badminton knowledge!';
+  } else if (percentage >= 80) {
+    emoji = '🥇'; title = 'Outstanding Champion!'; desc = 'Exceptional badminton knowledge. You truly know the sport inside out!';
+  } else if (percentage >= 60) {
+    emoji = '🥈'; title = 'Solid Performer!'; desc = 'Great job! You know the core rules and tactics very well.';
+  } else if (percentage >= 40) {
+    emoji = '🥉'; title = 'Club Competitor!'; desc = 'A decent effort! Review the court and shots guides to push higher.';
+  } else {
+    emoji = '🏸'; title = 'Keep Practicing!'; desc = 'Read through the guide above and try again — you will get better every round!';
+  }
+
+  const emojiEl = document.getElementById('quiz-result-emoji');
+  const titleEl = document.getElementById('quiz-result-title');
+  const descEl = document.getElementById('quiz-result-desc');
+
+  if (emojiEl) emojiEl.textContent = emoji;
+  if (titleEl) titleEl.textContent = title;
+  if (descEl) descEl.textContent = desc;
 
   const breakdown = document.getElementById('quiz-result-breakdown');
-  if (quizState.wrongAnswers.length > 0) {
-    breakdown.innerHTML = '<p class="breakdown-title">Review these answers:</p>' +
-      quizState.wrongAnswers.map(w =>
-        `<div class="breakdown-item">❌ ${w.q}<br><span class="breakdown-correct">✅ ${w.correct}</span></div>`
-      ).join('');
-  } else {
-    breakdown.innerHTML = '<p class="breakdown-title">🎯 You got every single question right!</p>';
+  if (breakdown) {
+    if (quizState.wrongAnswers.length > 0) {
+      breakdown.innerHTML = `<p class="breakdown-title">Review the ${quizState.wrongAnswers.length} question(s) you missed:</p>` +
+        quizState.wrongAnswers.map(w =>
+          `<div class="breakdown-item">❌ <strong>${w.q}</strong><br><span class="breakdown-correct">✅ Correct: ${w.correct}</span></div>`
+        ).join('');
+    } else {
+      breakdown.innerHTML = '<p class="breakdown-title">🎯 Perfect run! You did not miss a single question!</p>';
+    }
   }
 }
 
@@ -388,5 +757,5 @@ function quizRestart() {
   quizInit();
 }
 
-// Start the quiz on page load
+// Initialise quiz on load
 quizInit();

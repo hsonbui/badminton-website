@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -63,6 +63,15 @@
           <span class="stat-label">Olympic sport debut</span>
         </div>
       </div>
+
+      <!-- Shots Quiz CTA -->
+      <div class="shots-quiz-cta">
+        <div class="shots-quiz-cta-text">
+          <strong>Ready to put your shot knowledge to the test?</strong>
+          <p>Challenge yourself with the 50-Question Badminton Master Quiz!</p>
+        </div>
+        <a href="#quiz" class="btn btn-primary" onclick="setQuizCategory('Shots')">Take Shots Quiz (10) 🎯</a>
+      </div>
     </div>
   </section>
 
@@ -91,6 +100,15 @@
           <h3>Tactical Strategy</h3>
           <p>Success depends on deception, court geometry, exploiting opponent footwork, and subtle wrist flicks.</p>
         </div>
+      </div>
+
+      <!-- Shots Quiz CTA -->
+      <div class="shots-quiz-cta">
+        <div class="shots-quiz-cta-text">
+          <strong>Ready to put your shot knowledge to the test?</strong>
+          <p>Challenge yourself with the 50-Question Badminton Master Quiz!</p>
+        </div>
+        <a href="#quiz" class="btn btn-primary" onclick="setQuizCategory('Shots')">Take Shots Quiz (10) 🎯</a>
       </div>
     </div>
   </section>
@@ -156,6 +174,15 @@
             <li><strong>Score Odd:</strong> Server stands on the left service court.</li>
           </ul>
         </div>
+      </div>
+
+      <!-- Shots Quiz CTA -->
+      <div class="shots-quiz-cta">
+        <div class="shots-quiz-cta-text">
+          <strong>Ready to put your shot knowledge to the test?</strong>
+          <p>Challenge yourself with the 50-Question Badminton Master Quiz!</p>
+        </div>
+        <a href="#quiz" class="btn btn-primary" onclick="setQuizCategory('Shots')">Take Shots Quiz (10) 🎯</a>
       </div>
     </div>
   </section>
@@ -239,6 +266,15 @@
           </div>
         </div>
       </div>
+
+      <!-- Shots Quiz CTA -->
+      <div class="shots-quiz-cta">
+        <div class="shots-quiz-cta-text">
+          <strong>Ready to put your shot knowledge to the test?</strong>
+          <p>Challenge yourself with the 50-Question Badminton Master Quiz!</p>
+        </div>
+        <a href="#quiz" class="btn btn-primary" onclick="setQuizCategory('Shots')">Take Shots Quiz (10) 🎯</a>
+      </div>
     </div>
   </section>
 
@@ -282,6 +318,15 @@
             <li><strong>Grip:</strong> Overgrip (tacky or towel grip) absorbs sweat and prevents racket slipping.</li>
           </ul>
         </div>
+      </div>
+
+      <!-- Shots Quiz CTA -->
+      <div class="shots-quiz-cta">
+        <div class="shots-quiz-cta-text">
+          <strong>Ready to put your shot knowledge to the test?</strong>
+          <p>Challenge yourself with the 50-Question Badminton Master Quiz!</p>
+        </div>
+        <a href="#quiz" class="btn btn-primary" onclick="setQuizCategory('Shots')">Take Shots Quiz (10) 🎯</a>
       </div>
     </div>
   </section>
@@ -336,8 +381,19 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Interactive Game</span>
-        <h2>How Well Do You Know Badminton?</h2>
-        <p>Test your knowledge of rules, shots, and scoring with 10 questions. Can you get a perfect score?</p>
+        <h2>The 50-Question Badminton Master Quiz</h2>
+        <p>Test your comprehensive knowledge across all 5 key categories: shots, official rules, scoring systems, court boundaries, and world history.</p>
+      </div>
+
+      <!-- Category Filter Modes -->
+      <div class="quiz-modes">
+        <button class="quiz-mode-btn active" onclick="setQuizCategory('all')">🏆 All 50 Questions</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('Shots')">🏸 Key Shots (10)</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('Rules')">📜 Rules & Faults (10)</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('Scoring')">🔢 Scoring & Service (10)</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('Court')">🏟️ Court & Equipment (10)</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('History')">⭐ History & Strategy (10)</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('random10')">🎲 Quick Random 10</button>
       </div>
 
       <div class="quiz-wrapper">
@@ -346,13 +402,13 @@
           <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
         </div>
         <div class="quiz-meta">
-          <span id="quiz-counter">Question 1 of 10</span>
+          <span id="quiz-counter">Question 1 of 50</span>
           <span id="quiz-score-label">Score: 0</span>
         </div>
 
         <!-- Question Card -->
         <div class="quiz-card" id="quiz-card">
-          <div class="quiz-category" id="quiz-category">Rules</div>
+          <div class="quiz-category" id="quiz-category">🏸 Shots & Techniques</div>
           <h3 class="quiz-question" id="quiz-question">Loading...</h3>
           <div class="quiz-options" id="quiz-options"></div>
           <div class="quiz-feedback" id="quiz-feedback" style="display:none"></div>
@@ -364,13 +420,14 @@
           <div class="quiz-result-emoji" id="quiz-result-emoji">🏆</div>
           <h3 id="quiz-result-title">Amazing!</h3>
           <p id="quiz-result-desc">You really know your badminton!</p>
-          <div class="quiz-final-score" id="quiz-final-score">10 / 10</div>
+          <div class="quiz-final-score" id="quiz-final-score">50 / 50</div>
           <div class="quiz-result-breakdown" id="quiz-result-breakdown"></div>
           <button class="btn btn-primary" onclick="quizRestart()" style="margin-top:1.5rem">🔄 Play Again</button>
         </div>
       </div>
     </div>
   </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-content">

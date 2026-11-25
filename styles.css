@@ -975,3 +975,72 @@ a {
   color: #6ee7b7;
   font-weight: 600;
 }
+
+
+/* ==========================================================================
+   Shots CTA & Quiz Mode Filters
+   ========================================================================== */
+
+.shots-quiz-cta {
+  margin-top: 2.5rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(168, 85, 247, 0.08));
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.shots-quiz-cta-text strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.shots-quiz-cta-text p {
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.quiz-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.quiz-mode-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: var(--text-muted, #94a3b8);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.55rem 1.15rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.quiz-mode-btn:hover {
+  background: rgba(99, 102, 241, 0.18);
+  color: #fff;
+  border-color: rgba(99, 102, 241, 0.45);
+  transform: translateY(-1px);
+}
+
+.quiz-mode-btn.active {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
