@@ -27,19 +27,43 @@
         <a href="#facts" data-i18n="nav_facts">World Records</a>
         <a href="#court" data-i18n="nav_court">Court & Rules</a>
         <a href="#shots" data-i18n="nav_shots">Key Shots</a>
-        <a href="#language" data-i18n="nav_language">Language Guide</a>
         <a href="#gear" data-i18n="nav_gear">Equipment</a>
         <a href="#tracker" data-i18n="nav_tracker">Scorer</a>
         <a href="#quiz" data-i18n="nav_quiz">Quiz</a>
       </nav>
 
-      <!-- Language Switcher & Quiz Button -->
+      <!-- Single Language Switcher Button & Quiz Button -->
       <div class="lang-selector-group">
-        <div class="lang-selector" id="lang-selector" aria-label="Select Language">
-          <button class="lang-btn active" onclick="changeLanguage('en')" title="English">🇬🇧 EN</button>
-          <button class="lang-btn" onclick="changeLanguage('vi')" title="Tiếng Việt">🇻🇳 VI</button>
-          <button class="lang-btn" onclick="changeLanguage('zh')" title="中文">🇨🇳 中文</button>
-          <button class="lang-btn" onclick="changeLanguage('id')" title="Bahasa Indonesia">🇮🇩 ID</button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <button class="lang-dropdown-btn" id="lang-dropdown-btn" onclick="toggleLangDropdown(event)" aria-haspopup="true" aria-expanded="false" title="Change Language">
+            <span class="lang-current-flag" id="lang-current-flag">🇬🇧</span>
+            <span class="lang-current-text" id="lang-current-text">English</span>
+            <svg class="lang-chevron" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown-menu" id="lang-dropdown-menu" role="menu">
+            <button class="lang-option active" role="menuitem" onclick="selectLanguage('en', event)">
+              <span class="flag">🇬🇧</span>
+              <span class="lang-name">English</span>
+              <span class="check-icon">✓</span>
+            </button>
+            <button class="lang-option" role="menuitem" onclick="selectLanguage('vi', event)">
+              <span class="flag">🇻🇳</span>
+              <span class="lang-name">Tiếng Việt</span>
+              <span class="check-icon">✓</span>
+            </button>
+            <button class="lang-option" role="menuitem" onclick="selectLanguage('zh', event)">
+              <span class="flag">🇨🇳</span>
+              <span class="lang-name">中文</span>
+              <span class="check-icon">✓</span>
+            </button>
+            <button class="lang-option" role="menuitem" onclick="selectLanguage('id', event)">
+              <span class="flag">🇮🇩</span>
+              <span class="lang-name">Bahasa Indonesia</span>
+              <span class="check-icon">✓</span>
+            </button>
+          </div>
         </div>
         <a href="#quiz" class="btn btn-sm btn-primary nav-quiz-btn" data-i18n="nav_play_btn">🎮 Play Quiz</a>
       </div>
@@ -120,97 +144,97 @@
         <!-- Fact 1 -->
         <div class="fact-card highlight-card">
           <div class="fact-header">
-            <span class="fact-badge record-badge">Guinness World Record</span>
+            <span class="fact-badge record-badge" data-i18n="fact1_badge">Guinness World Record</span>
             <span class="fact-icon">🚀</span>
           </div>
           <div class="fact-stat">565 km/h</div>
-          <h3>The Fastest Smash in Human History</h3>
-          <p>In April 2023, India's <strong>Satwiksairaj Rankireddy</strong> smashed at an astronomical <strong>565 km/h (351.07 mph)</strong>, certified by Guinness World Records. Malaysia's <strong>Pearly Tan</strong> set the female record at <strong>438 km/h</strong> — both faster than Formula 1 cars (372 km/h)!</p>
-          <div class="fact-footer">Yonex Laboratory Test • Speed-certified</div>
+          <h3 data-i18n="fact1_title">The Fastest Smash in Human History</h3>
+          <p data-i18n="fact1_desc">In April 2023, India's <strong>Satwiksairaj Rankireddy</strong> smashed at an astronomical <strong>565 km/h (351.07 mph)</strong>, certified by Guinness World Records. Malaysia's <strong>Pearly Tan</strong> set the female record at <strong>438 km/h</strong> — both faster than Formula 1 cars (372 km/h)!</p>
+          <div class="fact-footer" data-i18n="fact1_foot">Yonex Laboratory Test • Speed-certified</div>
         </div>
 
         <!-- Fact 2 -->
         <div class="fact-card">
           <div class="fact-header">
-            <span class="fact-badge secret-badge">Aerodynamic Secret</span>
+            <span class="fact-badge secret-badge" data-i18n="fact2_badge">Aerodynamic Secret</span>
             <span class="fact-icon">🪶</span>
           </div>
-          <div class="fact-stat">16 Feathers</div>
-          <h3>Left-Wing Feathers Only</h3>
-          <p>Tournament-grade shuttlecocks exclusively use 16 feathers taken from the <strong>left wing</strong> of four geese. Feathers from the right wing spin in the opposite direction; mixing left and right feathers causes erratic tumbling and aerodynamic instability.</p>
-          <div class="fact-footer">BWF Tournament Standard • Goose Feathers</div>
+          <div class="fact-stat" data-i18n="fact2_stat">16 Feathers</div>
+          <h3 data-i18n="fact2_title">Left-Wing Feathers Only</h3>
+          <p data-i18n="fact2_desc">Tournament-grade shuttlecocks exclusively use 16 feathers taken from the <strong>left wing</strong> of four geese. Feathers from the right wing spin in the opposite direction; mixing left and right feathers causes erratic tumbling and aerodynamic instability.</p>
+          <div class="fact-footer" data-i18n="fact2_foot">BWF Tournament Standard • Goose Feathers</div>
         </div>
 
         <!-- Fact 3 -->
         <div class="fact-card">
           <div class="fact-header">
-            <span class="fact-badge marathon-badge">Endurance Feat</span>
+            <span class="fact-badge marathon-badge" data-i18n="fact3_badge">Endurance Feat</span>
             <span class="fact-icon">⚔️</span>
           </div>
-          <div class="fact-stat">211 Shots</div>
-          <h3>The Longest Rally in History</h3>
-          <p>At the 2023 Malaysia Masters, Pearly Tan / M. Thinaah and Rena Miyaura / Ayako Sakuramoto fought for <strong>3 minutes and 30 seconds across 211 consecutive shots</strong> before a winner was decided — leaving all four players collapsed in exhaustion.</p>
-          <div class="fact-footer">Malaysia Masters 2023 • BWF World Record</div>
+          <div class="fact-stat" data-i18n="fact3_stat">211 Shots</div>
+          <h3 data-i18n="fact3_title">The Longest Rally in History</h3>
+          <p data-i18n="fact3_desc">At the 2023 Malaysia Masters, Pearly Tan / M. Thinaah and Rena Miyaura / Ayako Sakuramoto fought for <strong>3 minutes and 30 seconds across 211 consecutive shots</strong> before a winner was decided — leaving all four players collapsed in exhaustion.</p>
+          <div class="fact-footer" data-i18n="fact3_foot">Malaysia Masters 2023 • BWF World Record</div>
         </div>
 
         <!-- Fact 4 -->
         <div class="fact-card">
           <div class="fact-header">
-            <span class="fact-badge stats-badge">Cardio Comparison</span>
+            <span class="fact-badge stats-badge" data-i18n="fact4_badge">Cardio Comparison</span>
             <span class="fact-icon">🏃</span>
           </div>
-          <div class="fact-stat">2x Tennis Distance</div>
-          <h3>More Running Than Tennis</h3>
-          <p>In a 75-minute badminton match, a player runs roughly <strong>6.4 km (4 miles)</strong> with 1,900+ explosive lunges. In a 3-hour tennis match, players cover only ~3.2 km, because the shuttlecock is active <strong>48% of match time</strong> vs tennis's 18%!</p>
-          <div class="fact-footer">Physiology Research • Elite Match Tracking</div>
+          <div class="fact-stat" data-i18n="fact4_stat">2x Tennis Distance</div>
+          <h3 data-i18n="fact4_title">More Running Than Tennis</h3>
+          <p data-i18n="fact4_desc">In a 75-minute badminton match, a player runs roughly <strong>6.4 km (4 miles)</strong> with 1,900+ explosive lunges. In a 3-hour tennis match, players cover only ~3.2 km, because the shuttlecock is active <strong>48% of match time</strong> vs tennis's 18%!</p>
+          <div class="fact-footer" data-i18n="fact4_foot">Physiology Research • Elite Match Tracking</div>
         </div>
 
         <!-- Fact 5 -->
         <div class="fact-card">
           <div class="fact-header">
-            <span class="fact-badge history-badge">Origins</span>
+            <span class="fact-badge history-badge" data-i18n="fact5_badge">Origins</span>
             <span class="fact-icon">🏛️</span>
           </div>
-          <div class="fact-stat">1860s "Poona"</div>
-          <h3>Born in Pune, Named in England</h3>
-          <p>British army officers stationed in Pune (Poona), India in the 1860s added a net to the traditional game of battledore. The Duke of Beaufort introduced it to British society at his ancestral estate, <strong>Badminton House</strong>, giving the sport its permanent name in 1873.</p>
-          <div class="fact-footer">Badminton House, England • Historic Heritage</div>
+          <div class="fact-stat" data-i18n="fact5_stat">1860s "Poona"</div>
+          <h3 data-i18n="fact5_title">Born in Pune, Named in England</h3>
+          <p data-i18n="fact5_desc">British army officers stationed in Pune (Poona), India in the 1860s added a net to the traditional game of battledore. The Duke of Beaufort introduced it to British society at his ancestral estate, <strong>Badminton House</strong>, giving the sport its permanent name in 1873.</p>
+          <div class="fact-footer" data-i18n="fact5_foot">Badminton House, England • Historic Heritage</div>
         </div>
 
         <!-- Fact 6 -->
         <div class="fact-card">
           <div class="fact-header">
-            <span class="fact-badge global-badge">Global Popularity</span>
+            <span class="fact-badge global-badge" data-i18n="fact6_badge">Global Popularity</span>
             <span class="fact-icon">🌍</span>
           </div>
-          <div class="fact-stat">220M+ Players</div>
-          <h3>#2 Most Played Sport on Earth</h3>
-          <p>With more than <strong>220 million active participants</strong>, badminton ranks as the second most played sport worldwide, behind only association football (soccer). Over 1.1 billion viewers watched Olympic badminton broadcasts in Tokyo and Paris.</p>
-          <div class="fact-footer">BWF Global Census • IOC Olympic Broadcaster Data</div>
+          <div class="fact-stat" data-i18n="fact6_stat">220M+ Players</div>
+          <h3 data-i18n="fact6_title">#2 Most Played Sport on Earth</h3>
+          <p data-i18n="fact6_desc">With more than <strong>220 million active participants</strong>, badminton ranks as the second most played sport worldwide, behind only association football (soccer). Over 1.1 billion viewers watched Olympic badminton broadcasts in Tokyo and Paris.</p>
+          <div class="fact-footer" data-i18n="fact6_foot">BWF Global Census • IOC Olympic Broadcaster Data</div>
         </div>
 
         <!-- Fact 7 -->
         <div class="fact-card">
           <div class="fact-header">
-            <span class="fact-badge legend-badge">All-Time Legend</span>
+            <span class="fact-badge legend-badge" data-i18n="fact7_badge">All-Time Legend</span>
             <span class="fact-icon">👑</span>
           </div>
-          <div class="fact-stat">Super Grand Slam</div>
-          <h3>Lin Dan's Unbeatable Feat</h3>
-          <p>China's <strong>Lin Dan ("Super Dan")</strong> achieved what no other badminton player has ever accomplished: completing the full <em>Super Grand Slam</em> by winning all 9 major global tournaments by age 28, including 2 Olympic Golds and 5 World Championships.</p>
-          <div class="fact-footer">2x Olympic Gold • 5x World Champion</div>
+          <div class="fact-stat" data-i18n="fact7_stat">Super Grand Slam</div>
+          <h3 data-i18n="fact7_title">Lin Dan's Unbeatable Feat</h3>
+          <p data-i18n="fact7_desc">China's <strong>Lin Dan ("Super Dan")</strong> achieved what no other badminton player has ever accomplished: completing the full <em>Super Grand Slam</em> by winning all 9 major global tournaments by age 28, including 2 Olympic Golds and 5 World Championships.</p>
+          <div class="fact-footer" data-i18n="fact7_foot">2x Olympic Gold • 5x World Champion</div>
         </div>
 
         <!-- Fact 8 -->
         <div class="fact-card">
           <div class="fact-header">
-            <span class="fact-badge physics-badge">Aerodynamics</span>
+            <span class="fact-badge physics-badge" data-i18n="fact8_badge">Aerodynamics</span>
             <span class="fact-icon">🛑</span>
           </div>
-          <div class="fact-stat">90% Deceleration</div>
-          <h3>Extreme Speed Braking in Sport</h3>
-          <p>A shuttlecock loses up to <strong>90% of its initial velocity</strong> within its 13.4m journey due to the extreme conical drag of its feathers. This sharp deceleration creates the dramatic vertical parachute drop that makes defensive returns possible.</p>
-          <div class="fact-footer">Aerodynamics of Sports Projectiles</div>
+          <div class="fact-stat" data-i18n="fact8_stat">90% Deceleration</div>
+          <h3 data-i18n="fact8_title">Extreme Speed Braking in Sport</h3>
+          <p data-i18n="fact8_desc">A shuttlecock loses up to <strong>90% of its initial velocity</strong> within its 13.4m journey due to the extreme conical drag of its feathers. This sharp deceleration creates the dramatic vertical parachute drop that makes defensive returns possible.</p>
+          <div class="fact-footer" data-i18n="fact8_foot">Aerodynamics of Sports Projectiles</div>
         </div>
       </div>
     </div>
@@ -257,12 +281,12 @@
           <circle cx="300" cy="10" r="4" class="net-post"/>
           <circle cx="300" cy="310" r="4" class="net-post"/>
 
-          <!-- Labels -->
-          <text x="300" y="8" class="court-label net-label" text-anchor="middle">NET</text>
-          <text x="130" y="90" class="court-label" text-anchor="middle">Left Service Court</text>
-          <text x="130" y="240" class="court-label" text-anchor="middle">Right Service Court</text>
-          <text x="470" y="90" class="court-label" text-anchor="middle">Right Service Court</text>
-          <text x="470" y="240" class="court-label" text-anchor="middle">Left Service Court</text>
+          <!-- SVG Labels with i18n -->
+          <text x="300" y="8" class="court-label net-label" text-anchor="middle" data-i18n="court_net">NET</text>
+          <text x="130" y="90" class="court-label" text-anchor="middle" data-i18n="court_svc_left">Left Service Court</text>
+          <text x="130" y="240" class="court-label" text-anchor="middle" data-i18n="court_svc_right">Right Service Court</text>
+          <text x="470" y="90" class="court-label" text-anchor="middle" data-i18n="court_svc_right">Right Service Court</text>
+          <text x="470" y="240" class="court-label" text-anchor="middle" data-i18n="court_svc_left">Left Service Court</text>
         </svg>
 
         <div class="court-explanation">
@@ -291,58 +315,58 @@
       </div>
 
       <div class="shots-grid">
-        <div class="shot-card" onclick="selectShot(0)">
+        <div class="shot-card active" onclick="selectShot(0)">
           <div class="shot-header">
-            <span class="shot-badge offensive">Offensive</span>
-            <h3>The Forehand Smash</h3>
+            <span class="shot-badge offensive" data-i18n="shot0_badge">Offensive</span>
+            <h3 data-i18n="shot0_title">The Forehand Smash</h3>
           </div>
-          <p class="shot-desc">The primary attacking weapon hit with steep downward trajectory and maximum power.</p>
+          <p class="shot-desc" data-i18n="shot0_desc">The primary attacking weapon hit with steep downward trajectory and maximum power.</p>
           <div class="shot-meta">
-            <span><strong>Target:</strong> Midcourt open floor / Body</span>
+            <span data-i18n="shot0_target"><strong>Target:</strong> Midcourt open floor / Body</span>
           </div>
         </div>
 
         <div class="shot-card" onclick="selectShot(1)">
           <div class="shot-header">
-            <span class="shot-badge strategic">Tactical</span>
-            <h3>The Drop Shot</h3>
+            <span class="shot-badge strategic" data-i18n="shot1_badge">Tactical</span>
+            <h3 data-i18n="shot1_title">The Drop Shot</h3>
           </div>
-          <p class="shot-desc">A delicate deception stroke disguised as a clear/smash that dips just over the net.</p>
+          <p class="shot-desc" data-i18n="shot1_desc">A delicate deception stroke disguised as a clear/smash that dips just over the net.</p>
           <div class="shot-meta">
-            <span><strong>Target:</strong> Opponent front court corners</span>
+            <span data-i18n="shot1_target"><strong>Target:</strong> Opponent front court corners</span>
           </div>
         </div>
 
         <div class="shot-card" onclick="selectShot(2)">
           <div class="shot-header">
-            <span class="shot-badge defensive">Defensive / Baseline</span>
-            <h3>The Clear (Lob)</h3>
+            <span class="shot-badge defensive" data-i18n="shot2_badge">Defensive / Baseline</span>
+            <h3 data-i18n="shot2_title">The Clear (Lob)</h3>
           </div>
-          <p class="shot-desc">A deep high shot pushing the opponent back to their rear boundary to reset tempo.</p>
+          <p class="shot-desc" data-i18n="shot2_desc">A deep high shot pushing the opponent back to their rear boundary to reset tempo.</p>
           <div class="shot-meta">
-            <span><strong>Target:</strong> Rear boundary baseline</span>
+            <span data-i18n="shot2_target"><strong>Target:</strong> Rear boundary baseline</span>
           </div>
         </div>
 
         <div class="shot-card" onclick="selectShot(3)">
           <div class="shot-header">
-            <span class="shot-badge aggressive">Aggressive</span>
-            <h3>The Net Kill</h3>
+            <span class="shot-badge aggressive" data-i18n="shot3_badge">Aggressive</span>
+            <h3 data-i18n="shot3_title">The Net Kill</h3>
           </div>
-          <p class="shot-desc">A quick wrist flick at the tape against a weak tumbling return from the opponent.</p>
+          <p class="shot-desc" data-i18n="shot3_desc">A quick wrist flick at the tape against a weak tumbling return from the opponent.</p>
           <div class="shot-meta">
-            <span><strong>Target:</strong> Steep downward into forecourt</span>
+            <span data-i18n="shot3_target"><strong>Target:</strong> Steep downward into forecourt</span>
           </div>
         </div>
 
         <div class="shot-card" onclick="selectShot(4)">
           <div class="shot-header">
-            <span class="shot-badge fast">Speed Rally</span>
-            <h3>The Drive</h3>
+            <span class="shot-badge fast" data-i18n="shot4_badge">Speed Rally</span>
+            <h3 data-i18n="shot4_title">The Drive</h3>
           </div>
-          <p class="shot-desc">A flat, aggressive horizontal shot skimming the net, vital for fast doubles exchanges.</p>
+          <p class="shot-desc" data-i18n="shot4_desc">A flat, aggressive horizontal shot skimming the net, vital for fast doubles exchanges.</p>
           <div class="shot-meta">
-            <span><strong>Target:</strong> Opponent body or sidelines</span>
+            <span data-i18n="shot4_target"><strong>Target:</strong> Opponent body or sidelines</span>
           </div>
         </div>
       </div>
@@ -356,7 +380,7 @@
             Position yourself behind the shuttlecock, transfer weight from back to front foot, extend your racket arm at the highest point, and snap your forearm and wrist downward with full pronation.
           </p>
           <div class="detail-tips">
-            <strong>Pro Tip:</strong> <em>Aim for steep angle rather than pure brute strength; a steep smash is much harder to retrieve than a flat fast one.</em>
+            <strong data-i18n="pro_tip_label">Pro Tip:</strong> <em id="detail-tip-text">Aim for steep angle rather than pure brute strength; a steep smash is much harder to retrieve than a flat fast one.</em>
           </div>
         </div>
       </div>
@@ -364,150 +388,10 @@
       <!-- Shots Quiz CTA -->
       <div class="shots-quiz-cta">
         <div class="shots-quiz-cta-text">
-          <strong>Ready to put your shot knowledge to the test?</strong>
-          <p>Challenge yourself with the 50-Question Badminton Master Quiz!</p>
+          <strong data-i18n="shots_cta_title">Ready to put your shot knowledge to the test?</strong>
+          <p data-i18n="shots_cta_desc">Challenge yourself with the 50-Question Badminton Master Quiz!</p>
         </div>
-        <a href="#quiz" class="btn btn-primary" onclick="setQuizCategory('Shots')">Take Shots Quiz (10) 🎯</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Global Language Guide Section -->
-  <section id="language" class="section language-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag" data-i18n="lang_tag">Multilingual Terminology</span>
-        <h2 data-i18n="lang_title">Badminton in Every Language</h2>
-        <p data-i18n="lang_subtitle">Badminton unites continents. Compare essential badminton terminology across English, Tiếng Việt, 中文 (Chinese), and Bahasa Indonesia.</p>
-      </div>
-
-      <!-- Language Selector Tabs in Section -->
-      <div class="glossary-tabs">
-        <button class="glossary-tab active" onclick="switchGlossaryTab('all')">🌐 All 4 Languages</button>
-        <button class="glossary-tab" onclick="switchGlossaryTab('en')">🇬🇧 English Standard</button>
-        <button class="glossary-tab" onclick="switchGlossaryTab('vi')">🇻🇳 Tiếng Việt</button>
-        <button class="glossary-tab" onclick="switchGlossaryTab('zh')">🇨🇳 中文 (Mandarin)</button>
-        <button class="glossary-tab" onclick="switchGlossaryTab('id')">🇮🇩 Bahasa Indonesia</button>
-      </div>
-
-      <!-- Comparative Glossary Table -->
-      <div class="glossary-table-container">
-        <table class="glossary-table" id="glossary-table">
-          <thead>
-            <tr>
-              <th>Stroke / Term</th>
-              <th>🇬🇧 English</th>
-              <th>🇻🇳 Tiếng Việt</th>
-              <th>🇨🇳 中文 (Mandarin)</th>
-              <th>🇮🇩 Bahasa Indonesia</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Smash</strong></td>
-              <td>Forehand Smash</td>
-              <td><span class="term-badge vi">Đập cầu</span></td>
-              <td><span class="term-badge zh">扣杀 (Kòushā)</span></td>
-              <td><span class="term-badge id">Smash Keras</span></td>
-            </tr>
-            <tr>
-              <td><strong>Drop Shot</strong></td>
-              <td>Deceptive Drop</td>
-              <td><span class="term-badge vi">Bỏ nhỏ / Chém cầu</span></td>
-              <td><span class="term-badge zh">吊球 / 劈吊 (Diàoqiú)</span></td>
-              <td><span class="term-badge id">Dropshot Halus</span></td>
-            </tr>
-            <tr>
-              <td><strong>Clear / Lob</strong></td>
-              <td>Overhead Clear</td>
-              <td><span class="term-badge vi">Phông cầu / Lốp cầu</span></td>
-              <td><span class="term-badge zh">高远球 (Gāoyuǎnqiú)</span></td>
-              <td><span class="term-badge id">Pukulan Lob</span></td>
-            </tr>
-            <tr>
-              <td><strong>Drive</strong></td>
-              <td>Flat Drive</td>
-              <td><span class="term-badge vi">Tạt cầu / Bạt cầu</span></td>
-              <td><span class="term-badge zh">平抽球 (Píngchōuqiú)</span></td>
-              <td><span class="term-badge id">Drive Cepat</span></td>
-            </tr>
-            <tr>
-              <td><strong>Net Kill</strong></td>
-              <td>Net Brush / Kill</td>
-              <td><span class="term-badge vi">Vồ cầu / Đập lưới</span></td>
-              <td><span class="term-badge zh">扑球 / 封网 (Pūqiú)</span></td>
-              <td><span class="term-badge id">Sambaran Net</span></td>
-            </tr>
-            <tr>
-              <td><strong>Tumbling Net</strong></td>
-              <td>Spinning Net Shot</td>
-              <td><span class="term-badge vi">Vê cầu / Lăn lưới</span></td>
-              <td><span class="term-badge zh">搓球 / 滚网球 (Cuōqiú)</span></td>
-              <td><span class="term-badge id">Netting Tipis</span></td>
-            </tr>
-            <tr>
-              <td><strong>Underhand Lift</strong></td>
-              <td>Defensive Lift</td>
-              <td><span class="term-badge vi">Hất cầu / Búng cầu</span></td>
-              <td><span class="term-badge zh">挑球 (Tiǎoqiú)</span></td>
-              <td><span class="term-badge id">Angkat Bola (Lift)</span></td>
-            </tr>
-            <tr>
-              <td><strong>Service</strong></td>
-              <td>Low / High Serve</td>
-              <td><span class="term-badge vi">Giao cầu / Phát cầu</span></td>
-              <td><span class="term-badge zh">发球 (Fāqiú)</span></td>
-              <td><span class="term-badge id">Servis Pendek / Panjang</span></td>
-            </tr>
-            <tr>
-              <td><strong>Fault</strong></td>
-              <td>Illegal Action</td>
-              <td><span class="term-badge vi">Phạm quy / Lỗi cầu</span></td>
-              <td><span class="term-badge zh">违例 (Wéilì)</span></td>
-              <td><span class="term-badge id">Pelanggaran (Fault)</span></td>
-            </tr>
-            <tr>
-              <td><strong>Deuce</strong></td>
-              <td>20-20 Sudden Lead</td>
-              <td><span class="term-badge vi">Hòa điểm (20-20)</span></td>
-              <td><span class="term-badge zh">追平加分 (Zhuīpíng)</span></td>
-              <td><span class="term-badge id">Jus (Deuce)</span></td>
-            </tr>
-            <tr>
-              <td><strong>Rally</strong></td>
-              <td>Continuous Play</td>
-              <td><span class="term-badge vi">Pha cầu / Hiệp đấu</span></td>
-              <td><span class="term-badge zh">回合 (Huíhé)</span></td>
-              <td><span class="term-badge id">Rally Panjang</span></td>
-            </tr>
-            <tr>
-              <td><strong>Shuttlecock</strong></td>
-              <td>Birdie / Shuttle</td>
-              <td><span class="term-badge vi">Quả cầu lông</span></td>
-              <td><span class="term-badge zh">羽毛球 (Yǔmáoqiú)</span></td>
-              <td><span class="term-badge id">Kok / Shuttlecock</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Cultural Language Spotlight Cards -->
-      <div class="lang-culture-grid">
-        <div class="culture-card">
-          <div class="culture-flag">🇻🇳</div>
-          <h3>Việt Nam — Đam Mê Cầu Lông</h3>
-          <p>In Vietnam, badminton is a vibrant everyday sport found in parks, alleys, and stadiums at sunrise. Famous legends like <strong>Nguyễn Tiến Minh</strong> (former World #5) and rising star <strong>Nguyễn Thùy Linh</strong> have inspired millions to pick up rackets.</p>
-        </div>
-        <div class="culture-card">
-          <div class="culture-flag">🇨🇳</div>
-          <h3>中国 — 国羽荣耀 (China Badminton)</h3>
-          <p>China holds the record for the most Olympic badminton gold medals (20+), boasting all-time icons like <strong>Lin Dan</strong>, <strong>Chen Long</strong>, and <strong>Zhang Ning</strong>. Badminton is deeply integrated into school and university physical education.</p>
-        </div>
-        <div class="culture-card">
-          <div class="culture-flag">🇮🇩</div>
-          <h3>Indonesia — "Bulutangkis" Fever</h3>
-          <p>Badminton is Indonesia's undisputed national pride. The deafening roar of the Istora Senayan stadium and the legendary legacy of <strong>Rudy Hartono</strong>, <strong>Susi Susanti</strong>, and <strong>Taufik Hidayat</strong> define the country's sporting soul.</p>
-        </div>
+        <a href="#quiz" class="btn btn-primary" onclick="setQuizCategory('Shots')" data-i18n="shots_cta_btn">Take Shots Quiz (10) 🎯</a>
       </div>
     </div>
   </section>
@@ -524,32 +408,32 @@
       <div class="gear-grid">
         <div class="gear-card">
           <div class="gear-icon">🏸</div>
-          <h3>Rackets</h3>
+          <h3 data-i18n="gear1_title">Rackets</h3>
           <ul>
-            <li><strong>Head-Heavy:</strong> Powerful smashes, slower defense.</li>
-            <li><strong>Head-Light:</strong> Fast reflex defense, doubles play.</li>
-            <li><strong>Even-Balance:</strong> Versatile all-around play.</li>
-            <li><strong>Weights:</strong> 3U (85-89g), 4U (80-84g - most popular).</li>
+            <li data-i18n="gear1_li1"><strong>Head-Heavy:</strong> Powerful smashes, slower defense.</li>
+            <li data-i18n="gear1_li2"><strong>Head-Light:</strong> Fast reflex defense, doubles play.</li>
+            <li data-i18n="gear1_li3"><strong>Even-Balance:</strong> Versatile all-around play.</li>
+            <li data-i18n="gear1_li4"><strong>Weights:</strong> 3U (85-89g), 4U (80-84g - most popular).</li>
           </ul>
         </div>
 
         <div class="gear-card">
           <div class="gear-icon">🪶</div>
-          <h3>Shuttlecocks</h3>
+          <h3 data-i18n="gear2_title">Shuttlecocks</h3>
           <ul>
-            <li><strong>Feather (Goose/Duck):</strong> Authentic flight trajectory, required for tournament competition.</li>
-            <li><strong>Nylon / Plastic:</strong> Highly durable, cost-effective for casual games and training.</li>
-            <li><strong>Speed Ratings:</strong> Rated 76-78 depending on temperature and altitude.</li>
+            <li data-i18n="gear2_li1"><strong>Feather (Goose/Duck):</strong> Authentic flight trajectory, required for tournament competition.</li>
+            <li data-i18n="gear2_li2"><strong>Nylon / Plastic:</strong> Highly durable, cost-effective for casual games and training.</li>
+            <li data-i18n="gear2_li3"><strong>Speed Ratings:</strong> Rated 76-78 depending on temperature and altitude.</li>
           </ul>
         </div>
 
         <div class="gear-card">
           <div class="gear-icon">👟</div>
-          <h3>Shoes & Grip</h3>
+          <h3 data-i18n="gear3_title">Shoes & Grip</h3>
           <ul>
-            <li><strong>Non-Marking Sole:</strong> Gum-rubber sole required on indoor synthetic and wooden courts.</li>
-            <li><strong>Lateral Support:</strong> Protects ankles from sudden lunge stops and direction switches.</li>
-            <li><strong>Grip:</strong> Overgrip (tacky or towel grip) absorbs sweat and prevents racket slipping.</li>
+            <li data-i18n="gear3_li1"><strong>Non-Marking Sole:</strong> Gum-rubber sole required on indoor synthetic and wooden courts.</li>
+            <li data-i18n="gear3_li2"><strong>Lateral Support:</strong> Protects ankles from sudden lunge stops and direction switches.</li>
+            <li data-i18n="gear3_li3"><strong>Grip:</strong> Overgrip (tacky or towel grip) absorbs sweat and prevents racket slipping.</li>
           </ul>
         </div>
       </div>
@@ -567,27 +451,27 @@
 
       <div class="scoreboard-container">
         <div class="score-card team-a">
-          <h3 class="team-name" id="name-a" contenteditable="true">Player 1</h3>
+          <h3 class="team-name" id="name-a" contenteditable="true" data-i18n="player_1">Player 1</h3>
           <div class="score-display" id="score-a">0</div>
           <div class="score-controls">
-            <button class="btn btn-score" onclick="addPoint('a', 1)">+1 Point</button>
+            <button class="btn btn-score" onclick="addPoint('a', 1)" data-i18n="score_add">+1 Point</button>
             <button class="btn btn-score btn-sub" onclick="addPoint('a', -1)">-1</button>
           </div>
           <span class="serving-indicator" id="serve-a">🏸 Serving</span>
         </div>
 
         <div class="scoreboard-center">
-          <div class="game-badge">Game 1 of 3</div>
+          <div class="game-badge" data-i18n="game_badge">Game 1 of 3</div>
           <div class="vs-text">VS</div>
           <div class="service-hint" id="service-hint">Server: Player 1 (Right court)</div>
-          <button class="btn btn-reset" onclick="resetScores()">Reset Match</button>
+          <button class="btn btn-reset" onclick="resetScores()" data-i18n="btn_reset">Reset Match</button>
         </div>
 
         <div class="score-card team-b">
-          <h3 class="team-name" id="name-b" contenteditable="true">Player 2</h3>
+          <h3 class="team-name" id="name-b" contenteditable="true" data-i18n="player_2">Player 2</h3>
           <div class="score-display" id="score-b">0</div>
           <div class="score-controls">
-            <button class="btn btn-score" onclick="addPoint('b', 1)">+1 Point</button>
+            <button class="btn btn-score" onclick="addPoint('b', 1)" data-i18n="score_add">+1 Point</button>
             <button class="btn btn-score btn-sub" onclick="addPoint('b', -1)">-1</button>
           </div>
           <span class="serving-indicator" id="serve-b"></span>
@@ -611,13 +495,13 @@
 
       <!-- Category Filter Modes -->
       <div class="quiz-modes">
-        <button class="quiz-mode-btn active" onclick="setQuizCategory('all')">🏆 All 50 Questions</button>
-        <button class="quiz-mode-btn" onclick="setQuizCategory('Shots')">🏸 Key Shots (10)</button>
-        <button class="quiz-mode-btn" onclick="setQuizCategory('Rules')">📜 Rules & Faults (10)</button>
-        <button class="quiz-mode-btn" onclick="setQuizCategory('Scoring')">🔢 Scoring & Service (10)</button>
-        <button class="quiz-mode-btn" onclick="setQuizCategory('Court')">🏟️ Court & Equipment (10)</button>
-        <button class="quiz-mode-btn" onclick="setQuizCategory('History')">⭐ History & Strategy (10)</button>
-        <button class="quiz-mode-btn" onclick="setQuizCategory('random10')">🎲 Quick Random 10</button>
+        <button class="quiz-mode-btn active" onclick="setQuizCategory('all')" data-i18n="quiz_btn_all">🏆 All 50 Questions</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('Shots')" data-i18n="quiz_btn_shots">🏸 Key Shots (10)</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('Rules')" data-i18n="quiz_btn_rules">📜 Rules & Faults (10)</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('Scoring')" data-i18n="quiz_btn_scoring">🔢 Scoring & Service (10)</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('Court')" data-i18n="quiz_btn_court">🏟️ Court & Equipment (10)</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('History')" data-i18n="quiz_btn_history">⭐ History & Strategy (10)</button>
+        <button class="quiz-mode-btn" onclick="setQuizCategory('random10')" data-i18n="quiz_btn_random">🎲 Quick Random 10</button>
       </div>
 
       <div class="quiz-wrapper">
@@ -636,17 +520,17 @@
           <h3 class="quiz-question" id="quiz-question">Loading...</h3>
           <div class="quiz-options" id="quiz-options"></div>
           <div class="quiz-feedback" id="quiz-feedback" style="display:none"></div>
-          <button class="btn btn-primary quiz-next-btn" id="quiz-next-btn" style="display:none" onclick="quizNext()">Next Question →</button>
+          <button class="btn btn-primary quiz-next-btn" id="quiz-next-btn" style="display:none" onclick="quizNext()" data-i18n="quiz_btn_next">Next Question →</button>
         </div>
 
         <!-- Results Screen (hidden initially) -->
         <div class="quiz-results" id="quiz-results" style="display:none">
           <div class="quiz-result-emoji" id="quiz-result-emoji">🏆</div>
-          <h3 id="quiz-result-title">Amazing!</h3>
-          <p id="quiz-result-desc">You really know your badminton!</p>
+          <h3 id="quiz-result-title" data-i18n="quiz_res_title">Amazing!</h3>
+          <p id="quiz-result-desc" data-i18n="quiz_res_desc">You really know your badminton!</p>
           <div class="quiz-final-score" id="quiz-final-score">50 / 50</div>
           <div class="quiz-result-breakdown" id="quiz-result-breakdown"></div>
-          <button class="btn btn-primary" onclick="quizRestart()" style="margin-top:1.5rem">🔄 Play Again</button>
+          <button class="btn btn-primary" onclick="quizRestart()" style="margin-top:1.5rem" data-i18n="quiz_btn_restart">🔄 Play Again</button>
         </div>
       </div>
     </div>
@@ -657,10 +541,10 @@
     <div class="container footer-content">
       <div class="footer-brand">
         <h3>SmashPoint</h3>
-        <p>A comprehensive introduction to the world's most exciting racket sport.</p>
+        <p data-i18n="footer_desc">A comprehensive introduction to the world's most exciting racket sport.</p>
       </div>
       <div class="footer-links">
-        <p>&copy; 2026 SmashPoint Badminton Guide. Created for badminton enthusiasts worldwide.</p>
+        <p data-i18n="footer_copy">&copy; 2026 SmashPoint Badminton Guide. Created for badminton enthusiasts worldwide.</p>
       </div>
     </div>
   </footer>

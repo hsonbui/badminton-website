@@ -1192,37 +1192,134 @@ a {
   gap: 0.75rem;
 }
 
-.lang-selector {
-  display: flex;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  padding: 3px;
-  gap: 2px;
+/* ==========================================================================
+   Language Dropdown (Single Button Switcher)
+   ========================================================================== */
+
+.lang-dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-.lang-btn {
-  background: transparent;
-  border: none;
+.lang-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f1f5f9;
+  padding: 0.42rem 0.85rem;
   border-radius: 999px;
-  color: var(--text-muted, #94a3b8);
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding: 4px 9px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.lang-dropdown-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.lang-dropdown-btn:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+.lang-chevron {
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted, #94a3b8);
+  transition: transform 0.2s ease;
+}
+
+.lang-dropdown.open .lang-chevron {
+  transform: rotate(180deg);
+}
+
+.lang-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 175px;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.85rem;
+  padding: 0.35rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 1000;
+  backdrop-filter: blur(16px);
+  animation: dropdownFadeIn 0.18s ease-out;
+}
+
+.lang-dropdown.open .lang-dropdown-menu {
+  display: flex;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: #cbd5e1;
   font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border-radius: 0.55rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
 }
 
-.lang-btn:hover {
+.lang-option:hover {
+  background: rgba(99, 102, 241, 0.15);
   color: #fff;
-  background: rgba(255, 255, 255, 0.1);
 }
 
-.lang-btn.active {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+.lang-option .flag {
+  font-size: 1rem;
+}
+
+.lang-option .lang-name {
+  flex: 1;
+}
+
+.lang-option .check-icon {
+  font-size: 0.75rem;
+  color: #34d399;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.lang-option.active {
+  background: rgba(99, 102, 241, 0.22);
+  color: #818cf8;
+  font-weight: 700;
+}
+
+.lang-option.active .check-icon {
+  opacity: 1;
 }
 
 /* ==========================================================================
@@ -1321,131 +1418,4 @@ a {
   padding-top: 0.75rem;
 }
 
-/* ==========================================================================
-   Global Language Guide Section
-   ========================================================================== */
 
-.language-section {
-  background: var(--bg-secondary, #0f172a);
-}
-
-.glossary-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.glossary-tab {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
-  color: var(--text-muted, #94a3b8);
-  font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.5rem 1.15rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.glossary-tab:hover {
-  background: rgba(99, 102, 241, 0.15);
-  color: #fff;
-}
-
-.glossary-tab.active {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
-}
-
-.glossary-table-container {
-  overflow-x: auto;
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: var(--card-bg, #1e293b);
-  margin-bottom: 2.5rem;
-}
-
-.glossary-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  text-align: left;
-}
-
-.glossary-table th {
-  background: rgba(15, 23, 42, 0.8);
-  color: #f1f5f9;
-  padding: 1rem 1.25rem;
-  font-weight: 700;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  white-space: nowrap;
-}
-
-.glossary-table td {
-  padding: 0.85rem 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  color: #cbd5e1;
-}
-
-.glossary-table tr:last-child td {
-  border-bottom: none;
-}
-
-.glossary-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.term-badge {
-  display: inline-block;
-  padding: 0.25rem 0.65rem;
-  border-radius: 6px;
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.term-badge.vi { background: rgba(239, 68, 68, 0.12); color: #fca5a5; }
-.term-badge.zh { background: rgba(245, 158, 11, 0.12); color: #fde68a; }
-.term-badge.id { background: rgba(16, 185, 129, 0.12); color: #a7f3d0; }
-
-.lang-culture-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.culture-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.25rem;
-  padding: 1.75rem;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.culture-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(99, 102, 241, 0.35);
-}
-
-.culture-flag {
-  font-size: 2.2rem;
-  margin-bottom: 0.75rem;
-}
-
-.culture-card h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #f1f5f9;
-  margin-bottom: 0.6rem;
-}
-
-.culture-card p {
-  color: var(--text-muted, #94a3b8);
-  font-size: 0.88rem;
-  line-height: 1.6;
-  margin: 0;
-}
