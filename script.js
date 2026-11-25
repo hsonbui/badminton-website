@@ -759,3 +759,184 @@ function quizRestart() {
 
 // Initialise quiz on load
 quizInit();
+
+
+// ==========================================================================
+// 5. BWF THEME MUSIC PLAYER & AUTOPLAY LOGIC
+// ==========================================================================
+
+let bwfAudioMode = 'none'; // 'html5' or 'youtube'
+let bwfPlaying = false;
+let ytPlayer = null;
+let userHasInteracted = false;
+
+function updateBwfMusicUI(isPlaying) {
+  bwfPlaying = isPlaying;
+  const musicEqualizer = document.getElementById('bwf-equalizer');
+  const musicStatus = document.getElementById('bwf-music-status');
+  const musicIconPlay = document.getElementById('bwf-icon-play');
+  const musicIconPause = document.getElementById('bwf-icon-pause');
+  const musicPlayBtn = document.getElementById('bwf-music-btn');
+
+  if (isPlaying) {
+    if (musicEqualizer) musicEqualizer.className = 'bwf-equalizer playing';
+    if (musicStatus) musicStatus.textContent = 'Playing • Official Theme';
+    if (musicIconPlay) musicIconPlay.style.display = 'none';
+    if (musicIconPause) musicIconPause.style.display = 'block';
+    if (musicPlayBtn) musicPlayBtn.setAttribute('title', 'Pause BWF Anthem');
+  } else {
+    if (musicEqualizer) musicEqualizer.className = 'bwf-equalizer paused';
+    if (musicStatus) musicStatus.textContent = 'Paused • Click to Play';
+    if (musicIconPlay) musicIconPlay.style.display = 'block';
+    if (musicIconPause) musicIconPause.style.display = 'none';
+    if (musicPlayBtn) musicPlayBtn.setAttribute('title', 'Play BWF Anthem');
+  }
+}
+
+function toggleBwfMusic() {
+  if (bwfPlaying) {
+    pauseBwfMusic();
+  } else {
+    playBwfMusic();
+  }
+}
+
+function playBwfMusic() {
+  const html5Audio = document.getElementById('bwf-html5-audio');
+  if (bwfAudioMode === 'html5' && html5Audio) {
+    html5Audio.play().then(() => {
+      updateBwfMusicUI(true);
+    }).catch(() => {
+      initYouTubeBwf(true);
+    });
+  } else if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+    try {
+      ytPlayer.unMute();
+      ytPlayer.setVolume(75);
+      ytPlayer.playVideo();
+      updateBwfMusicUI(true);
+    } catch (e) {
+      console.warn('YT play error:', e);
+    }
+  } else {
+    initYouTubeBwf(true);
+  }
+}
+
+function pauseBwfMusic() {
+  const html5Audio = document.getElementById('bwf-html5-audio');
+  if (html5Audio && !html5Audio.paused) {
+    html5Audio.pause();
+  }
+  if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+    try {
+      ytPlayer.pauseVideo();
+    } catch (e) {}
+  }
+  updateBwfMusicUI(false);
+}
+
+function initBwfAudio() {
+  const html5Audio = document.getElementById('bwf-html5-audio');
+  if (html5Audio) {
+    html5Audio.volume = 0.7;
+    const playPromise = html5Audio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        bwfAudioMode = 'html5';
+        updateBwfMusicUI(true);
+      }).catch(() => {
+        // Fallback to YouTube stream
+        initYouTubeBwf(false);
+      });
+    } else {
+      initYouTubeBwf(false);
+    }
+  } else {
+    initYouTubeBwf(false);
+  }
+}
+
+function initYouTubeBwf(forcePlay = false) {
+  bwfAudioMode = 'youtube';
+  if (window.YT && window.YT.Player) {
+    createYTPlayer(forcePlay);
+  } else {
+    const prevOnReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function() {
+      if (typeof prevOnReady === 'function') prevOnReady();
+      createYTPlayer(forcePlay);
+    };
+
+    if (!document.getElementById('yt-iframe-api-script')) {
+      const tag = document.createElement('script');
+      tag.id = 'yt-iframe-api-script';
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScript = document.getElementsByTagName('script')[0];
+      firstScript.parentNode.insertBefore(tag, firstScript);
+    }
+  }
+}
+
+function createYTPlayer(forcePlay) {
+  if (ytPlayer) return;
+  ytPlayer = new YT.Player('bwf-yt-player', {
+    height: '1',
+    width: '1',
+    videoId: 'gVnjzJkjzQo', // Official OSIM BWF World Superseries Anthem
+    playerVars: {
+      autoplay: 1,
+      loop: 1,
+      playlist: 'gVnjzJkjzQo',
+      controls: 0,
+      disablekb: 1,
+      modestbranding: 1,
+      playsinline: 1
+    },
+    events: {
+      onReady: function(e) {
+        try {
+          e.target.setVolume(75);
+          if (forcePlay) {
+            e.target.unMute();
+            e.target.playVideo();
+            updateBwfMusicUI(true);
+          } else {
+            e.target.playVideo();
+            setupAutoplayOnInteraction();
+          }
+        } catch (err) {}
+      },
+      onStateChange: function(e) {
+        if (e.data === YT.PlayerState.PLAYING) {
+          updateBwfMusicUI(true);
+        } else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
+          updateBwfMusicUI(false);
+        }
+      }
+    }
+  });
+}
+
+function setupAutoplayOnInteraction() {
+  const triggerAudio = () => {
+    if (!userHasInteracted) {
+      userHasInteracted = true;
+      playBwfMusic();
+    }
+    ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt => {
+      window.removeEventListener(evt, triggerAudio);
+    });
+  };
+
+  ['click', 'touchstart', 'keydown', 'scroll'].forEach(evt => {
+    window.addEventListener(evt, triggerAudio, { passive: true, once: true });
+  });
+}
+
+// Initialise audio on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initBwfAudio);
+} else {
+  initBwfAudio();
+}

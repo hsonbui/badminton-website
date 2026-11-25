@@ -441,6 +441,32 @@
     </div>
   </footer>
 
+  <!-- Hidden BWF Audio Elements -->
+  <audio id="bwf-html5-audio" loop preload="auto">
+    <source src="bwf-theme.mp3" type="audio/mpeg">
+    <source src="bwf-theme.m4a" type="audio/mp4">
+  </audio>
+  <div id="bwf-audio-container" style="position:fixed;bottom:-1000px;left:-1000px;width:1px;height:1px;overflow:hidden;pointer-events:none;" aria-hidden="true">
+    <div id="bwf-yt-player"></div>
+  </div>
+
+  <!-- Floating BWF Anthem Player Widget -->
+  <aside class="bwf-music-bar" id="bwf-music-bar" aria-label="BWF Theme Song Audio Player">
+    <button class="bwf-music-btn" id="bwf-music-btn" onclick="toggleBwfMusic()" title="Play / Pause BWF Anthem" aria-label="Toggle BWF Anthem Audio">
+      <svg id="bwf-icon-play" viewBox="0 0 24 24" style="display:none;"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="bwf-icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+    <div class="bwf-music-info">
+      <div class="bwf-music-title">
+        <span>🏸 BWF Anthem</span>
+        <div class="bwf-equalizer playing" id="bwf-equalizer" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <span class="bwf-music-status" id="bwf-music-status">Playing • Official Theme</span>
+    </div>
+  </aside>
+
   <script src="script.js"></script>
 </body>
 </html>
