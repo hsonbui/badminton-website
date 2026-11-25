@@ -1,5 +1,5 @@
 ﻿// ==========================================================================
-// SmashPoint - Comprehensive Badminton Platform & Synchronized Multi-Language Engine
+// SmashPoint - Comprehensive Badminton Platform & Synchronized Multi-Language Engine (v1.0.1)
 // ==========================================================================
 
 let currentLanguage = 'en';
