@@ -30,6 +30,7 @@
         <a href="#shots" data-i18n="nav_shots">Key Shots</a>
         <a href="#gear" data-i18n="nav_gear">Equipment</a>
         <a href="#tracker" data-i18n="nav_tracker">Scorer</a>
+        <a href="#tournaments" data-i18n="nav_tournaments">Live Scores & BWF</a>
         <a href="#quiz" data-i18n="nav_quiz">Quiz</a>
       </nav>
 
@@ -486,6 +487,74 @@
 
       <div class="match-history" id="match-status">
         Match in progress: First to 21 points (must lead by 2, capped at 30).
+      </div>
+    </div>
+  </section>
+
+  <!-- Tournaments & Real-Time Live Scores -->
+  <section id="tournaments" class="section tournaments-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="tournaments_tag">Official BWF World Tour & Live Arena</span>
+        <h2 data-i18n="tournaments_title">Tournaments, Live Scores & Calendar</h2>
+        <p data-i18n="tournaments_subtitle">Real-time match scoring, ongoing championship trackers, and official BWF tournament calendar schedule.</p>
+      </div>
+
+      <!-- Real-time Status Control Bar -->
+      <div class="live-status-bar">
+        <div class="live-pulse-group">
+          <span class="live-dot-pulse"></span>
+          <span class="live-pulse-text" data-i18n="live_ticker_active">LIVE MATCH FEED ACTIVE</span>
+          <span class="live-refresh-badge" id="live-refresh-badge"><span data-i18n="live_auto_refresh_prefix">Auto-updating in:</span> <strong id="refresh-countdown">8s</strong></span>
+        </div>
+        <div class="live-actions-group">
+          <button class="btn btn-sm btn-outline" id="live-toggle-btn" onclick="toggleLiveScoreTicker()" data-i18n="btn_pause_live">⏸ Pause Live Feed</button>
+          <button class="btn btn-sm btn-primary" onclick="manualRefreshLiveScores()" data-i18n="btn_refresh_now">🔄 Refresh Now</button>
+          <a href="https://bwfbadminton.com/calendar/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary bwf-official-link" data-i18n="btn_bwf_official">
+            🌐 BWF Calendar
+            <svg class="external-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Sub-Tabs: Live Arena vs BWF Calendar -->
+      <div class="tournaments-tabs">
+        <button class="tourney-tab-btn active" id="tab-live-matches" onclick="switchTournamentTab('live')" data-i18n="tab_live_matches">🔥 Live Matches (<span id="live-match-count">3</span>)</button>
+        <button class="tourney-tab-btn" id="tab-calendar" onclick="switchTournamentTab('calendar')" data-i18n="tab_bwf_calendar">📅 BWF 2026 World Tour Calendar</button>
+      </div>
+
+      <!-- Tab Content 1: Live Scores Grid -->
+      <div id="tournaments-live-view" class="tournaments-subview">
+        <div class="live-matches-grid" id="live-matches-container">
+          <!-- Dynamically populated live match cards -->
+        </div>
+        <div class="live-disclaimer">
+          <span class="info-icon">⚡</span>
+          <span data-i18n="live_disclaimer">Live score ticker simulates realistic point-by-point progression, service court rotations, and deuce battles according to official BWF rules.</span>
+        </div>
+      </div>
+
+      <!-- Tab Content 2: BWF Tournament Calendar -->
+      <div id="tournaments-calendar-view" class="tournaments-subview" style="display:none;">
+        <!-- Calendar Filters & Search -->
+        <div class="calendar-controls">
+          <div class="calendar-search-wrap">
+            <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+            <input type="text" id="calendar-search-input" class="calendar-search-input" placeholder="Search tournaments, city, country..." oninput="filterCalendarTournaments()" data-i18n-placeholder="calendar_search_placeholder">
+          </div>
+          <div class="calendar-filter-pills" id="calendar-filter-pills">
+            <button class="filter-pill active" onclick="setCalendarTierFilter('all')" data-i18n="filter_all">All Grades</button>
+            <button class="filter-pill" onclick="setCalendarTierFilter('Super 1000')" data-i18n="filter_super1000">Super 1000</button>
+            <button class="filter-pill" onclick="setCalendarTierFilter('Super 750')" data-i18n="filter_super750">Super 750</button>
+            <button class="filter-pill" onclick="setCalendarTierFilter('Super 500')" data-i18n="filter_super500">Super 500</button>
+            <button class="filter-pill" onclick="setCalendarTierFilter('Major')" data-i18n="filter_majors">Major Championships</button>
+            <button class="filter-pill" onclick="setCalendarTierFilter('Finals')" data-i18n="filter_finals">World Tour Finals</button>
+          </div>
+        </div>
+
+        <div class="tournaments-calendar-grid" id="calendar-tournaments-container">
+          <!-- Dynamically populated tournament cards -->
+        </div>
       </div>
     </div>
   </section>

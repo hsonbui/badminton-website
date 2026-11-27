@@ -11,6 +11,37 @@ let currentShotIndex = 0;
 // --------------------------------------------------------------------------
 const COURT_RULES = {
   en: {
+    nav_tournaments: "Live Scores & BWF",
+    tournaments_tag: "Official BWF World Tour & Live Arena",
+    tournaments_title: "Tournaments, Live Scores & Calendar",
+    tournaments_subtitle: "Real-time match scoring, ongoing championship trackers, and official BWF tournament calendar schedule.",
+    live_ticker_active: "LIVE MATCH FEED ACTIVE",
+    live_auto_refresh_prefix: "Auto-updating in:",
+    btn_pause_live: "⏸ Pause Live Feed",
+    btn_resume_live: "▶ Resume Live Feed",
+    btn_refresh_now: "🔄 Refresh Now",
+    btn_bwf_official: "🌐 BWF Calendar",
+    tab_live_matches: "🔥 Live Matches",
+    tab_bwf_calendar: "📅 BWF 2026 World Tour Calendar",
+    live_disclaimer: "Live score ticker simulates realistic point-by-point progression, service court rotations, and deuce battles according to official BWF rules.",
+    calendar_search_placeholder: "Search tournaments, city, country...",
+    filter_all: "All Grades",
+    filter_super1000: "Super 1000",
+    filter_super750: "Super 750",
+    filter_super500: "Super 500",
+    filter_majors: "Major Championships",
+    filter_finals: "World Tour Finals",
+    badge_live: "LIVE",
+    badge_final: "FINAL",
+    badge_upcoming: "UPCOMING",
+    label_court: "Court",
+    label_game: "Game",
+    label_prize: "Prize:",
+    label_location: "Venue:",
+    label_dates: "Dates:",
+    btn_view_bwf: "BWF Official Page →",
+    rally_length: "shots rally",
+
     singles: {
       title: "Singles Play: Long & Narrow Court",
       desc: "In singles, the court uses the <strong>inner sidelines</strong> and the <strong>back boundary line</strong>. The side alleys (highlighted in red) are out of bounds for both serving and rallies.",
@@ -33,6 +64,37 @@ const COURT_RULES = {
     }
   },
   vi: {
+    nav_tournaments: "Tỷ số trực tiếp & BWF",
+    tournaments_tag: "Đấu Trường Trực Tiếp & Lịch BWF World Tour",
+    tournaments_title: "Giải đấu, Tỷ số Trực tiếp & Lịch thi đấu",
+    tournaments_subtitle: "Cập nhật tỷ số trận đấu theo thời gian thực, theo dõi giải đấu đang diễn ra và lịch trình BWF World Tour.",
+    live_ticker_active: "ĐANG TRUYỀN DỮ LIỆU TRẬN ĐẤU",
+    live_auto_refresh_prefix: "Tự động cập nhật sau:",
+    btn_pause_live: "⏸ Tạm dừng",
+    btn_resume_live: "▶ Tiếp tục phát",
+    btn_refresh_now: "🔄 Làm mới ngay",
+    btn_bwf_official: "🌐 Lịch BWF Chính Thức",
+    tab_live_matches: "🔥 Trận đấu trực tiếp",
+    tab_bwf_calendar: "📅 Lịch trình BWF World Tour 2026",
+    live_disclaimer: "Hệ thống tỷ số trực tiếp mô phỏng điểm số theo thời gian thực, luân chuyển giao cầu và các loạt rượt đuổi tỷ số theo luật BWF.",
+    calendar_search_placeholder: "Tìm kiếm giải đấu, thành phố, quốc gia...",
+    filter_all: "Tất cả cấp độ",
+    filter_super1000: "Super 1000",
+    filter_super750: "Super 750",
+    filter_super500: "Super 500",
+    filter_majors: "Giải Vô Địch Lớn",
+    filter_finals: "Chung Kết World Tour",
+    badge_live: "TRỰC TIẾP",
+    badge_final: "CHUNG KẾT",
+    badge_upcoming: "SẮP DIỄN RA",
+    label_court: "Sân",
+    label_game: "Hiệp",
+    label_prize: "Tiền thưởng:",
+    label_location: "Địa điểm:",
+    label_dates: "Thời gian:",
+    btn_view_bwf: "Trang chính thức BWF →",
+    rally_length: "pha chạm cầu",
+
     singles: {
       title: "Đánh Đơn: Sân Dài & Hẹp",
       desc: "Trong đánh đơn, sân sử dụng <strong>vạch biên bên trong</strong> và <strong>vạch đáy ngoài cùng</strong>. Hai hành lang bên (màu đỏ) là ngoài sân cho cả phát cầu và đánh bóng.",
@@ -55,6 +117,37 @@ const COURT_RULES = {
     }
   },
   zh: {
+    nav_tournaments: "实时比分与世界羽联赛历",
+    tournaments_tag: "官方世界羽联巡回赛与实时赛况",
+    tournaments_title: "赛事巡回赛、实时比分与赛历",
+    tournaments_subtitle: "实时追踪比赛比分动态、进行中的冠军对决以及世界羽联官方全年度赛事赛历。",
+    live_ticker_active: "实时比赛数据传输中",
+    live_auto_refresh_prefix: "自动刷新倒计时:",
+    btn_pause_live: "⏸ 暂停实时更新",
+    btn_resume_live: "▶ 恢复实时更新",
+    btn_refresh_now: "🔄 立即刷新",
+    btn_bwf_official: "🌐 世界羽联官方赛历",
+    tab_live_matches: "🔥 实时进行中对决",
+    tab_bwf_calendar: "📅 2026 年世界羽联赛事日历",
+    live_disclaimer: "实时比分系统遵循国际羽联官方规则，动态呈现每一分的比分推进、发球区轮转与决胜局加分对决。",
+    calendar_search_placeholder: "搜索赛事名称、举办城市或国家...",
+    filter_all: "全部级别",
+    filter_super1000: "超级 1000",
+    filter_super750: "超级 750",
+    filter_super500: "超级 500",
+    filter_majors: "世界顶级大赛",
+    filter_finals: "年终总决赛",
+    badge_live: "实时进行",
+    badge_final: "决赛争夺",
+    badge_upcoming: "即将开赛",
+    label_court: "场地",
+    label_game: "局数",
+    label_prize: "总奖金:",
+    label_location: "举办城市:",
+    label_dates: "比赛日期:",
+    btn_view_bwf: "查看羽联官方页面 →",
+    rally_length: "拍激烈对攻",
+
     singles: {
       title: "单打比赛: 长而窄的球场",
       desc: "单打比赛中，场地使用<strong>内侧边线</strong>和<strong>底线外边线</strong>。两侧边线走廊（红色高亮）在发球和拉锯回合中均为界外。",
@@ -77,6 +170,37 @@ const COURT_RULES = {
     }
   },
   id: {
+    nav_tournaments: "Skor Langsung & BWF",
+    tournaments_tag: "Tur Dunia BWF Resmi & Arena Langsung",
+    tournaments_title: "Turnamen, Skor Langsung & Kalender",
+    tournaments_subtitle: "Pembaruan skor pertandingan langsung, pelacak kejuaraan, dan jadwal resmi tur dunia BWF.",
+    live_ticker_active: "UMPAN SKOR LANGSUNG AKTIF",
+    live_auto_refresh_prefix: "Pembaruan otomatis dalam:",
+    btn_pause_live: "⏸ Jeda Pembaruan",
+    btn_resume_live: "▶ Lanjutkan Pembaruan",
+    btn_refresh_now: "🔄 Segarkan Sekarang",
+    btn_bwf_official: "🌐 Kalender Resmi BWF",
+    tab_live_matches: "🔥 Pertandingan Langsung",
+    tab_bwf_calendar: "📅 Kalender BWF World Tour 2026",
+    live_disclaimer: "Ticker skor langsung menyimulasikan perkembangan poin realistis, rotasi servis, dan deuce sesuai aturan resmi BWF.",
+    calendar_search_placeholder: "Cari turnamen, kota, negara...",
+    filter_all: "Semua Tingkat",
+    filter_super1000: "Super 1000",
+    filter_super750: "Super 750",
+    filter_super500: "Super 500",
+    filter_majors: "Kejuaraan Utama",
+    filter_finals: "Final Tur Dunia",
+    badge_live: "LANGSUNG",
+    badge_final: "FINAL",
+    badge_upcoming: "MENDATANG",
+    label_court: "Lapangan",
+    label_game: "Gim",
+    label_prize: "Hadiah:",
+    label_location: "Lokasi:",
+    label_dates: "Tanggal:",
+    btn_view_bwf: "Laman Resmi BWF →",
+    rally_length: "pukulan reli",
+
     singles: {
       title: "Permainan Tunggal: Lapangan Panjang & Sempit",
       desc: "Pada nomor tunggal, lapangan menggunakan <strong>garis samping dalam</strong> dan <strong>garis belakang luar</strong>. Jalur samping (warna merah) adalah KELUAR untuk servis dan reli.",
@@ -99,6 +223,37 @@ const COURT_RULES = {
     }
   },
   pl: {
+    nav_tournaments: "Wyniki na żywo i BWF",
+    tournaments_tag: "Oficjalny BWF World Tour i Wyniki na Żywo",
+    tournaments_title: "Turnieje, Wyniki na żywo i Kalendarz",
+    tournaments_subtitle: "Śledzenie wyników meczów w czasie rzeczywistym, trwające turnieje oraz oficjalny kalendarz BWF World Tour.",
+    live_ticker_active: "TRANSMISJA WYNIKÓW AKTYWNA",
+    live_auto_refresh_prefix: "Odświeżenie za:",
+    btn_pause_live: "⏸ Wstrzymaj",
+    btn_resume_live: "▶ Wznów",
+    btn_refresh_now: "🔄 Odśwież teraz",
+    btn_bwf_official: "🌐 Oficjalny Kalendarz BWF",
+    tab_live_matches: "🔥 Mecze na żywo",
+    tab_bwf_calendar: "📅 Kalendarz BWF World Tour 2026",
+    live_disclaimer: "Pasek wyników na żywo symuluje realistyczny przebieg punkt po punkcie, rotację serwisu i grę na przewagi zgodnie z przepisami BWF.",
+    calendar_search_placeholder: "Szukaj turniejów, miasta, kraju...",
+    filter_all: "Wszystkie kategorie",
+    filter_super1000: "Super 1000",
+    filter_super750: "Super 750",
+    filter_super500: "Super 500",
+    filter_majors: "Mistrzostwa Główne",
+    filter_finals: "Finały World Tour",
+    badge_live: "NA ŻYWO",
+    badge_final: "FINAŁ",
+    badge_upcoming: "NADCHODZĄCY",
+    label_court: "Kort",
+    label_game: "Set",
+    label_prize: "Pula nagród:",
+    label_location: "Miejsce:",
+    label_dates: "Termin:",
+    btn_view_bwf: "Oficjalna strona BWF →",
+    rally_length: "uderzeń w wymianie",
+
     singles: {
       title: "Gra pojedyncza: Długi i wąski kort",
       desc: "W grze pojedynczej obowiązują <strong>wewnętrzne linie boczne</strong> oraz <strong>tylna linia końcowa</strong>. Korytarze deblowe (zaznaczone na czerwono) są autowe zarówno podczas serwisu, jak i w trakcie wymiany.",
@@ -3461,6 +3616,7 @@ function setQuizCategory(category) {
   }
 
   quizInit();
+  if (typeof initTournamentsModule === "function") initTournamentsModule();
 }
 
 function quizInit() {
@@ -3596,6 +3752,8 @@ function quizAnswer(selectedIndex) {
 function quizNext() {
   if (quizState.current < activeQuizQuestions.length - 1) {
     quizState.current++;
+    quizState.answered = false;
+    quizState.lastSelected = -1;
     quizRender();
   } else {
     quizShowResults();
@@ -4655,8 +4813,18 @@ function changeLanguage(lang) {
     }
   });
 
+  // 3b. Update placeholder attributes
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (dict[key]) {
+      el.setAttribute('placeholder', dict[key]);
+    }
+  });
+
   // 4. Synchronously re-render Court Rules in active language
   setCourtMode(currentCourtMode);
+  if (typeof renderLiveMatches === "function") renderLiveMatches();
+  if (typeof renderCalendarTournaments === "function") renderCalendarTournaments();
 
   // 5. Synchronously re-render Shot Details in active language
   selectShot(currentShotIndex);
@@ -5007,3 +5175,503 @@ window.addEventListener('click', (e) => {
 })();
 
 
+
+
+// ==========================================================================
+// 10. BWF TOURNAMENTS & REAL-TIME LIVE SCORES ENGINE
+// ==========================================================================
+
+const BWF_CALENDAR_DATA = [
+  {
+    id: "malaysia-open-2026",
+    name: "PETRONAS Malaysia Open 2026",
+    tier: "Super 1000",
+    tierClass: "tier-super1000",
+    city: "Kuala Lumpur",
+    country: "Malaysia",
+    flag: "🇲🇾",
+    dates: "Jan 13 - 18, 2026",
+    prize: "$1,450,000 USD",
+    venue: "Axiata Arena",
+    status: "completed",
+    statusText: "Completed",
+    link: "https://bwfbadminton.com/calendar/"
+  },
+  {
+    id: "india-open-2026",
+    name: "YONEX-SUNRISE India Open 2026",
+    tier: "Super 750",
+    tierClass: "tier-super750",
+    city: "New Delhi",
+    country: "India",
+    flag: "🇮🇳",
+    dates: "Jan 20 - 25, 2026",
+    prize: "$950,000 USD",
+    venue: "K.D. Jadhav Indoor Stadium",
+    status: "completed",
+    statusText: "Completed",
+    link: "https://bwfbadminton.com/calendar/"
+  },
+  {
+    id: "indonesia-masters-2026",
+    name: "DAIHATSU Indonesia Masters 2026",
+    tier: "Super 500",
+    tierClass: "tier-super500",
+    city: "Jakarta",
+    country: "Indonesia",
+    flag: "🇮🇩",
+    dates: "Jan 27 - Feb 01, 2026",
+    prize: "$500,000 USD",
+    venue: "Istora Senayan",
+    status: "completed",
+    statusText: "Completed",
+    link: "https://bwfbadminton.com/calendar/"
+  },
+  {
+    id: "all-england-2026",
+    name: "YONEX All England Open Badminton Championships 2026",
+    tier: "Super 1000",
+    tierClass: "tier-super1000",
+    city: "Birmingham",
+    country: "England",
+    flag: "🇬🇧",
+    dates: "Mar 10 - 15, 2026",
+    prize: "$1,450,000 USD",
+    venue: "Utilita Arena Birmingham",
+    status: "ongoing",
+    statusText: "Ongoing",
+    link: "https://bwfbadminton.com/calendar/"
+  },
+  {
+    id: "thomas-uber-2026",
+    name: "TotalEnergies BWF Thomas & Uber Cup Finals 2026",
+    tier: "Major",
+    tierClass: "tier-major",
+    city: "Horsens",
+    country: "Denmark",
+    flag: "🇩🇰",
+    dates: "Apr 25 - May 03, 2026",
+    prize: "World Team Championship",
+    venue: "Forum Horsens",
+    status: "upcoming",
+    statusText: "Upcoming",
+    link: "https://bwfbadminton.com/calendar/"
+  },
+  {
+    id: "indonesia-open-2026",
+    name: "KAPAL API Indonesia Open 2026",
+    tier: "Super 1000",
+    tierClass: "tier-super1000",
+    city: "Jakarta",
+    country: "Indonesia",
+    flag: "🇮🇩",
+    dates: "Jun 02 - 07, 2026",
+    prize: "$1,450,000 USD",
+    venue: "Istora Senayan",
+    status: "upcoming",
+    statusText: "Upcoming",
+    link: "https://bwfbadminton.com/calendar/"
+  },
+  {
+    id: "japan-open-2026",
+    name: "DAIHATSU Japan Open 2026",
+    tier: "Super 750",
+    tierClass: "tier-super750",
+    city: "Tokyo",
+    country: "Japan",
+    flag: "🇯🇵",
+    dates: "Aug 18 - 23, 2026",
+    prize: "$950,000 USD",
+    venue: "Yoyogi National Gymnasium",
+    status: "upcoming",
+    statusText: "Upcoming",
+    link: "https://bwfbadminton.com/calendar/"
+  },
+  {
+    id: "china-open-2026",
+    name: "VICTOR China Open 2026",
+    tier: "Super 1000",
+    tierClass: "tier-super1000",
+    city: "Changzhou",
+    country: "China",
+    flag: "🇨🇳",
+    dates: "Sep 15 - 20, 2026",
+    prize: "$2,000,000 USD",
+    venue: "Olympic Sports Center Xincheng Gymnasium",
+    status: "upcoming",
+    statusText: "Upcoming",
+    link: "https://bwfbadminton.com/calendar/"
+  },
+  {
+    id: "denmark-open-2026",
+    name: "VICTOR Denmark Open 2026",
+    tier: "Super 750",
+    tierClass: "tier-super750",
+    city: "Odense",
+    country: "Denmark",
+    flag: "🇩🇰",
+    dates: "Oct 13 - 18, 2026",
+    prize: "$950,000 USD",
+    venue: "Jyske Bank Arena",
+    status: "upcoming",
+    statusText: "Upcoming",
+    link: "https://bwfbadminton.com/calendar/"
+  },
+  {
+    id: "french-open-2026",
+    name: "YONEX French Open 2026",
+    tier: "Super 750",
+    tierClass: "tier-super750",
+    city: "Paris",
+    country: "France",
+    flag: "🇫🇷",
+    dates: "Oct 20 - 25, 2026",
+    prize: "$950,000 USD",
+    venue: "Adidas Arena",
+    status: "upcoming",
+    statusText: "Upcoming",
+    link: "https://bwfbadminton.com/calendar/"
+  },
+  {
+    id: "world-tour-finals-2026",
+    name: "HSBC BWF World Tour Finals 2026",
+    tier: "Finals",
+    tierClass: "tier-finals",
+    city: "Hangzhou",
+    country: "China",
+    flag: "🇨🇳",
+    dates: "Dec 09 - 13, 2026",
+    prize: "$2,500,000 USD",
+    venue: "Hangzhou Olympic Sports Centre",
+    status: "upcoming",
+    statusText: "Upcoming",
+    link: "https://bwfbadminton.com/calendar/"
+  }
+];
+
+let LIVE_MATCHES = [
+  {
+    id: "match-1",
+    tourney: "All England Open 2026 • Super 1000",
+    discipline: "MS - Men's Singles Final",
+    court: "Court 1 (TV Court)",
+    status: "live",
+    gameNumber: 3,
+    server: "p1", // 'p1' or 'p2'
+    duration: 68,
+    rallyShots: 34,
+    p1: { name: "Viktor Axelsen", seed: "[1]", flag: "🇩🇰", country: "DEN" },
+    p2: { name: "Shi Yuqi", seed: "[2]", flag: "🇨🇳", country: "CHN" },
+    g1: { s1: 21, s2: 18, winner: 1 },
+    g2: { s1: 19, s2: 21, winner: 2 },
+    g3: { s1: 19, s2: 18, active: true },
+    recentScorer: 1
+  },
+  {
+    id: "match-2",
+    tourney: "All England Open 2026 • Super 1000",
+    discipline: "WS - Women's Singles Final",
+    court: "Court 2",
+    status: "live",
+    gameNumber: 2,
+    server: "p2",
+    duration: 45,
+    rallyShots: 27,
+    p1: { name: "An Se-young", seed: "[1]", flag: "🇰🇷", country: "KOR" },
+    p2: { name: "Chen Yufei", seed: "[2]", flag: "🇨🇳", country: "CHN" },
+    g1: { s1: 21, s2: 16, winner: 1 },
+    g2: { s1: 17, s2: 15, active: true },
+    g3: { s1: 0, s2: 0, active: false },
+    recentScorer: 2
+  },
+  {
+    id: "match-3",
+    tourney: "All England Open 2026 • Super 1000",
+    discipline: "MD - Men's Doubles Semi-Final",
+    court: "Court 3",
+    status: "live",
+    gameNumber: 3,
+    server: "p1",
+    duration: 54,
+    rallyShots: 46,
+    p1: { name: "Kang M. / Seo S.", seed: "[3]", flag: "🇰🇷", country: "KOR" },
+    p2: { name: "Rankireddy / Shetty", seed: "[2]", flag: "🇮🇳", country: "IND" },
+    g1: { s1: 18, s2: 21, winner: 2 },
+    g2: { s1: 21, s2: 19, winner: 1 },
+    g3: { s1: 16, s2: 17, active: true },
+    recentScorer: 1
+  }
+];
+
+let liveTickerRunning = true;
+let liveTickerTimer = null;
+let liveCountdownSeconds = 8;
+let currentCalendarTier = "all";
+let calendarSearchQuery = "";
+let currentTournamentTab = "live";
+
+function switchTournamentTab(tab) {
+  currentTournamentTab = tab;
+  const liveTabBtn = document.getElementById('tab-live-matches');
+  const calTabBtn = document.getElementById('tab-calendar');
+  const liveView = document.getElementById('tournaments-live-view');
+  const calView = document.getElementById('tournaments-calendar-view');
+
+  if (tab === 'live') {
+    if (liveTabBtn) liveTabBtn.classList.add('active');
+    if (calTabBtn) calTabBtn.classList.remove('active');
+    if (liveView) liveView.style.display = 'block';
+    if (calView) calView.style.display = 'none';
+    renderLiveMatches();
+  } else {
+    if (liveTabBtn) liveTabBtn.classList.remove('active');
+    if (calTabBtn) calTabBtn.classList.add('active');
+    if (liveView) liveView.style.display = 'none';
+    if (calView) calView.style.display = 'block';
+    renderCalendarTournaments();
+  }
+}
+
+function renderLiveMatches() {
+  const container = document.getElementById('live-matches-container');
+  if (!container) return;
+  const dict = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+
+  const countBadge = document.getElementById('live-match-count');
+  if (countBadge) countBadge.textContent = LIVE_MATCHES.length;
+
+  container.innerHTML = LIVE_MATCHES.map(m => {
+    const isG3 = m.gameNumber === 3;
+    const g3Html = isG3 || m.g3.s1 > 0 || m.g3.s2 > 0 ? 
+      `<div class="game-box ${m.gameNumber === 3 ? 'current-game' : (m.g3.winner ? 'game-winner' : '')}">${m.g3.s1}</div>` : '';
+    const g3P2Html = isG3 || m.g3.s1 > 0 || m.g3.s2 > 0 ? 
+      `<div class="game-box ${m.gameNumber === 3 ? 'current-game' : (m.g3.winner ? 'game-winner' : '')}">${m.g3.s2}</div>` : '';
+
+    return `
+      <div class="live-match-card featured-live">
+        <div class="match-card-top">
+          <div class="match-tourney-name">
+            <span>${m.tourney}</span>
+          </div>
+          <div class="match-tag-pill live-now">● ${dict.badge_live || 'LIVE'}</div>
+        </div>
+
+        <div class="match-card-body">
+          <div class="match-court-info" style="margin-bottom:0.75rem;">
+            ${m.discipline} • ${m.court} • ${dict.label_game || 'Game'} ${m.gameNumber}
+          </div>
+
+          <div class="match-teams">
+            <!-- Player 1 -->
+            <div class="player-score-row">
+              <div class="player-info-wrap">
+                <span class="serving-shuttle ${m.server === 'p1' ? 'active' : ''}">🏸</span>
+                <span class="player-flag">${m.p1.flag}</span>
+                <div class="player-name-seed">
+                  <span class="player-seed">${m.p1.seed}</span>${m.p1.name}
+                </div>
+              </div>
+              <div class="game-scores-wrap">
+                <div class="game-box ${m.gameNumber === 1 ? 'current-game' : (m.g1.winner === 1 ? 'game-winner' : '')}">${m.g1.s1}</div>
+                <div class="game-box ${m.gameNumber === 2 ? 'current-game' : (m.g2.winner === 1 ? 'game-winner' : '')}">${m.g2.s1}</div>
+                ${g3Html}
+              </div>
+            </div>
+
+            <!-- Player 2 -->
+            <div class="player-score-row">
+              <div class="player-info-wrap">
+                <span class="serving-shuttle ${m.server === 'p2' ? 'active' : ''}">🏸</span>
+                <span class="player-flag">${m.p2.flag}</span>
+                <div class="player-name-seed">
+                  <span class="player-seed">${m.p2.seed}</span>${m.p2.name}
+                </div>
+              </div>
+              <div class="game-scores-wrap">
+                <div class="game-box ${m.gameNumber === 1 ? 'current-game' : (m.g1.winner === 2 ? 'game-winner' : '')}">${m.g1.s2}</div>
+                <div class="game-box ${m.gameNumber === 2 ? 'current-game' : (m.g2.winner === 2 ? 'game-winner' : '')}">${m.g2.s2}</div>
+                ${g3P2Html}
+              </div>
+            </div>
+          </div>
+
+          <div class="match-footer-bar">
+            <div class="match-momentum">
+              <span>⚡</span>
+              <span>${m.duration}m • ${m.rallyShots} ${dict.rally_length || 'shots rally'}</span>
+            </div>
+            <a href="https://bwfbadminton.com/calendar/" target="_blank" rel="noopener noreferrer" class="match-stream-link">
+              ${dict.btn_view_bwf || 'BWF Page'}
+              <svg style="width:12px;height:12px;" viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function advanceLiveScoreSimulation() {
+  LIVE_MATCHES.forEach(m => {
+    const curG = m.gameNumber === 1 ? m.g1 : (m.gameNumber === 2 ? m.g2 : m.g3);
+    const scoreP1 = Math.random() > 0.48; // probabilistic point winner
+    if (scoreP1) {
+      curG.s1++;
+      m.server = 'p1';
+      m.recentScorer = 1;
+    } else {
+      curG.s2++;
+      m.server = 'p2';
+      m.recentScorer = 2;
+    }
+    m.duration += 1;
+    m.rallyShots = Math.floor(18 + Math.random() * 32);
+
+    // BWF Game Win Check: 21 points leading by 2 or max 30
+    const s1 = curG.s1;
+    const s2 = curG.s2;
+    const wonP1 = (s1 >= 21 && s1 - s2 >= 2) || s1 === 30;
+    const wonP2 = (s2 >= 21 && s2 - s1 >= 2) || s2 === 30;
+
+    if (wonP1 || wonP2) {
+      curG.winner = wonP1 ? 1 : 2;
+      if (m.gameNumber === 1) {
+        m.gameNumber = 2;
+        m.g2.active = true;
+      } else if (m.gameNumber === 2) {
+        const p1Wins = (m.g1.winner === 1 ? 1 : 0) + (m.g2.winner === 1 ? 1 : 0);
+        const p2Wins = (m.g1.winner === 2 ? 1 : 0) + (m.g2.winner === 2 ? 1 : 0);
+        if (p1Wins === 2 || p2Wins === 2) {
+          // Match finished, reset cycle for continuous live display demo
+          curG.s1 = 20; curG.s2 = 19;
+        } else {
+          m.gameNumber = 3;
+          m.g3.active = true;
+        }
+      } else if (m.gameNumber === 3) {
+        // Keep deuce exciting around 21-20
+        curG.s1 = 20;
+        curG.s2 = 19;
+      }
+    }
+  });
+
+  if (currentTournamentTab === 'live') {
+    renderLiveMatches();
+  }
+}
+
+function toggleLiveScoreTicker() {
+  liveTickerRunning = !liveTickerRunning;
+  const btn = document.getElementById('live-toggle-btn');
+  const dict = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+  if (btn) {
+    btn.textContent = liveTickerRunning ? (dict.btn_pause_live || '⏸ Pause Live Feed') : (dict.btn_resume_live || '▶ Resume Live Feed');
+  }
+}
+
+function manualRefreshLiveScores() {
+  advanceLiveScoreSimulation();
+  liveCountdownSeconds = 8;
+  const cdEl = document.getElementById('refresh-countdown');
+  if (cdEl) cdEl.textContent = liveCountdownSeconds + 's';
+}
+
+function filterCalendarTournaments() {
+  const input = document.getElementById('calendar-search-input');
+  calendarSearchQuery = (input ? input.value : '').toLowerCase().trim();
+  renderCalendarTournaments();
+}
+
+function setCalendarTierFilter(tier) {
+  currentCalendarTier = tier;
+  const pills = document.querySelectorAll('#calendar-filter-pills .filter-pill');
+  pills.forEach(p => {
+    const fn = p.getAttribute('onclick') || '';
+    if (fn.includes(`'${tier}'`)) {
+      p.classList.add('active');
+    } else {
+      p.classList.remove('active');
+    }
+  });
+  renderCalendarTournaments();
+}
+
+function renderCalendarTournaments() {
+  const container = document.getElementById('calendar-tournaments-container');
+  if (!container) return;
+  const dict = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+
+  const filtered = BWF_CALENDAR_DATA.filter(t => {
+    const matchTier = currentCalendarTier === 'all' || t.tier === currentCalendarTier;
+    const matchSearch = !calendarSearchQuery || 
+      t.name.toLowerCase().includes(calendarSearchQuery) ||
+      t.city.toLowerCase().includes(calendarSearchQuery) ||
+      t.country.toLowerCase().includes(calendarSearchQuery);
+    return matchTier && matchSearch;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #94a3b8; padding: 3rem;">No tournaments found matching the criteria.</div>`;
+    return;
+  }
+
+  container.innerHTML = filtered.map(t => {
+    const statusClass = t.status === 'ongoing' ? 'status-ongoing' : (t.status === 'upcoming' ? 'status-upcoming' : 'status-completed');
+    const statusLabel = t.status === 'ongoing' ? (dict.badge_live || 'ONGOING') : (t.status === 'upcoming' ? (dict.badge_upcoming || 'UPCOMING') : (dict.badge_final || 'COMPLETED'));
+
+    return `
+      <div class="tourney-calendar-card">
+        <div>
+          <span class="tourney-tier-badge ${t.tierClass}">${t.tier}</span>
+          <h3 class="tourney-card-title">${t.name}</h3>
+
+          <div class="tourney-meta-list">
+            <div class="tourney-meta-item">
+              <span>📅</span>
+              <span><strong>${dict.label_dates || 'Dates:'}</strong> ${t.dates}</span>
+            </div>
+            <div class="tourney-meta-item">
+              <span>${t.flag}</span>
+              <span><strong>${dict.label_location || 'Venue:'}</strong> ${t.city}, ${t.country} (${t.venue})</span>
+            </div>
+            <div class="tourney-meta-item">
+              <span>💰</span>
+              <span><strong>${dict.label_prize || 'Prize:'}</strong> ${t.prize}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tourney-card-footer">
+          <span class="tourney-status-tag ${statusClass}">${statusLabel}</span>
+          <a href="${t.link}" target="_blank" rel="noopener noreferrer" class="tourney-details-btn">
+            ${dict.btn_view_bwf || 'BWF Official →'}
+          </a>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Start Live Score Interval Countdown
+function startLiveScoreTicker() {
+  if (liveTickerTimer) clearInterval(liveTickerTimer);
+  liveCountdownSeconds = 8;
+
+  liveTickerTimer = setInterval(() => {
+    if (!liveTickerRunning) return;
+    liveCountdownSeconds--;
+    if (liveCountdownSeconds <= 0) {
+      liveCountdownSeconds = 8;
+      advanceLiveScoreSimulation();
+    }
+    const cdEl = document.getElementById('refresh-countdown');
+    if (cdEl) cdEl.textContent = liveCountdownSeconds + 's';
+  }, 1000);
+}
+
+function initTournamentsModule() {
+  renderLiveMatches();
+  renderCalendarTournaments();
+  startLiveScoreTicker();
+}
