@@ -564,6 +564,15 @@
     <div id="bwf-yt-player"></div>
   </div>
 
+  <!-- Badminton Drops Canvas Overlay -->
+  <canvas id="badminton-drops-canvas" aria-hidden="true"></canvas>
+
+  <!-- Floating Badminton Drops Toggle Button -->
+  <button class="drops-toggle-btn active" id="drops-toggle-btn" onclick="toggleBadmintonDrops()" title="Toggle Shuttlecock Drops Effect" aria-pressed="true">
+    <span class="drops-toggle-icon">🏸</span>
+    <span class="drops-toggle-label" id="drops-toggle-label">Shuttle Drops: ON</span>
+  </button>
+
   <!-- Floating BWF Anthem Player Widget -->
   <aside class="bwf-music-bar" id="bwf-music-bar" aria-label="BWF Theme Song Audio Player">
     <button class="bwf-music-btn" id="bwf-music-btn" onclick="toggleBwfMusic()" title="Play / Pause BWF Anthem" aria-label="Toggle BWF Anthem Audio">

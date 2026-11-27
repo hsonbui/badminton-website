@@ -3568,6 +3568,9 @@ function quizAnswer(selectedIndex) {
 
   if (correct) {
     quizState.score++;
+    if (typeof spawnShuttleBurst === 'function') {
+      spawnShuttleBurst(window.innerWidth * 0.5, window.innerHeight * 0.35, 10);
+    }
   } else {
     quizState.wrongAnswers.push({ qIndex: quizState.current, qObj: q, selectedIndex: selectedIndex });
   }
@@ -4667,6 +4670,11 @@ function changeLanguage(lang) {
   // 8. Update Music Status
   updateBwfMusicUI(bwfPlaying);
 
+  // 8b. Update Drops Toggle Label
+  if (typeof updateDropsToggleUI === 'function') {
+    updateDropsToggleUI();
+  }
+
   // 9. Persist choice
   try {
     localStorage.setItem('smashpoint_lang', lang);
@@ -4715,4 +4723,287 @@ if (document.readyState !== 'loading') {
     changeLanguage('en');
   }
 }
+
+// ==========================================================================
+// 9. BADMINTON DROPS (Falling & Interactive Shuttlecock Particles)
+// ==========================================================================
+const DROPS_I18N = {
+  en: { on: "Shuttle Drops: ON", off: "Shuttle Drops: OFF" },
+  vi: { on: "Hiệu ứng cầu rơi: BẬT", off: "Hiệu ứng cầu rơi: TẮT" },
+  zh: { on: "羽毛球飘落: 开启", off: "羽毛球飘落: 关闭" },
+  id: { on: "Efek Kok Jatuh: ON", off: "Efek Kok Jatuh: OFF" },
+  pl: { on: "Spadające lotki: WŁ.", off: "Spadające lotki: WYŁ." }
+};
+
+let dropsEnabled = true;
+let dropsAnimId = null;
+let dropsParticles = [];
+let dropsMouse = { x: -9999, y: -9999, active: false };
+
+function updateDropsToggleUI() {
+  const btn = document.getElementById('drops-toggle-btn');
+  const label = document.getElementById('drops-toggle-label');
+  const canvas = document.getElementById('badminton-drops-canvas');
+  const dict = DROPS_I18N[currentLanguage] || DROPS_I18N.en;
+
+  if (btn) {
+    btn.classList.toggle('active', dropsEnabled);
+    btn.setAttribute('aria-pressed', dropsEnabled ? 'true' : 'false');
+  }
+  if (label) {
+    label.textContent = dropsEnabled ? dict.on : dict.off;
+  }
+  if (canvas) {
+    canvas.classList.toggle('hidden', !dropsEnabled);
+  }
+}
+
+function createShuttleParticle(startY, burstX, burstY) {
+  const w = window.innerWidth;
+  const isBurst = typeof burstX === 'number' && typeof burstY === 'number';
+  const depth = 0.45 + Math.random() * 0.75; // 0.45..1.2 parallax scale
+  const accents = [
+    { skirt: 'rgba(248, 250, 252, ', band: '#10b981' }, // Emerald tournament
+    { skirt: 'rgba(226, 232, 240, ', band: '#3b82f6' }, // Cobalt blue
+    { skirt: 'rgba(241, 245, 249, ', band: '#f59e0b' }  // Gold classic
+  ];
+  const palette = accents[Math.floor(Math.random() * accents.length)];
+
+  return {
+    x: isBurst ? burstX + (Math.random() - 0.5) * 30 : Math.random() * w,
+    y: isBurst ? burstY + (Math.random() - 0.5) * 20 : (typeof startY === 'number' ? startY : -40 - Math.random() * 200),
+    vx: isBurst ? (Math.random() - 0.5) * 5.2 : (Math.random() - 0.5) * 0.5,
+    vy: isBurst ? (-2.2 - Math.random() * 3.5) : (0.75 + depth * 1.15),
+    gravity: isBurst ? 0.085 : 0,
+    size: (13 + depth * 11),
+    angle: (Math.random() - 0.5) * 0.65,
+    vAngle: (Math.random() - 0.5) * 0.015,
+    swayAmp: 0.35 + Math.random() * 0.65,
+    swayFreq: 0.012 + Math.random() * 0.015,
+    swayPhase: Math.random() * Math.PI * 2,
+    opacity: isBurst ? 0.85 : (0.22 + depth * 0.35),
+    palette,
+    isBurst,
+    life: isBurst ? 1.0 : Infinity
+  };
+}
+
+function drawShuttlecock(ctx, p) {
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  ctx.rotate(p.angle);
+  const s = p.size;
+  const alpha = Math.max(0, Math.min(1, p.opacity * (p.isBurst ? p.life : 1)));
+
+  // Feathered cone (pointing up as cork falls downward)
+  const topWidth = s * 0.62;
+  const baseWidth = s * 0.24;
+  const skirtHeight = s * 0.88;
+
+  ctx.beginPath();
+  ctx.moveTo(-baseWidth, 0);
+  ctx.lineTo(-topWidth, -skirtHeight);
+  ctx.quadraticCurveTo(0, -skirtHeight * 1.08, topWidth, -skirtHeight);
+  ctx.lineTo(baseWidth, 0);
+  ctx.closePath();
+
+  const grad = ctx.createLinearGradient(0, -skirtHeight, 0, 0);
+  grad.addColorStop(0, p.palette.skirt + (alpha * 0.92).toFixed(3) + ')');
+  grad.addColorStop(1, p.palette.skirt + (alpha * 0.45).toFixed(3) + ')');
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  ctx.strokeStyle = p.palette.skirt + (alpha * 0.7).toFixed(3) + ')';
+  ctx.lineWidth = 0.8;
+  ctx.stroke();
+
+  // Feather ribs inside cone
+  ctx.beginPath();
+  for (let i = -2; i <= 2; i++) {
+    const bx = (i / 2.5) * baseWidth;
+    const tx = (i / 2.3) * topWidth;
+    ctx.moveTo(bx, 0);
+    ctx.lineTo(tx, -skirtHeight * 0.96);
+  }
+  ctx.strokeStyle = p.palette.skirt + (alpha * 0.45).toFixed(3) + ')';
+  ctx.lineWidth = 0.6;
+  ctx.stroke();
+
+  // Cross-stitch ring
+  ctx.beginPath();
+  ctx.moveTo(-topWidth * 0.72, -skirtHeight * 0.42);
+  ctx.lineTo(topWidth * 0.72, -skirtHeight * 0.42);
+  ctx.strokeStyle = p.palette.skirt + (alpha * 0.55).toFixed(3) + ')';
+  ctx.stroke();
+
+  // Colored collar band
+  ctx.fillStyle = p.palette.band;
+  ctx.globalAlpha = alpha;
+  ctx.fillRect(-baseWidth, -s * 0.08, baseWidth * 2, s * 0.12);
+
+  // Rounded cork base at bottom
+  ctx.beginPath();
+  ctx.arc(0, s * 0.04, baseWidth * 0.98, 0, Math.PI);
+  ctx.fillStyle = '#f8fafc';
+  ctx.fill();
+
+  ctx.restore();
+}
+
+function spawnShuttleBurst(x, y, count = 6) {
+  if (!dropsEnabled) return;
+  for (let i = 0; i < count; i++) {
+    if (dropsParticles.length < 75) {
+      dropsParticles.push(createShuttleParticle(y, x, y));
+    }
+  }
+}
+
+function toggleBadmintonDrops() {
+  dropsEnabled = !dropsEnabled;
+  try {
+    localStorage.setItem('smashpoint_drops', dropsEnabled ? 'on' : 'off');
+  } catch (e) {}
+  updateDropsToggleUI();
+
+  if (dropsEnabled && !dropsAnimId) {
+    startBadmintonDropsLoop();
+  }
+}
+
+function startBadmintonDropsLoop() {
+  const canvas = document.getElementById('badminton-drops-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  if (dropsParticles.length === 0) {
+    const initialCount = window.innerWidth < 640 ? 16 : 28;
+    for (let i = 0; i < initialCount; i++) {
+      dropsParticles.push(createShuttleParticle(Math.random() * window.innerHeight));
+    }
+  }
+
+  function step() {
+    if (!dropsEnabled) {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      dropsAnimId = null;
+      return;
+    }
+
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    ctx.clearRect(0, 0, w, h);
+
+    const targetAmbient = w < 640 ? 16 : 28;
+    let ambientCount = 0;
+
+    for (let i = dropsParticles.length - 1; i >= 0; i--) {
+      const p = dropsParticles[i];
+
+      if (p.isBurst) {
+        p.vy += p.gravity;
+        p.vx *= 0.985;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.angle += p.vAngle * 2.5;
+        p.life -= 0.012;
+        if (p.life <= 0 || p.y > h + 50) {
+          dropsParticles.splice(i, 1);
+          continue;
+        }
+      } else {
+        ambientCount++;
+        p.swayPhase += p.swayFreq;
+        const swayVx = Math.sin(p.swayPhase) * p.swayAmp;
+
+        // Gentle mouse air-wake repulsion
+        if (dropsMouse.active) {
+          const dx = p.x - dropsMouse.x;
+          const dy = p.y - dropsMouse.y;
+          const distSq = dx * dx + dy * dy;
+          if (distSq < 12000 && distSq > 1) {
+            const dist = Math.sqrt(distSq);
+            const force = (1 - dist / 110) * 1.4;
+            p.vx += (dx / dist) * force * 0.15;
+            p.vy += (dy / dist) * force * 0.08;
+          }
+        }
+
+        p.vx *= 0.96;
+        p.x += p.vx + swayVx;
+        p.y += p.vy;
+        // Tilt gently into sway direction
+        p.angle = Math.sin(p.swayPhase) * 0.25 + p.vx * 0.08;
+
+        if (p.y > h + 45) {
+          p.y = -45;
+          p.x = Math.random() * w;
+          p.vx = (Math.random() - 0.5) * 0.4;
+        }
+        if (p.x < -50) p.x = w + 40;
+        if (p.x > w + 50) p.x = -40;
+      }
+
+      drawShuttlecock(ctx, p);
+    }
+
+    while (ambientCount < targetAmbient) {
+      dropsParticles.push(createShuttleParticle(-40));
+      ambientCount++;
+    }
+
+    dropsAnimId = requestAnimationFrame(step);
+  }
+
+  if (dropsAnimId) cancelAnimationFrame(dropsAnimId);
+  dropsAnimId = requestAnimationFrame(step);
+}
+
+// Mouse wake & subtle click burst listeners
+window.addEventListener('mousemove', (e) => {
+  dropsMouse.x = e.clientX;
+  dropsMouse.y = e.clientY;
+  dropsMouse.active = true;
+});
+
+window.addEventListener('mouseleave', () => {
+  dropsMouse.active = false;
+});
+
+window.addEventListener('click', (e) => {
+  if (!dropsEnabled) return;
+  // Spawn a small burst of 3 shuttlecocks on non-button clicks for delight
+  if (!e.target.closest('button, a, input, select')) {
+    spawnShuttleBurst(e.clientX, e.clientY, 4);
+  }
+});
+
+// Initialize Badminton Drops on startup
+(function initBadmintonDrops() {
+  try {
+    const savedDrops = localStorage.getItem('smashpoint_drops');
+    if (savedDrops === 'off') dropsEnabled = false;
+  } catch (e) {}
+
+  const boot = () => {
+    updateDropsToggleUI();
+    if (dropsEnabled) startBadmintonDropsLoop();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+
 
